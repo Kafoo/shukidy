@@ -50,6 +50,10 @@ class Router
 		
 
 	}
+	
+	static function coucou(){
+		echo "coucou";
+	}
 
 }
 
