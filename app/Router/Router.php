@@ -52,6 +52,7 @@ class Router
 	
 	static function coucou(){
 		echo "coucou";
+		var_dump(__DIR__);
 	}
 
 }
