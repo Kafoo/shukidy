@@ -6,14 +6,12 @@ use App\Router\Router;
 $root = dirname(__DIR__);
 if ($root == 'D:\DEV\wamp64\www') {
 	$root = dirname(__DIR__)."/shukidy/";
-}else{
-	$root = 'https://shukidy.herokuapp.com/';
 }
 
 var_dump($root);
 
 
-require $root.'plop.php';
+include 'plop.php';
 
 /*if (isset($_GET['url'])) {
 define('ROOT', dirname(__DIR__).'/shukidy');
