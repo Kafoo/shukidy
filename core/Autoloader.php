@@ -12,6 +12,7 @@ class Autoloader{
 	static function autoload($class){
 		echo'yo';
 		$class = str_replace('\\', '/', $class);
+		var_dump(ROOT.'/'.$class.'.php');
 		require ROOT.'/'.$class.'.php';
 	}
 
