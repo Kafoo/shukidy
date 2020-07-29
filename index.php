@@ -7,7 +7,7 @@ $root = dirname(__DIR__);
 if ($root == 'D:\DEV\wamp64\www') {
 	$root = dirname(__DIR__)."/shukidy/";
 }else{
-	$rott = 'https://shukidy.herokuapp.com/';
+	$root = 'https://shukidy.herokuapp.com/';
 }
 
 var_dump($root);
