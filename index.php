@@ -3,10 +3,9 @@ use App\Manager;
 use App\Router\Router;
 
 define('ROOT', __DIR__);
-require '/app/App/Router/Router.php';
 require ROOT . '/app/Manager.php';
 
-/*Manager::load();*/
+Manager::load();
 
 
 Router::coucou();
