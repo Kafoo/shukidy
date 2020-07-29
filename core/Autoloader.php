@@ -15,11 +15,6 @@ class Autoloader{
 		require ROOT.'/'.$class.'.php';
 	}
 
-	static function tamere(){
-		echo "tamere";
-		require ROOT.'/App/Router/Faux.php';
-	}
-
 }
 
 ?>

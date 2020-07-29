@@ -6,10 +6,15 @@ use Core\Autoloader;
 
 define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
+require ROOT . '/core/Autoloader.php';
 
-Manager::load();
+Autoloader::autoload('App/Router/Router');
 
 Router::coucou();
+
+/*Manager::load();
+
+Router::coucou();*/
 
 /*if (isset($_GET['url'])) {
 

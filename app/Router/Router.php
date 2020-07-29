@@ -48,7 +48,6 @@ class Router
 
 		throw new RouterException("no matching route");
 		
-
 	}
 	
 	static function coucou(){
