@@ -5,12 +5,12 @@ use App\Router\Router;
 
 $root = dirname(__DIR__);
 if ($root == 'D:\DEV\wamp64\www') {
-	$root = dirname(__DIR__)."/shukidy";
+	$root = dirname(__DIR__)."/shukidy/";
 }
 
 var_dump($root);
 
-require $root.'/plop.php';
+require $root.'plop.php';
 
 /*if (isset($_GET['url'])) {
 define('ROOT', dirname(__DIR__).'/shukidy');
