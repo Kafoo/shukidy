@@ -5,6 +5,7 @@ namespace Core;
 class Autoloader{
 
 	static function register(){
+		echo "register done";
 		spl_autoload_register(array(__CLASS__, 'autoload' ));
 	}
 
