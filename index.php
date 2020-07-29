@@ -2,19 +2,8 @@
 use App\Manager;
 use App\Router\Router;
 
-
-$root = dirname(__DIR__);
-if ($root == 'D:\DEV\wamp64\www') {
-	$root = dirname(__DIR__)."/shukidy/";
-}
-
-var_dump($root);
-var_dump(__DIR__);
-
-include __DIR__.'/plop.php';
-
-/*if (isset($_GET['url'])) {
-define('ROOT', dirname(__DIR__).'/shukidy');
+if (isset($_GET['url'])) {
+define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
 Manager::load();
 
@@ -31,7 +20,7 @@ Manager::load();
 
 	$router->run();
 
-}*/
+}
 
 
 
