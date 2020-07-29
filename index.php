@@ -6,14 +6,9 @@ use core\Autoloader;
 
 define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
-
-/*Autoloader::autoload('app/Router/Router');*/
-
 Manager::load();
 
-Router::coucou();
-
-/*if (isset($_GET['url'])) {
+if (isset($_GET['url'])) {
 
 	$router = new Router($_GET['url']);
 
@@ -27,9 +22,8 @@ Router::coucou();
 
 	$router->run();
 
-}*/
+}
 
 
 
 ?>
-fin

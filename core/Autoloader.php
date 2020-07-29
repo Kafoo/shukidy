@@ -11,7 +11,6 @@ class Autoloader{
 
 	static function autoload($class){
 		$class = lcfirst(str_replace('\\', '/', $class));
-		var_dump($class);
 		require ROOT.'/'.$class.'.php';
 	}
 
