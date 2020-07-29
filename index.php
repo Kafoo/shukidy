@@ -2,13 +2,12 @@
 use App\Manager;
 use App\Router\Router;
 
-if (isset($_GET['url'])) {
 define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
-
-/*
 Manager::load();
 
+
+if (isset($_GET['url'])) {
 
 	$router = new Router($_GET['url']);
 
@@ -24,8 +23,7 @@ Manager::load();
 
 }
 
-*/
-
 
 
 ?>
+yop
