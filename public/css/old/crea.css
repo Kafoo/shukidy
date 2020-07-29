@@ -1,0 +1,309 @@
+/*------------------------- CREA PERSO ---------------------------*/
+
+
+
+/*-------------- OLD --------------*/
+
+
+.selectBox{
+	margin: 10px auto 0 auto;
+	padding: 5px;
+	overflow: auto;
+}
+
+.selectBox select{
+	min-width: 200px;
+	height: 30px;
+	margin: 5px;
+	font-size: 16px;
+	line-height: 50px;
+	text-align: center;
+	text-align-last: center;
+	background-color: grey;
+	border-radius: 4px;
+}
+
+
+/*---T'AS QUOI DANS LE VENTRE---*/
+
+.displayCarac-container{
+	width: 70px;
+	height: 46px;
+}
+
+#totalCarac{
+	display: inline-block;
+	margin: 15px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 30px;
+	border: 1px solid black;
+	border-radius: 2px;
+	box-shadow: inset 0 0 5px 0.5px black;
+	background-color: lightgrey;
+	color: blue;
+}
+
+
+table{
+	display: inline-block;
+}
+
+table label{
+	display: block;
+	text-align: right;
+	font-weight: bold;
+	font-style: italic;
+}
+
+#submitAll{
+	width: 40%;
+	min-width: 200px;
+	margin: 20px auto;
+	padding: 10px;
+	font-size: 1.2em;
+	color: black;
+	background-color: grey;
+	border: 3px solid black;
+	border-radius: 5px;
+}
+
+#descriptionLore{
+	width: 60%;
+	border: 2px solid black;
+	border-radius: 3px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #4e5556;
+}
+
+#lore{
+	width: 80%;
+	margin: 20px auto 5px auto;
+	height: 100px;
+}
+
+@media (max-width: 760px){
+
+	.ventreBox{
+		width: 100%;
+	}
+	.titre{
+		width: 100%;
+		margin-left: 0;
+		padding-left: 0
+	}
+	#descriptionLore{
+		width: 80%;
+	}
+}
+
+
+
+
+/*------------------------- CREA UNIV ---------------------------*/
+
+
+
+section{
+	text-align: center;
+}
+
+.selectAttribute{
+	text-transform: capitalize;
+}
+
+.selectBigContainer{
+    width: 40%;
+    min-width: min-content;
+    max-width: 500px;
+    background-color: rgba(200, 200, 200, 0.5);
+    padding: 8px 10px;
+    margin: 5px auto;
+    font-weight: bold;
+    font-size: 22px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.selectBigContainer.current{
+	background-color: rgb(78, 125, 88);
+}
+
+.caracBox{
+	padding: 20px 0;
+}
+
+.caracContainer{
+	width: max-content;
+	margin: auto;
+	padding: 10px 0;
+	border-top: 1px solid black;
+}
+
+.caracContainer:first-of-type{
+	border-top: none;
+}
+
+.caracContainer-center{
+	display: inline-block;
+}
+
+.caracBox input[type="text"]{
+	margin: 5px;
+	border-radius: 5px;
+	padding: 4px 4px 2px 4px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.selectIconColor{
+	border-radius: 5px;
+}
+
+.chooseCaracIcon{
+	border-radius: 50px;
+}
+
+.selectBox.editArea{
+    width: calc(80% - 3px);
+    cursor: text;
+}
+
+
+.editArea{
+    background-color: rgb(207, 207, 207);
+    resize: vertical;
+    color: black;
+    outline: none;
+    font-size: 1.1em;
+}
+
+.chooseNatureIcon-hidden{
+	display: none;
+	height: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.chooseNatureIcon, .chooseNewNatureIcon{
+	border-radius: 4px;
+	background-color: rgb(207, 207, 207);
+	color: black;
+}
+
+.univDescription, .regles{
+	margin: 0 auto 20px auto;
+    height: 250px;
+    padding: 15px;
+    overflow: auto;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.univDescription.editArea, .regles.editArea{
+}
+
+.addBox{
+	position: relative;
+	margin-top: 15px;
+    padding: 0 0 1px 0;
+    border-top: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.28);
+    color: #c7c7c7;
+}
+
+.addBox .addTitle{
+	display: flex;
+    color: #c2c2c2;
+    cursor: pointer;
+    padding: 1px;
+    margin: 1px;
+    align-items: center;
+    justify-content: center;
+}
+
+.addBox .addTitle:hover{
+	color: white;
+}
+
+.addLabel{
+	line-height: 30px;
+	display: inline-block;
+	margin: 2px 20px;
+	max-width: calc(100% - 130px);
+}
+
+.addBox .addIcone, .addBox .upArrow{
+	display: inline-block;
+	padding: 1px;
+	margin: 1px;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}
+
+.addBox .addIcone{
+    background-image: url(../img/icones/add.png);
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.addBox .upArrow{
+    background-image: url(../img/icones/arrowUP.png);
+}
+
+.addBox input, .addBox textarea{
+	border-radius: 4px;
+}
+
+.addBox textarea{
+	padding: 10px;
+	height: 100px;
+	width: 80%;
+	resize: vertical;
+}
+
+.addBox input{
+	width: 200px;
+	max-width: 80%;
+	margin: 5px 0;
+	text-align: center;
+	}
+
+
+
+@media (max-width: 720px){
+
+	h3{
+		margin: 0;
+	}
+
+	.selectBigContainer{
+	    width: 80%;
+	}
+
+
+
+	.selectBox.editArea{
+	    width: calc(100% - 3px);
+	}
+
+
+
+	.univDescription, .regles {
+		width: calc(100% - 30px);
+		border-radius: 0;
+		border: none;
+		border-bottom: 2px solid;
+	}
+
+
+}

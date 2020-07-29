@@ -1,0 +1,161 @@
+	.custConf{
+		width: 350px;
+		margin-left: -175px;
+		min-height: 50px;
+		position: fixed;
+		top: 40%;
+		left: 50%;
+		background-color: rgb(151, 159, 104);
+		border: 1.5px solid black;
+		box-shadow: 4px 5px 16px 7px #0000005e;
+		border-radius: 5px;
+		padding: 10px;
+		opacity: 0;
+	}
+
+	.custConf_msg{
+		width: max-content;
+		max-width: 95%;
+		margin: 10px auto;
+		text-align: center;
+	}
+
+	.custConf_choices{
+		width: max-content;
+		max-width: 90%;
+		margin: auto;
+		text-align: center;
+	}
+
+	.custConf_yes, .custConf_no{
+	    display: inline-block;
+	    margin: 5px;
+	    padding: 2px 5px;
+	    border-radius: 2px;
+	    border: 1px solid black;
+	    color: black;
+	    background-color: white;
+	    font-weight: bold;
+	}
+
+	.custConf_yes{
+		color: darkgreen;
+	}
+
+	.custConf_no{
+		color: #ac0000;
+	}
+
+	.chooseIcon{
+		display: inline-block;
+		vertical-align: top;
+		font-size: 2em;
+		width: 40px;
+		height: 40px;
+		padding: 2px;
+		margin: 5px 5px;
+		border: 1px solid black;
+		background-color: grey;
+		background-size: 90% 90%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.iconsBox{
+		position: fixed;
+		width: 500px;
+		max-height: 50%;
+		margin-left: -250px;
+		top: 20%;
+		left: 50%;
+		background-color: grey;
+		border: 1.5px solid black;
+		box-shadow: 4px 5px 16px 7px #0000005e;
+		border-radius: 5px;
+		padding: 10px;
+		opacity: 0;
+		overflow: auto;
+		text-align: center;
+	}
+
+	.iconsCat{
+		display: inline-block;
+	    margin: 5px;
+	    padding: 2px 5px;
+	    border-radius: 2px;
+	    border: 1px solid black;
+	    background-color: #e7f3fd;
+	}
+
+	.iconsCat.current{
+		background-color: #575757;
+    	color: white;
+	}
+
+	.iconsContainer{
+		padding: 5px;
+		border: 1px solid black;
+		margin: 5px;
+		background-color: rgba(0,0,0,0.2);
+	}
+
+	.icon{
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 3px;
+		background-size: cover;
+		background-color: white;
+	}
+
+
+
+/*--------------MOBILE 720px--------------*/
+
+
+@media (max-width: 720px){
+
+	.iconsBox{
+	    width: calc(100% - 10px);
+	    height: 98%;
+	    max-height: 98%;
+	    margin: 0;
+	    top: 0;
+	    left: 0;
+	    box-shadow: none;
+	    border: none;
+	    padding: 10px;
+	    z-index: 1000;
+	}
+
+	.iconsCat{
+		font-size: 1.5em;
+		line-height: 1.5em;
+		padding: 3px 10px;
+	}
+
+	.icon{
+		width: 40px;
+		height: 40px;
+	}
+
+	.custConf{
+		left: 0;
+		width: calc(90% - 20px);
+		margin: 5%;
+	}
+
+	.custConf_msg{
+		font-size: 1.1em;
+	}
+
+	.custConf_yes, .custConf_no{
+		font-size: 1.1em;
+		padding: 4px 7px;
+	}
+
+}
+
+

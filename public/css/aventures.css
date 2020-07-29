@@ -1,0 +1,269 @@
+.av-grid{
+	display: grid;
+	margin: auto 235px auto 5%;
+	position: relative;
+	grid-template-columns: 120px 1fr;
+}
+
+	.writerAvatarSlider{
+		margin: 40px 0 60px 0;
+		position: relative;
+	}
+
+	.writerAvatar{
+		position: sticky;
+		top: 80px;
+		height: max-content;
+		background-size: cover;
+		background-position: center;
+		border: 1.5px solid rgb(0, 0, 0);
+		border-right: none;
+		border-radius: 10px 0 0 10px;
+		box-shadow: 0px 0px 10px black;
+		z-index: 10;
+		cursor: pointer;
+	}
+
+	.layer.desktop{
+		height: 130px;
+		background-color: rgba(0,0,0,0.8);
+		color: white;
+		padding: 10px;
+		border-radius: 10px 0 0 10px;
+		opacity: 0;
+		transition: 0.3s;
+		text-align: center;
+		font-size: 0.9em;
+	}
+
+	@media (min-width: 720px){
+		.writerAvatar:hover .layer{
+			opacity: 1;
+			transition: 0.3s;
+		}
+	}
+
+.msg{
+	position: relative;
+	min-height: 100px;
+	margin: 15px 0;
+	padding: 25px;
+    background-color: rgba(157, 165, 158, 0.59);
+	border: 1.5px solid black;
+	border-radius: 6px;
+	box-shadow: inset -2px -2px 50px rgb(43, 81, 46);
+	z-index: 20;
+}
+
+.msg.msg-rpGM{
+    background-color: rgba(162, 162, 162, 0.58);
+	box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
+}
+
+.msg.msg-drGM{
+	margin: 15px 0;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: inset 0 0 60px 1px rgb(63, 63, 63);
+	background: inherit;
+	background-color: rgba(94,94,94, 1);
+}
+
+.msg.msg-log{
+    background-color: rgba(218, 209, 127, 0.81);
+	box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
+}
+
+.editMsg{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 2px 6px;
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-radius: 3px 0 0 0;
+	font-family: arial black;
+	font-size: 0.7em;
+	color: rgba(62, 42, 16, 1);
+	cursor: pointer;
+}
+
+.editMsgArea{
+	display: block;
+	width: 90%;
+	margin: auto;
+}
+
+.editMsgBloc input[type="submit"]{
+	display: block;
+	margin: auto;
+	padding: 10px;
+	width: 100.3%;
+	text-align: center;
+}
+
+.msg img{
+	display: block;
+	margin: auto;
+	max-width: 90%;
+	height: auto;
+}
+
+.separate{
+	border: 1px solid rgb(0,0,0);
+	margin: 5px 0;
+}
+
+/*MESSAGE DICEROLL*/
+
+	.diceRoll_icone{
+		width: 100px;
+		margin: 30px 15px;
+		padding: 10px;
+		border-radius: 50px 0 0 50px;
+		background-color: rgb(50,50,50);
+		z-index: -1;
+	}
+
+	.diceRollTitle{
+		margin: 10px 10px 0 10px;
+		padding: 10px 15px;
+		font-family: sans-serif;
+		font-style: italic;
+		color: lightgrey;
+		background-color: rgb(50,50,50);
+		border-radius: 5px;
+	}
+
+	.diceRollTitle-player{
+		display: block;
+		margin: auto;
+		margin-top: 10px;
+		max-width: calc(100% - 50px);
+		padding: 2px 10px;
+		background-color: rgba(50,50,50,0.3);
+		border-bottom: none;
+		border-radius: 5px 5px 0 0;
+		font-style: italic;
+		text-align: center;
+		color: rgb(216,216,216);
+	}
+
+	.diceRollBox{
+		margin: 10px;
+		margin-top: 0;
+		background-color: rgb(135,135,135);
+		border: 1px solid black;
+		border-radius: 4px;
+		overflow: auto;
+	}
+
+	.diceRollPerso{
+		float: left;
+		display: inline-block;
+		font-size: 1em;
+		min-width: 140px;
+		margin: 5px;
+		padding: 3px 0px;
+		background-color: rgba(200,200,200,0.5);
+		border: 1px solid black;
+		text-align: center;
+		overflow: hidden;
+	}
+
+	.rollBox{
+		background-image: url(../img/icones/d20black.png), url(../img/icones/d20black.png);
+		background-position: right 3px top 2px, left 3px top 2px;
+		background-size: 17px;
+		background-repeat: no-repeat;
+		margin: 3px 6px;
+		padding: 1px;
+		border : 1px solid black;
+		background-color: lightgrey;
+	}
+
+	.diceRollDigits{
+		display: inline-block;
+		margin: 5px 0 0 0;
+		font-size: 1.8em;
+		overflow: hidden;
+	}
+
+	.diceRollDigit{
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 50px;
+		font-weight: bolder;
+		color: white;
+		width: 45px;
+		height: 40px;
+		margin: 3px;
+		padding-top: 5px;
+		box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
+		text-align: center;
+	}
+
+	.digit-roll{
+		background-image: url(../img/icones/d20black.png);
+		background-size: cover;
+		background-color: rgb(131, 131, 131);
+		box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
+	}
+
+	.digit-carac{
+		background-size: cover;
+	}
+
+	.digit-cond{
+		border-radius: 2px;
+	}
+
+	.digit-cond-pos{
+		background-color: rgb(41, 127, 40);
+	}
+
+	.digit-cond-neg{
+		background-color: rgb(127, 40, 40);
+	}
+
+	.digit-resultFinal{
+		position: relative;
+		width: 70px;
+		background-color: rgb(216,216,216);
+		color: black;
+		margin-right: 20px;
+		padding: 3px 10px;
+		border: 1px solid black;
+		box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
+		border-radius: 3px;
+	}
+
+	.digit-difficulty{
+		font-size: 0.7em;
+	}
+
+	.diceRoll-tic{
+		position: absolute;
+		top: -5px;
+		right: -15px;
+		width: 25px;
+	}
+
+	.resultText{
+		display: inline-block;
+		width: 80px;
+		font-size: 0.8em;	
+	}
+
+	.resultText .yes{
+		color: #56e756;
+		display: inline-block;
+		font-weight: bolder;
+		text-shadow: 0 0 3px black;
+	}
+
+	.resultText .no{
+		color: black;
+		display: inline-block;
+		font-weight: bolder;
+	}

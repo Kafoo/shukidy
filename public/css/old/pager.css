@@ -1,0 +1,92 @@
+.pagerNav{
+	position: relative;
+	height: 50px;
+}
+
+.pagerTitle{
+    box-sizing: border-box;
+    width: 90%;
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+    background-color: #eaeaea99;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 3px 2px 13px 0 #00000069;
+}
+
+.pageCount{
+	font-weight: bold;
+
+}
+
+.pageName{
+	font-style: italic;
+}
+
+.pagerbutton{
+	display: inline-block;
+	background-color: rgb(200,200,200);
+	border: 1px solid;
+	padding: 3px 10px;
+	text-align: center;
+	font-style: italic;
+	border-radius: 5px;
+	user-select: none;
+}
+
+.pagerPrev{
+	position: absolute;
+	top: 0;
+	left: 10%;
+}
+
+.pagerNext{
+	position: absolute;
+	top: 0;
+	right: 10%;
+}
+
+.pagesBigContainer{
+	position: relative;
+	overflow: hidden;
+}
+
+.pageContainer{
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 100%;
+}
+
+.pagerErrorContainer{
+	position: relative;	
+	display: none;
+	opacity: 0;
+    width: max-content;
+    max-width: 90%;
+    margin: 20px auto 0 auto;
+}
+
+.pagerError{
+    text-align: center;
+    padding: 3px 15px;
+    color: white;
+    font-style: italic;
+    background-color: rgb(141, 56, 56);
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 0 0 grey;
+    box-shadow: 3px 3px 11px 0 #0000006e;
+}
+
+.closingError{
+	position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 7px;
+    right: 7px;
+    background-image: url(../../img/icones/closingCross.png);
+    background-size: cover;
+    cursor: pointer;
+}

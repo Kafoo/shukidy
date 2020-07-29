@@ -1,0 +1,107 @@
+.error{
+    color: white;
+    width: 40%;
+    margin: 10px auto;
+    background-color: #8e1212;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.helper_msg{
+    width: 60%;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: rgba(157, 165, 158, 0.59);
+    border: 1.5px solid black;
+    border-radius: 6px;
+    box-shadow: inset -2px -2px 50px rgb(81, 74, 43);
+}
+
+.title{
+	font-style: italic;
+	color: #dadada;
+	margin-bottom: 10px;
+}
+
+.content{
+
+}
+
+form{
+    width: 60%;
+    margin: 40px auto 0 auto;
+    border: 1px solid black;
+    padding-bottom: 10px;
+    background-color: #c5c5c5;
+    box-shadow: 2px 2px 18px 0 #0000004f;
+    border-radius: 5px;
+}
+
+input, label{
+	display: block;
+	width: 150px;
+	margin: 10px auto 0 auto;
+	text-align: center;
+}
+
+textarea{
+	display: block;
+	margin: 10px auto;
+	width: 70%;
+	height: 200px;
+	resize: vertical;
+}
+
+.pagination{
+	width: max-content;
+	background-color: grey;
+	padding: 5px;
+	margin: 10px auto;
+	border: 1px solid black;
+	border-radius: 2px;
+	color: white;
+}
+
+@media (max-width: 720px){
+
+
+	h1{
+		margin-bottom: 0;
+	}
+
+	form{
+		box-sizing: border-box;
+		width: 100%;
+	    border: none;
+	    padding: 10px;
+	    background-color: #c5c5c5;
+	    border-radius: 0;
+	}
+
+	.helper_msg{
+		width: 100%;
+		margin: 0;
+		padding: 17px 17px 30px 17px;
+		border: none;
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
+		border-radius:0;
+	}
+
+	input, label, textarea{
+		width: 100%;
+	}
+
+	.pagination{
+		width: 100%;
+		margin: 0;
+		text-align: center;
+		border: none;
+		background-color: transparent;
+		padding: 20px 0;
+		font-size: 1.2em;
+	}
+
+}
