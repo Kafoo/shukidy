@@ -8,7 +8,8 @@ define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
 
 Manager::load();
-Autoloader::tamere();
+
+Router::coucou();
 
 /*if (isset($_GET['url'])) {
 
