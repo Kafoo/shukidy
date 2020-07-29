@@ -1,14 +1,14 @@
 <?php
 use App\Manager;
 use App\Router\Router;
+use Core\Autoloader;
+
 
 define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
 
 Manager::load();
-
-
-Router::coucou();
+Autoloader::tamere();
 
 /*if (isset($_GET['url'])) {
 

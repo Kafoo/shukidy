@@ -10,11 +10,12 @@ class Autoloader{
 	}
 
 	static function autoload($class){
-
 		$class = str_replace('\\', '/', $class);
+		require ROOT.'/'.$class.'.php';
+	}
 
-		/*require ROOT.'/'.$class.'.php';*/
-
+	static function tamere(){
+		echo "tamere";
 		require ROOT.'/App/Router/Faux.php';
 	}
 
