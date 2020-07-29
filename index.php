@@ -1,20 +1,17 @@
 <?php
-use App\Manager;
-use App\Router\Router;
-use Core\Autoloader;
+use app\Manager;
+use app\Router\Router;
+use core\Autoloader;
 
 
 define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
-/*require ROOT . '/core/Autoloader.php';*/
 
-/*Autoloader::autoload('App/Router/Router');*/
-require ROOT.'/app/Router/Router.php';
+/*Autoloader::autoload('app/Router/Router');*/
+
+Manager::load();
+
 Router::coucou();
-
-/*Manager::load();
-
-Router::coucou();*/
 
 /*if (isset($_GET['url'])) {
 

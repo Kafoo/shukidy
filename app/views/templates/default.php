@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
-	<?=\App\Manager::getInstance()->getStyle()?>
+	<?=\app\Manager::getInstance()->getStyle()?>
             
-	<title><?=\App\Manager::getInstance()->getTitle()?></title>
+	<title><?=\app\Manager::getInstance()->getTitle()?></title>
 </head>
 <body>
 

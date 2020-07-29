@@ -1,9 +1,9 @@
 <?php
 
-namespace Core\Table;
+namespace core\Table;
 
-use App\Manager;
-use Core\Database;
+use app\Manager;
+use core\Database;
 /**
  * 
  */

@@ -4,7 +4,7 @@
 $aventure = $variables['aventure'];
 $posts = $variables['posts'];
 
-$manager = \App\Manager::getInstance();
+$manager = \app\Manager::getInstance();
 $manager->setTitle($aventure->name);
 $manager->setStyle('aventures');
 

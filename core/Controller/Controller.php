@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core\Controller;
+namespace core\Controller;
 
 /**
  * 

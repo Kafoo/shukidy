@@ -1,9 +1,9 @@
 <?php
 
 
-use Core\Database;
-use App\Manager;
-use Core\Auth\DBAuth;
+use core\Database;
+use app\Manager;
+use core\Auth\DBAuth;
 
 define('ROOT', dirname(__DIR__));
 

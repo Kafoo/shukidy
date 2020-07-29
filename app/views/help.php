@@ -1,6 +1,6 @@
 <?php
 
-$manager = App\Manager::getInstance();
+$manager = app\Manager::getInstance();
 $manager->setTitle('Help');
 
 ?>

@@ -1,6 +1,6 @@
 <?php
-use App\Manager;
-use Core\Auth\DBAuth;
+use app\Manager;
+use core\Auth\DBAuth;
 $manager = Manager::getInstance();
 
 

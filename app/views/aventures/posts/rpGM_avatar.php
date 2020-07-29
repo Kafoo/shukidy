@@ -1,6 +1,6 @@
 <?php
 
-use App\Controller\ImgController;
+use app\Controller\ImgController;
 
 $img = new ImgController;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Auth;
+namespace core\Auth;
 
-use Core\Database;
+use core\Database;
 /**
  * 
  */

@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Controller;
-use App\Controller\AppController;
+namespace app\Controller;
+use app\Controller\AppController;
 
 /**
  * 

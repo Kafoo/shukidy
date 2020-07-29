@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
-use App\Manager;
-use App\Controller\AppController;
-use App\Controller\PostController;
+namespace app\Controller;
+use app\Manager;
+use app\Controller\AppController;
+use app\Controller\PostController;
 
 /**
  * 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace core;
 
 class Autoloader{
 
@@ -10,7 +10,7 @@ class Autoloader{
 	}
 
 	static function autoload($class){
-		$class = str_replace('\\', '/', $class);
+		$class = lcfirst(str_replace('\\', '/', $class));
 		var_dump($class);
 		require ROOT.'/'.$class.'.php';
 	}

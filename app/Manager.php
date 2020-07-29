@@ -1,9 +1,9 @@
 <?php
-namespace App;
+namespace app;
 
-use Core\Config;
-use Core\Autoloader;
-use Core\Database;
+use core\Config;
+use core\Autoloader;
+use core\Database;
 /**
  * General Controller de l'application
  * Recupère la config, la db, les tables, renvoie les erreurs...
@@ -64,7 +64,7 @@ class Manager{
 
 
 	public function getTable($table_name){
-		$class = '\\App\\Table\\' . ucfirst($table_name) . 'Table';
+		$class = '\\app\\Table\\' . ucfirst($table_name) . 'Table';
 		return new $class($this->getDb());
 	}
 

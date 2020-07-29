@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace app\Entity;
 
-use Core\Entity\MainEntity;
+use core\Entity\MainEntity;
 
 /**
  * 

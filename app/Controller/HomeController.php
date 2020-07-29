@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
-use App\Manager;
-use App\Controller\AppController;
+namespace app\Controller;
+use app\Manager;
+use app\Controller\AppController;
 
 /**
  * 
