@@ -1,9 +1,6 @@
 <?php
-
-
-define('ROOT', dirname(__DIR__).'/shukidy');
-
-
+use App\Manager;
+use App\Router\Router;
 
 
 
@@ -12,5 +9,4 @@ define('ROOT', dirname(__DIR__).'/shukidy');
 
 
 ?>
-
-coucouuuu
+coucouuuuu!
