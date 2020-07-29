@@ -8,6 +8,7 @@ require ROOT . '/app/Manager.php';
 Manager::load();
 
 
+Router::coucou();
 
 /*if (isset($_GET['url'])) {
 
