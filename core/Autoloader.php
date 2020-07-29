@@ -12,7 +12,7 @@ class Autoloader{
 	static function autoload($class){
 		echo'yo';
 		$class = str_replace('\\', '/', $class);
-		/*require __DIR__.'/../'.$class.'.php';*/
+		require ROOT.'/'.$class.'.php';
 	}
 
 }
