@@ -5,6 +5,8 @@ use App\Router\Router;
 if (isset($_GET['url'])) {
 define('ROOT', __DIR__);
 require ROOT . '/app/Manager.php';
+
+/*
 Manager::load();
 
 
@@ -22,7 +24,7 @@ Manager::load();
 
 }
 
-
+*/
 
 
 
