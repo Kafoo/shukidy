@@ -5,13 +5,16 @@ namespace Core;
 class Autoloader{
 
 	static function register(){
-		echo "register done";
 		spl_autoload_register(array(__CLASS__, 'autoload' ));
+		var_dump(__DIR__);
+
 	}
 
 	static function autoload($class){
+		echo'yo';
 		$class = str_replace('\\', '/', $class);
-		require __DIR__.'/../'.$class.'.php';
+		var_dump(__DIR__);
+		/*require __DIR__.'/../'.$class.'.php';*/
 	}
 
 }
