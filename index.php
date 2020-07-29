@@ -9,7 +9,7 @@ require ROOT . '/app/Manager.php';
 /*require ROOT . '/core/Autoloader.php';*/
 
 /*Autoloader::autoload('App/Router/Router');*/
-require ROOT.'/App/Router/Router.php';
+require ROOT.'/app/Router/Router.php';
 Router::coucou();
 
 /*Manager::load();
