@@ -9,9 +9,9 @@ if ($root == 'D:\DEV\wamp64\www') {
 }
 
 var_dump($root);
+var_dump(__DIR__);
 
-
-include '/plop.php';
+include __DIR__.'/plop.php';
 
 /*if (isset($_GET['url'])) {
 define('ROOT', dirname(__DIR__).'/shukidy');

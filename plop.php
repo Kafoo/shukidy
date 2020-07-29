@@ -1,3 +1,3 @@
 coucou ça marche
 
-<?= $_SERVER['REQUEST_URI'] ?>
+<?php var_dump($_SERVER) ?>
