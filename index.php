@@ -2,11 +2,10 @@
 use App\Manager;
 use App\Router\Router;
 
+
 $root = dirname(__DIR__);
 if ($root == 'D:\DEV\wamp64\www') {
 	$root = dirname(__DIR__)."/shukidy";
-} else{
-	$root = '';
 }
 
 var_dump($root);
