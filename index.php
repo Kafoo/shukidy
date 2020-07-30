@@ -18,7 +18,9 @@ else{define('ROOT', __DIR__);}
 require ROOT . '/app/Manager.php';
 Manager::load();
 
-
+echo '<pre>';
+print_r(get_defined_constants());
+echo '</pre>';
 
 //ROUTING
 if (isset($_GET['url'])) {
