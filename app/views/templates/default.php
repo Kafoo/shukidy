@@ -47,11 +47,11 @@
 <nav id="navDesktop" class="desktop">
 	<div class="centering">
 		<ul>
-			<li><a class="nav1" href="<?=ROOT?>">ACCUEIL</a></li>|
-			<li><a class="nav2" href="<?=ROOT?>/aventures">AVENTURES</a></li>|
-			<li><a class="nav4" href="<?=ROOT?>/profil">PROFIL</a></li>|
-			<li><a class="nav5" href="<?=ROOT?>/help">HELP</a></li>|
-			<li><a class="nav6" href="<?=ROOT?>/univedit/1">EDITION FANTASY</a></li>
+			<li><a class="nav1" href="/">ACCUEIL</a></li>|
+			<li><a class="nav2" href="/aventures">AVENTURES</a></li>|
+			<li><a class="nav4" href="/profil">PROFIL</a></li>|
+			<li><a class="nav5" href="/help">HELP</a></li>|
+			<li><a class="nav6" href="/univedit/1">EDITION FANTASY</a></li>
 		</ul>
 	</div>
 </nav>

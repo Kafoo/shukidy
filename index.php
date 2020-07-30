@@ -11,10 +11,8 @@ use App\Controller\ProfilController;
 use App\Controller\HelpController;
 
 //Different ROOT if local or not
-/*if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
-else{define('ROOT', __DIR__);}*/
-
-define('ROOT', '');
+if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
+else{define('ROOT', __DIR__);}
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
@@ -32,7 +30,7 @@ if (isset($_GET['url'])) {
 		$controller->index();
 	});
 
-	$router->get('/aventures', function(){
+/*	$router->get('/aventures', function(){
 		$controller = new AvController;
 		$controller->index();
 	});
@@ -45,7 +43,7 @@ if (isset($_GET['url'])) {
 
 	$router->post('/aventure/:id', function($id){
 		//EXEMPLE DE POST
-	});
+	});*/
 
 	$router->run();
 
