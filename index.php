@@ -12,7 +12,7 @@ use App\Controller\HelpController;
 
 //Different ROOT if local or not
 if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
-else{define('ROOT', dirname(__DIR__));}
+else{define('ROOT', __DIR__);}
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
