@@ -32,7 +32,7 @@ if (isset($_GET['url'])) {
 		$controller->index();
 	});
 
-	$router->get('/aventures', function(){
+/*	$router->get('/aventures', function(){
 		$controller = new AvController;
 		$controller->index();
 	});
@@ -47,7 +47,7 @@ if (isset($_GET['url'])) {
 		//EXEMPLE DE POST
 	});
 
-	$router->run();
+	$router->run();*/
 
 }
 
