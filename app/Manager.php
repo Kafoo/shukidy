@@ -14,7 +14,7 @@ class Manager{
 
 	private $db_instance;
 
-	private $cssPath = ROOT.'/../public/css';
+	private $cssPath = ROOT.'/public/css';
 
 	/**
 	 * Gets the instance.
@@ -32,7 +32,7 @@ class Manager{
 
 	public static function load(){
 		session_start();
-		require ROOT . '/core/Autoloader.php';
+		require APPROOT . '/core/Autoloader.php';
 		Autoloader::register();
 	}
 
