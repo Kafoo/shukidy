@@ -15,7 +15,7 @@ class Manager{
 
 	private $db_instance;
 
-	private $cssPath = ROOT.'/public/css';
+	private $cssPath = '/public/css';
 
 	public function __construct(){
 
