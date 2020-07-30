@@ -8,6 +8,8 @@ use core\Database;
  * General Controller de l'application
  * Recupère la config, la db, les tables, renvoie les erreurs...
  */
+echo "Manager";
+
 class Manager{
 	
 	private static $_instance;
@@ -15,6 +17,16 @@ class Manager{
 	private $db_instance;
 
 	private $cssPath = ROOT.'/public/css';
+
+	public function __construct(){
+
+		$config = Config::getInstance(ROOT . '/config/config.php');
+		foreach ($config->param as $key => $value) {
+			$this->$key = $value;
+		}
+
+	}
+
 
 	/**
 	 * Gets the instance.
@@ -36,14 +48,6 @@ class Manager{
 		Autoloader::register();
 	}
 
-	public function __construct(){
-
-		$config = Config::getInstance(ROOT . '/config/config.php');
-		foreach ($config->param as $key => $value) {
-			$this->$key = $value;
-		}
-
-	}
 
 	public function forbidden(){
 		header('HTTP/1.0 403 Forbidden');
