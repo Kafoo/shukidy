@@ -47,7 +47,7 @@
 <?php 
 
 echo '<pre>';
-print_r($_ENV);
+print_r($ENV_['DB_NAME']);
 echo '</pre>';
 
 ?>
