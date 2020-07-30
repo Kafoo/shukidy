@@ -18,7 +18,7 @@ class Router
 
 	public function get($path, $callable){
 
-
+		echo "router.get called";
 		$route = new Route($path, $callable);
 		$this->routes['GET'][] = $route;
 
