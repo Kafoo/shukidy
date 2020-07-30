@@ -32,7 +32,7 @@ class Manager{
 
 	public static function load(){
 		session_start();
-		require APPROOT . '/core/Autoloader.php';
+		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
 	}
 

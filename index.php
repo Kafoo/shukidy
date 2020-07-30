@@ -11,13 +11,11 @@ use App\Controller\ProfilController;
 use App\Controller\HelpController;
 
 //Different ROOT if local or not
-if (substr(__DIR__, 0, 2) == 'D:') {define('APPROOT', '');}
-else{define('APPROOT', __DIR__);}
-
-define('ROOT', '');
+if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
+else{define('ROOT', dirname(__DIR__));}
 
 //AUTOLOADER
-require APPROOT . '/app/Manager.php';
+require ROOT . '/app/Manager.php';
 Manager::load();
 
 
@@ -32,7 +30,7 @@ if (isset($_GET['url'])) {
 		$controller->index();
 	});
 
-/*	$router->get('/aventures', function(){
+	$router->get('/aventures', function(){
 		$controller = new AvController;
 		$controller->index();
 	});
@@ -47,9 +45,8 @@ if (isset($_GET['url'])) {
 		//EXEMPLE DE POST
 	});
 	
-	*/
 
-	$router->run();
+	/*$router->run();*/
 
 
 
