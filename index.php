@@ -16,7 +16,7 @@ else{define('ROOT', __DIR__);}
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
-/*Manager::load();
+Manager::load();
 
 
 
@@ -50,7 +50,7 @@ if (isset($_GET['url'])) {
 
 
 
-}*/
+}
 
 
 

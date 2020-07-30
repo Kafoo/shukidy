@@ -8,7 +8,6 @@ use core\Database;
  * General Controller de l'application
  * Recupère la config, la db, les tables, renvoie les erreurs...
  */
-echo "Manager";
 
 class Manager{
 	
