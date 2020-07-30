@@ -28,9 +28,9 @@ if (isset($_GET['url'])) {
 	$router = new Router($_GET['url']);
 
 	$router->get('/', function(){
+		echo "Home called";
 		$controller = new HomeController;
 		$controller->index();
-		echo "Home called";
 	});
 
 /*	$router->get('/aventures', function(){
