@@ -17,7 +17,7 @@ class Route
 	{
 		$this->path = trim($path, '/');
 		$this->callable = $callable;
-		var_dump($this);
+		var_dump($this->path);
 	}
 
 	public function match($url){
