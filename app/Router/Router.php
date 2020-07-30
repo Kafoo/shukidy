@@ -38,13 +38,10 @@ class Router
 			
 		}
 		foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
-			var_dump($this->url);
-			echo " --- ";
-			var_dump($route->match($this->url));
 
-		/*	if ($route->match($this->url)) {
+			if ($route->match($this->url)) {
 				return $route->call();
-			}*/
+			}
 
 		}
 
