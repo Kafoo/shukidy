@@ -138,7 +138,6 @@ class AvController extends AppController
 
 	public function index()
 	{
-		echo "index called";
 		$aventures = $this->aventures->getAll();
 		$this->render('aventures.av_list', $aventures);
 	}

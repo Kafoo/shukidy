@@ -21,7 +21,7 @@ class Database{
 
 	private function getPDO(){
 		if ($this->pdo === null) {
-			$pdo = new PDO('mysql:host=127.0.0.1;dbname=heroku_3ca6f2b572bf369', "root", "");
+			$pdo = new PDO('mysql:host='.$this->db_host.';dbname='.$this->db_name, $this->db_user, $this->db_pass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->pdo = $pdo;
 		}
