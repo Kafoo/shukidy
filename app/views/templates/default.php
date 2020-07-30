@@ -13,7 +13,7 @@
 <!------- HEADER DESKTOP ------->
 <header id="headerDesktop" class="desktop">
 		
-	<img src="<?=ROOT?>/public/img/main/header_title_blanc2.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
+	<img src="/public/img/main/header_title_blanc2.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
 
 	<!---- CONNECTION DESKTOP ---->
 	<div id="connectionDesktop">
