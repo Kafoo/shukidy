@@ -33,9 +33,7 @@ class Route
 	}
 
 	public function call(){
-		echo "call called";
-		/*return call_user_func_array($this->callable, $this->matches);*/
-
+		return call_user_func_array($this->callable, $this->matches);
 	}
 
 }
