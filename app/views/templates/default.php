@@ -44,13 +44,6 @@
 </header>
 
 
-<?php 
-
-echo '<pre>';
-print_r($ENV_['DB_NAME']);
-echo '</pre>';
-
-?>
 <!----- NAV DESKTOP ----->
 <nav id="navDesktop" class="desktop">
 	<div class="centering">
