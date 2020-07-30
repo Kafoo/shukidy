@@ -47,7 +47,7 @@
 <?php 
 
 echo '<pre>';
-print_r(get_defined_constants());
+print_r($_ENV);
 echo '</pre>';
 
 ?>

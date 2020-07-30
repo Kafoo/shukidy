@@ -20,10 +20,10 @@ else{
 
 			'title' => 'Shukidy',
 
-			'db_name' => DB_NAME,
-			'db_user' => DB_USER,
-			'db_pass' => DB_PASSSWORD,
-			'db_host' => DB_HOST
+			'db_name' => $ENV_['DB_NAME'],
+			'db_user' => $ENV_['DB_USER'],
+			'db_pass' => $ENV_['DB_PASSSWORD'],
+			'db_host' => $ENV_['DB_HOST']
 
 		);
 
