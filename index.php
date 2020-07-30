@@ -11,8 +11,10 @@ use App\Controller\ProfilController;
 use App\Controller\HelpController;
 
 //Different ROOT if local or not
-if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
-else{define('ROOT', __DIR__);}
+/*if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
+else{define('ROOT', __DIR__);}*/
+
+define('ROOT', '');
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
