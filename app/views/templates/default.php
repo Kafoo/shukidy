@@ -43,6 +43,12 @@
 
 </header>
 
+<?php
+
+var_dump(getenv('DB_NAME'));
+
+?>
+
 
 <!----- NAV DESKTOP ----->
 <nav id="navDesktop" class="desktop">
