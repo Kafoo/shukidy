@@ -14,10 +14,13 @@ use App\Controller\HelpController;
 if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
 else{define('ROOT', __DIR__);}
 
+
+var_dump(ROOT);
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
 
+/*
 //ROUTING
 if (isset($_GET['url'])) {
 
@@ -47,6 +50,6 @@ if (isset($_GET['url'])) {
 
 }
 
-
+*/
 
 ?>
