@@ -1,24 +1,47 @@
 <?php
+
 use app\Manager;
 use app\Router\Router;
 use core\Autoloader;
 
+//Controllers
+use App\Controller\AvController;
+use App\Controller\HomeController;
+use App\Controller\ProfilController;
+use App\Controller\HelpController;
 
-define('ROOT', __DIR__);
+//Different ROOT if local or not
+if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
+else{define('ROOT', __DIR__);}
+
+//AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
 
+//ROUTING
 if (isset($_GET['url'])) {
 
 	$router = new Router($_GET['url']);
 
-	$router->get('/', function(){ echo "Accueil"; });
+	$router->get('/', function(){
+		$controller = new HomeController;
+		$controller->index();
+	});
 
-	$router->get('/aventures', function(){ echo "Index de toutes les aventures"; });
+	$router->get('/aventures', function(){
+		$controller = new AvController;
+		$controller->index();
+	});
 
-	$router->get('/aventures/:id', function($id){ echo "Ca c'est l'aventure ".$id; });
+	$router->get('/aventures/:id', function($id){
+		$controller = new AvController;
+		$controller->setSession();
+		$controller->show($id);
+	});
 
-	$router->post('/aventure/:id', function($id){ echo "Ca je sais pas encore trop à quoi ça sert mais l'id c'est ".$id; });
+	$router->post('/aventure/:id', function($id){
+		//EXEMPLE DE POST
+	});
 
 	$router->run();
 

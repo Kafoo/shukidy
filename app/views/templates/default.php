@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+	<?=\app\Manager::getInstance()->getDefaultStyle()?>
 	<?=\app\Manager::getInstance()->getStyle()?>
-            
+	<script src="app/js/libraries/jquery.js"></script>
 	<title><?=\app\Manager::getInstance()->getTitle()?></title>
 </head>
 <body>
@@ -13,7 +13,7 @@
 <!------- HEADER DESKTOP ------->
 <header id="headerDesktop" class="desktop">
 		
-	<img src="../public/img/main/header_title_blanc2.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
+	<img src="<?=ROOT?>/public/img/main/header_title_blanc2.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
 
 	<!---- CONNECTION DESKTOP ---->
 	<div id="connectionDesktop">
@@ -47,11 +47,11 @@
 <nav id="navDesktop" class="desktop">
 	<div class="centering">
 		<ul>
-			<li><a class="nav1" href="index.php?p=home">ACCUEIL</a></li>|
-			<li><a class="nav2" href="index.php?p=av_list">AVENTURES</a></li>|
-			<li><a class="nav4" href="index.php?p=profil">PROFIL</a></li>|
-			<li><a class="nav5" href="index.php?p=help">HELP</a></li>|
-			<li><a class="nav6" href="index.php?p=creauniv?univID=2">EDITION FANTASY</a></li>
+			<li><a class="nav1" href="<?=ROOT?>">ACCUEIL</a></li>|
+			<li><a class="nav2" href="<?=ROOT?>/aventures">AVENTURES</a></li>|
+			<li><a class="nav4" href="<?=ROOT?>/profil">PROFIL</a></li>|
+			<li><a class="nav5" href="<?=ROOT?>/help">HELP</a></li>|
+			<li><a class="nav6" href="<?=ROOT?>/univedit/1">EDITION FANTASY</a></li>
 		</ul>
 	</div>
 </nav>
@@ -132,8 +132,7 @@
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-<script src="../public/js/_shared_/jquery"></script>
-<script src="../app/js/main.js"></script>
+<script src="app/js/main.js"></script>
 
 
 <!-- 

@@ -46,7 +46,7 @@ class Router
 
 		}
 
-		throw new RouterException("no matching route");
+		/*throw new RouterException("no matching route");*/
 		
 	}
 

@@ -11,7 +11,7 @@ class AventuresEntity extends MainEntity{
 	
 
 	public function getUrl(){
-		return 'index.php?p=av&avID='.$this->id;
+		return ROOT.'/aventures/'.$this->id;
 	}
 
 
