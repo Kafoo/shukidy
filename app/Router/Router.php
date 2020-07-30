@@ -32,8 +32,7 @@ class Router
 
 	public function run(){
 
-		var_dump($this->routes);
-/*
+		/*
 		if (!isset($this->routes[$_SERVER['REQUEST_METHOD']])) {
 			throw new RouterException("REQUEST_METHOD does not exist");
 			
