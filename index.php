@@ -46,8 +46,12 @@ if (isset($_GET['url'])) {
 	$router->post('/aventure/:id', function($id){
 		//EXEMPLE DE POST
 	});
+	
+	*/
 
-	$router->run();*/
+	$router->run();
+
+
 
 }
 
