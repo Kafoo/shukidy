@@ -14,8 +14,6 @@ use App\Controller\HelpController;
 if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
 else{define('ROOT', __DIR__);}
 
-
-var_dump(ROOT);
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
@@ -28,12 +26,11 @@ if (isset($_GET['url'])) {
 	$router = new Router($_GET['url']);
 
 	$router->get('/', function(){
-		echo "Home called";
 		$controller = new HomeController;
 		$controller->index();
 	});
 
-/*	$router->get('/aventures', function(){
+	$router->get('/aventures', function(){
 		$controller = new AvController;
 		$controller->index();
 	});
@@ -46,7 +43,7 @@ if (isset($_GET['url'])) {
 
 	$router->post('/aventure/:id', function($id){
 		//EXEMPLE DE POST
-	});*/
+	});
 
 	$router->run();
 

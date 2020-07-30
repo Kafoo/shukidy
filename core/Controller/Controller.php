@@ -14,13 +14,10 @@ class Controller{
 
 	public function render($view, $variables){
 
-		echo "render called -- ";
 		ob_start();
 		require ($this->viewpath . str_replace('.', '/', $view) . '.php');
 		$content = ob_get_clean();
-		var_dump($content);
 		require($this->viewpath . 'templates/' . $this->template . '.php');
-		echo "end of rendering";
 
 	}
 

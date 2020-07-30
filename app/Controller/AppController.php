@@ -16,7 +16,7 @@ class AppController extends Controller{
 	public function __construct(){
 
 		$this->viewpath = ROOT . '/app/views/';
-		$this->imgRelPath = 'img/';
+		$this->imgPath = ROOT. '/public/img/';
 
 	}
 
@@ -28,7 +28,6 @@ class AppController extends Controller{
 
 	public function index()
 	{
-		echo "Home.index called -- ";
 		$this->render($this->mainName, null);
 	}
 

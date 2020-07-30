@@ -15,7 +15,7 @@ class ImgController extends AppController
 	}
 
 	public function getAvatar($avatar){
-		return $this->imgRelPath . 'avatars/' . str_replace('.', '/', $avatar) . '.jpg';
+		return $this->imgPath . 'avatars/' . str_replace('.', '/', $avatar) . '.jpg';
 	}
 
 

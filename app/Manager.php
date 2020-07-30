@@ -14,7 +14,7 @@ class Manager{
 
 	private $db_instance;
 
-	private $cssRelPath = ROOT.'/public/css';
+	private $cssPath = ROOT.'/../public/css';
 
 	/**
 	 * Gets the instance.
@@ -79,7 +79,7 @@ class Manager{
 	}
 
 	public function getDefaultStyle(){
-		return '<link rel="stylesheet" type="text/css" href="'.$this->cssRelPath.'/style.css">';
+		return '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/style.css">';
 	}
 
 	public function getStyle(){
@@ -91,7 +91,7 @@ class Manager{
 	}
 
 	public function setStyle($style){
-		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssRelPath.'/'.$style.'.css">';
+		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/'.$style.'.css">';
 	}
 
 }

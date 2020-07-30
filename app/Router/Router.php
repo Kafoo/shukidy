@@ -33,17 +33,13 @@ class Router
 
 	public function run(){
 
-
-		echo "run called -- ";
 		if (!isset($this->routes[$_SERVER['REQUEST_METHOD']])) {
-			echo "exception called -- ";
-			/*throw new RouterException("REQUEST_METHOD does not exist");*/
+			throw new RouterException("REQUEST_METHOD does not exist");
 			
 		}
 		foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
 			
 			if ($route->match($this->url)) {
-				echo "calling route -- ";
 				return $route->call();
 			}
 
