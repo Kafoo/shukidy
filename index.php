@@ -19,6 +19,8 @@ var_dump(ROOT);
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
+$router = new Router($_GET['url']);
+
 
 /*
 //ROUTING
