@@ -14,6 +14,7 @@ class Controller{
 
 	public function render($view, $variables){
 
+		echo "render called -- ";
 		ob_start();
 		require ($this->viewpath . str_replace('.', '/', $view) . '.php');
 		$content = ob_get_clean();

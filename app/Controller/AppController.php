@@ -28,6 +28,7 @@ class AppController extends Controller{
 
 	public function index()
 	{
+		echo "Home.index called -- ";
 		$this->render($this->mainName, null);
 	}
 
