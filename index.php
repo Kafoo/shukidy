@@ -19,10 +19,9 @@ var_dump(ROOT);
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
-$router = new Router($_GET['url']);
 
 
-/*
+
 //ROUTING
 if (isset($_GET['url'])) {
 
@@ -31,9 +30,10 @@ if (isset($_GET['url'])) {
 	$router->get('/', function(){
 		$controller = new HomeController;
 		$controller->index();
+		echo "Home called";
 	});
 
-	$router->get('/aventures', function(){
+/*	$router->get('/aventures', function(){
 		$controller = new AvController;
 		$controller->index();
 	});
@@ -46,12 +46,12 @@ if (isset($_GET['url'])) {
 
 	$router->post('/aventure/:id', function($id){
 		//EXEMPLE DE POST
-	});
+	});*/
 
 	$router->run();
 
 }
 
-*/
+
 
 ?>
