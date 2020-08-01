@@ -22,9 +22,9 @@ class Database{
 	private function getPDO(){
 		if ($this->pdo === null) {
 			echo "avant PDO";
-			$pdo = new PDO('mysql:host='.$this->db_host.';dbname='.$this->db_name, $this->db_user, $this->db_pass);
+			$pdo = new PDO('mysql:host=eu-cdbr-west-03.cleardb.net;dbname=heroku_1dc514cb1b72fc8', 'b1440045143047', '0af534ac');
 			var_dump($pdo);
-			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 			$this->pdo = $pdo;
 		}
 		return $this->pdo;
