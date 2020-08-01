@@ -22,16 +22,7 @@ class Config{
 
 	function __construct($file){
 
-		if ($_ENV === array()) {
-			
-			$param = require $file;
-			
-			$this->param = $param;
+		$this->param = require $file;
 
-		}else{
-
-			$this->param = $_ENV;
-
-		}
 	}
 }

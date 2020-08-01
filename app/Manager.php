@@ -19,14 +19,10 @@ class Manager{
 
 	public function __construct(){
 
-		$patouf = Config::getInstance(ROOT . '/patouf/myPatouf.php');
-		foreach ($patouf->param as $key => $value) {
+		$config = Config::getInstance(ROOT . '/config/config.php');
+		foreach ($config->param as $key => $value) {
+			echo $key.' : '.$value.' -- ';
 			$this->$key = $value;
-			echo "<pre>";
-			print_r($key);
-			echo " --- ";
-			print_r($value);
-			echo "</pre>";
 		}
 
 	}
