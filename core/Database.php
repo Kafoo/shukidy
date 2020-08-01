@@ -48,8 +48,6 @@ class Database{
 
 
 	public function prepare($statement, $values, $class = null, $one = false){
-		echo "avant Prepare --- ";
-		var_dump($statement);
 		$req = $this->getPDO()->prepare($statement);
 
 		$res = $req->execute($values);

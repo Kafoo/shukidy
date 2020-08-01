@@ -36,7 +36,6 @@ if (isset($_GET['url'])) {
 	});
 
 	$router->get('/aventures/:id', function($id){
-		echo "rrouter.get.function called";
 		$controller = new AvController;
 		$controller->setSession();
 		$controller->show($id);

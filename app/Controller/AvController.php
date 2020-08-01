@@ -74,6 +74,8 @@ class AvController extends AppController
 	 */
 	private function groupByPosts($entries){
 
+		echo "AvController.groupByPosts --- ";
+
 		$posts = [];
 
 		foreach ($entries as $key => $entry) {
@@ -145,9 +147,11 @@ class AvController extends AppController
 
 	public function show($avID)
 	{
+		echo "avController.show --- ";
 		$aventure = $this->aventures->find($avID);
 		$entries = $this->entries->getAllByAv($avID);
 		$posts = $this->groupByPosts($entries);
+		echo "Av.Controller pre-render";
 		$this->render('aventures.av', compact('aventure', 'posts'));
 	}
 
