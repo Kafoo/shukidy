@@ -1,10 +1,5 @@
 <?php
 
-$herokuDBname = getenv('DB_NAME');
-$herokuDBuser = getenv('DB_USER');
-$herokuDBpass = getenv('DB_PASSSWORD');
-$herokuDBhost = getenv('DB_HOST');
-
 if (substr(__DIR__, 0, 2) == 'D:') {
 
 	return array(
@@ -23,13 +18,12 @@ else{
 
 	return array(
 
-
 		'title' => 'Shukidy',
 
-		'db_name' => $herokuDBname,
-		'db_user' => $herokuDBuser,
-		'db_pass' => $herokuDBpass,
-		'db_host' => $herokuDBhost
+		'db_name' => getenv('DB_NAME'),
+		'db_user' => getenv('DB_USER'),
+		'db_pass' => getenv('DB_PASSSWORD'),
+		'db_host' => getenv('DB_HOST')
 
 		);
 

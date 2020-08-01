@@ -19,14 +19,9 @@ class Manager{
 
 	public function __construct(){
 
-		$config = Config::getInstance(ROOT . '/config/config.php');
+		$config = Config::getInstance(ROOT . '/config/myConfig.php');
 		foreach ($config->param as $key => $value) {
 			$this->$key = $value;
-			echo "<pre>";
-			print_r($key);
-			echo " --- ";
-			print_r($value);
-			echo "</pre>";
 		}
 
 	}
