@@ -14,7 +14,9 @@ class MainTable
 	protected $db;
 
 	public function __construct(Database $db = null){
-
+		echo "<pre>";
+		print_r($db);
+		echo "</pre>";
 		$this->db = $db;
 
 		if (is_null($this->table_name)) {

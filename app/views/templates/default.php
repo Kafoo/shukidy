@@ -43,15 +43,6 @@
 
 </header>
 
-<?php
-
-echo "dump env var from default :";
-var_dump(getenv('DB_NAME'));
-var_dump(getenv('DB_HOST'));
-var_dump(getenv('DB_NAME'));
-var_dump(getenv('DB_PASSWORD'));
-?>
-
 
 <!----- NAV DESKTOP ----->
 <nav id="navDesktop" class="desktop">

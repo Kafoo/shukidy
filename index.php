@@ -19,7 +19,6 @@ require ROOT . '/app/Manager.php';
 Manager::load();
 
 use core\Database;
-$database = new Database('oi', 'oi', 'oi', 'oi');
 
 //ROUTING
 if (isset($_GET['url'])) {
