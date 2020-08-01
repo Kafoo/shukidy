@@ -20,6 +20,7 @@ class AvController extends AppController
 	}
 
 
+
 	private function formatEntry($post, $entry){
 
 		if ($entry->type == 'rpPlayer') {
@@ -32,7 +33,7 @@ class AvController extends AppController
 			$HTML = $this->getPV('aventures.posts.drGM', compact('entry', 'post'));
 		}
 		elseif ($entry->type == 'drPlayer') {
-			$HTML = $this->getPV('aventures.posts.drplayer', compact('entry', 'post'));
+			$HTML = $this->getPV('aventures.posts.drPlayer', compact('entry', 'post'));
 		}
 		elseif ($entry->type == 'log') {
 			$HTML = $this->getPV('aventures.posts.log', $entry);
@@ -74,15 +75,12 @@ class AvController extends AppController
 	 */
 	private function groupByPosts($entries){
 
-		echo "AvController.groupByPosts --- ";
 
 		$posts = [];
 
-		echo "81 --- ";
 
 		foreach ($entries as $key => $entry) {
 
-			echo "85 --- ";
 
 
 			$userID = $entry->userID;
@@ -91,7 +89,6 @@ class AvController extends AppController
 			//POST BEGINS
 			if ($key == 0 OR $entry->postID > $entries[$key-1]->postID ) {
 
-				echo "94 --- ";
 
 				//Creation of POST object
 				$post = new \stdClass();
@@ -110,7 +107,6 @@ class AvController extends AppController
 
 			}
 
-			echo "113 --- ";
 
 
 			//SEPARATION between rp entries
@@ -121,7 +117,6 @@ class AvController extends AppController
 				$entry->separation = False;
 			}
 
-			echo "124 --- ";
 
 
 			//PUSHING entry in entries of the post
@@ -129,7 +124,6 @@ class AvController extends AppController
 			array_push($post->entries, $entry);
 
 
-			echo "132 --- ";
 
 			//POST ENDS
 			if ($key == count($entries)-1 OR $entry->postID < $entries[$key+1]->postID) {
@@ -165,7 +159,6 @@ class AvController extends AppController
 		$aventure = $this->aventures->find($avID);
 		$entries = $this->entries->getAllByAv($avID);
 		$posts = $this->groupByPosts($entries);
-		echo "Av.Controller pre-render";
 		$this->render('aventures.av', compact('aventure', 'posts'));
 	}
 
