@@ -29,7 +29,6 @@ class AventuresTable extends MainTable{
 	}
 
 	public function find($avId){
-		echo "AventuresTable.find --- ";
 		$data = $this->query("
 			SELECT *
 			FROM {$this->table_name}

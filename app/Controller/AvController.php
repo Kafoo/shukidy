@@ -78,13 +78,20 @@ class AvController extends AppController
 
 		$posts = [];
 
+		echo "81 --- ";
+
 		foreach ($entries as $key => $entry) {
+
+			echo "85 --- ";
+
 
 			$userID = $entry->userID;
 			$characterID = $entry->characterID;
 
 			//POST BEGINS
 			if ($key == 0 OR $entry->postID > $entries[$key-1]->postID ) {
+
+				echo "94 --- ";
 
 				//Creation of POST object
 				$post = new \stdClass();
@@ -103,6 +110,8 @@ class AvController extends AppController
 
 			}
 
+			echo "113 --- ";
+
 
 			//SEPARATION between rp entries
 			if (($entry->type == 'rpPlayer' OR $entry->type == 'rpGM') 
@@ -112,9 +121,15 @@ class AvController extends AppController
 				$entry->separation = False;
 			}
 
+			echo "124 --- ";
+
+
 			//PUSHING entry in entries of the post
 			$entry->HTML = $this->formatEntry($post, $entry);
 			array_push($post->entries, $entry);
+
+
+			echo "132 --- ";
 
 			//POST ENDS
 			if ($key == count($entries)-1 OR $entry->postID < $entries[$key+1]->postID) {
@@ -147,7 +162,6 @@ class AvController extends AppController
 
 	public function show($avID)
 	{
-		echo "avController.show --- ";
 		$aventure = $this->aventures->find($avID);
 		$entries = $this->entries->getAllByAv($avID);
 		$posts = $this->groupByPosts($entries);

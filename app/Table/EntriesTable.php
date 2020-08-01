@@ -29,7 +29,6 @@ class EntriesTable extends MainTable{
 
 
 	public function getAllByAv($avID){
-		echo "EntriesTable.getAllByAv --- ";
 		$res = $this->query("
 			SELECT 
 			ent.*,
