@@ -22,6 +22,11 @@ class Manager{
 		$config = Config::getInstance(ROOT . '/config/myConfig.php');
 		foreach ($config->param as $key => $value) {
 			$this->$key = $value;
+			echo "<pre>";
+			print_r($key);
+			echo " --- ";
+			print_r($value);
+			echo "</pre>";
 		}
 
 	}
