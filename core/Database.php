@@ -21,6 +21,7 @@ class Database{
 
 	private function getPDO(){
 		if ($this->pdo === null) {
+			echo "avant PDO";
 			$pdo = new PDO('mysql:host='.$this->db_host.';dbname='.$this->db_name, $this->db_user, $this->db_pass);
 			var_dump($pdo);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
@@ -49,7 +50,8 @@ class Database{
 
 
 	public function prepare($statement, $values, $class = null, $one = false){
-		
+		echo "avant Prepare --- ";
+		var_dump($statement);
 		$req = $this->getPDO()->prepare($statement);
 
 		$res = $req->execute($values);
