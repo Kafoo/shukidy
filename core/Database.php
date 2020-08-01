@@ -17,6 +17,12 @@ class Database{
 		$this->db_user = $db_user;
 		$this->db_pass = $db_pass;
 		$this->db_host = $db_host;
+		echo "dump env var from construct :";
+		var_dump(getenv('DB_NAME'));
+		var_dump(getenv('DB_HOST'));
+		var_dump(getenv('DB_NAME'));
+		var_dump(getenv('DB_PASSWORD'));
+		echo "dump DB construct :";
 		var_dump($this->db_name);
 		var_dump($this->db_user);
 		var_dump($this->db_pass);
