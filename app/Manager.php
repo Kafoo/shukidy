@@ -21,7 +21,6 @@ class Manager{
 
 		$config = Config::getInstance(ROOT . '/config/config.php');
 		foreach ($config->param as $key => $value) {
-			echo $key.' : '.$value.' -- ';
 			$this->$key = $value;
 		}
 
