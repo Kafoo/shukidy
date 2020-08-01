@@ -25,25 +25,34 @@ if (isset($_GET['url'])) {
 
 	$router = new Router($_GET['url']);
 
+	//HOME
 	$router->get('/', function(){
 		$controller = new HomeController;
 		$controller->index();
 	});
 
+	//INDEX AVENTURES
 	$router->get('/aventures', function(){
 		$controller = new AvController;
 		$controller->index();
 	});
 
+	//SHOW AVENTURE
 	$router->get('/aventures/:id', function($id){
 		$controller = new AvController;
 		$controller->setSession();
 		$controller->show($id);
 	});
 
-	$router->post('/aventure/:id', function($id){
-		//EXEMPLE DE POST
+	//INDEX AVENTURES
+	$router->get('/profil', function(){
+		$controller = new ProfilController;
+		$controller->show(133);
 	});
+
+
+	//EXEMPLE DE POST
+	$router->post('/aventure/:id', function($id){});
 	
 
 	$router->run();

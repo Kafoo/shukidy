@@ -4,6 +4,7 @@ namespace app;
 use core\Config;
 use core\Autoloader;
 use core\Database;
+use core\Controller;
 /**
  * General Controller de l'application
  * Recupère la config, la db, les tables, renvoie les erreurs...
@@ -46,18 +47,7 @@ class Manager{
 		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
 	}
-
-
-	public function forbidden(){
-		header('HTTP/1.0 403 Forbidden');
-		die('Accès Interdit');
-	}
-
-	public function notfound(){
-		header('HTTP/1.0 404 Not Found');
-		die('Page Introuvable');
-	}
-
+	
 
 	public function getDb(){
 		if (is_null($this->db_instance)) {

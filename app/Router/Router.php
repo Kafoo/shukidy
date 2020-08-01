@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Router;
+use app\Controller\AppController;
 
 /**
  * 
@@ -45,7 +46,9 @@ class Router
 
 		}
 
-		throw new RouterException("no matching route");
+		$controller = new AppController;
+		$controller->notFound();
+		/*throw new RouterException("no matching route");*/
 		
 	}
 
