@@ -94,7 +94,8 @@ class Manager{
 	}
 
 	public function isMobile(){
-		require ROOT.'vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
+		echo "plop";
+		require ROOT.'/vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
 		$mobiledetect = new \Mobile_Detect;
 		return $mobiledetect->isMobile();
 	}
