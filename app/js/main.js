@@ -1,17 +1,26 @@
-$('#disconnectedDesktop [type="submit"]').click(function(){
-	alert('ALEEERTE GENERAAALE');
-})
-
 new Vue({
-	el: '#connectionDesktop',
+	el: '#headerDesktop',
 
 	data: {
 	},
 
 	methods: {
-		connect: function(){
-			alert('<?php echo "yop", ?>')
+
+		trylogin: function(){
+			posting = $.post( "ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
+			posting.done(function(data) {
+				if (data === "loggedin") {
+					location.reload()
+				}else{
+					alert(data);
+				}
+			});
+		},
+
+		logout: function(){
+			posting = $.post( "ajax/logout", function(data) {
+				location.reload();
+			});
 		}
 	}
-
 })

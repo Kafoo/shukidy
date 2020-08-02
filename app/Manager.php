@@ -5,9 +5,9 @@ use core\Config;
 use core\Autoloader;
 use core\Database;
 use core\Controller;
+
 /**
- * General Controller de l'application
- * Recupère la config, la db, les tables, renvoie les erreurs...
+ * Recupère la config, la db, les tables...
  */
 
 class Manager{
@@ -24,7 +24,6 @@ class Manager{
 		foreach ($config->param as $key => $value) {
 			$this->$key = $value;
 		}
-
 	}
 
 
@@ -48,6 +47,13 @@ class Manager{
 		Autoloader::register();
 	}
 	
+	public function login($user){
+        setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, null, null, false, true);
+		$_SESSION['connected'] = true;
+		$_SESSION['username'] = $user->username;
+		$_SESSION['grade'] = $user->grade;
+		$_SESSION['auth'] = $user->id;
+	}
 
 	public function getDb(){
 		if (is_null($this->db_instance)) {
@@ -87,6 +93,11 @@ class Manager{
 		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/'.$style.'.css">';
 	}
 
-}
+	public function isMobile(){
+		require ROOT.'vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
+		$mobiledetect = new \Mobile_Detect;
+		return $mobiledetect->isMobile();
+	}
 
+}
 ?>

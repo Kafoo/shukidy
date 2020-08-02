@@ -10,6 +10,27 @@
 </head>
 <body>
 
+
+<?php 
+
+$isMobile = \app\Manager::getInstance()->isMobile();
+
+if ($isMobile) {
+	echo 'Mobile';
+}else{
+	echo "Desktop";
+}
+
+/*$controller->getPV('templates.desktopHead')
+
+$controller->header()
+$controller*/
+
+
+?>
+
+
+
 <!------- HEADER DESKTOP ------->
 <header id="headerDesktop" class="desktop">
 		
@@ -21,10 +42,10 @@
 		<?php if (!isset($_SESSION['connected'])) { ?>
 			<div id="disconnectedDesktop">
 				<form method="POST" action="">
-					<input type="text" name="pseudoConnect" placeholder="Pseudo">
-					<input type="password" name="passwordConnect" placeholder="Mot de passe">
-					<input type="submit" name="connectionSubmit" value="Se connecter" @click=connect()>
-					<div id="nouveau"><a href="subscribe.php">Nouveau ?</a></div>
+					<input type="text" name="pseudoConnect" placeholder="Pseudo" id ="un">
+					<input type="password" name="passwordConnect" placeholder="Mot de passe" id ="deux">
+					<input type="submit" name="connectionSubmit" value="Se connecter">
+					<div id="nouveau" @click=trylogin()>Nouveau ?</div>
 				</form>
 			</div>
 		<?php } ?>
@@ -33,7 +54,7 @@
 		<?php if (isset($_SESSION['connected'])) {
 			?>
 			<div id="connectedDesktop">
-				<a id="connectedPseudo" href="profil.php"><b><?=$_SESSION['pseudo']?></b></a> (<a href="SERVER_UPDATES.php?action=disconnect"><i><u>Déconnexion</u></i></a>)<br/>
+				<a id="connectedPseudo" href="profil.php"><b><?=$_SESSION['username']?></b></a> (<a @click=logout()><i><u>Déconnexion</u></i></a>)<br/>
 				Grade : <?=$_SESSION['grade']?><br/>
 				<i>[[some options]]</i>
 			</div>

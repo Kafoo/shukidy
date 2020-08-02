@@ -18,7 +18,6 @@ class Controller{
 		require ($this->viewpath . str_replace('.', '/', $view) . '.php');
 		$content = ob_get_clean();
 		require($this->viewpath . 'templates/' . $this->template . '.php');
-
 	}
 
 
@@ -29,15 +28,12 @@ class Controller{
 
 
 	public function notFound($error = null){
-
 		header('HTTP/1.0 404 Not Found');
 		$this->render('404', $error);
-
 	}
 
 
-	public function getPV($partialView, $variables){
-
+	public function getPV($partialView, $variables = null){
 		ob_start();
 		require ($this->viewpath . str_replace('.', '/', $partialView) . '.php');
 		return ob_get_clean();

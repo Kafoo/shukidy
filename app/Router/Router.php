@@ -24,8 +24,6 @@ class Router
 	}
 
 	public function post($path, $callable){
-
-
 		$route = new Route($path, $callable);
 		$this->routes['POST'][] = $route;
 

@@ -20,7 +20,6 @@ class DBAuth{
 		if ($this->logged()) {
 			return $_SESSION['auth'];
 		}
-
 		return false;
 
 	}
@@ -35,16 +34,21 @@ class DBAuth{
 		);
 		if ($user) {
 			if ($user->password === sha1($password)){
+                setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, null, null, false, true);
+				$_SESSION['connected'] = true;
+				$_SESSION['username'] = $user->username;
+				$_SESSION['grade'] = $user->grade;
 				$_SESSION['auth'] = $user->id;
 				return true;
 			}
 		}
+
 		return false;
+
 	}
 
 	public function logged(){
 		return isset($_SESSION['auth']);
 	}
-
-
+	
 }

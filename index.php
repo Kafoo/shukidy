@@ -1,14 +1,16 @@
 <?php
 
 use app\Manager;
-use app\Router\Router;
 use core\Autoloader;
+use app\Router\Router;
+use core\DBAuth;
 
 //Controllers
 use App\Controller\AvController;
 use App\Controller\HomeController;
 use App\Controller\ProfilController;
 use App\Controller\HelpController;
+use App\Controller\AjaxController;
 
 //Different ROOT if local or not
 if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
@@ -18,7 +20,6 @@ else{define('ROOT', __DIR__);}
 require ROOT . '/app/Manager.php';
 Manager::load();
 
-use core\Database;
 
 //ROUTING
 if (isset($_GET['url'])) {
@@ -44,15 +45,23 @@ if (isset($_GET['url'])) {
 		$controller->show($id);
 	});
 
-	//INDEX AVENTURES
+	//PROFIL
 	$router->get('/profil', function(){
 		$controller = new ProfilController;
 		$controller->show(133);
 	});
 
+	//AUTH
+	$router->post('/auth/:action', function($action){
+		$DBAuth = new DBAuth;
+		$DBAuth->$action;
+	});
 
 	//EXEMPLE DE POST
-	$router->post('/aventure/:id', function($id){});
+	$router->post('/ajax/:action', function($action){
+		$controller = new AjaxController;
+		$controller->$action();
+	});
 	
 
 	$router->run();
