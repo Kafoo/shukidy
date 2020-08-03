@@ -33,7 +33,6 @@ class AjaxController extends AppController{
 		}else{
 			echo "Pseudo invalide";
 		}
-
 	}
 
 	public function logout(){

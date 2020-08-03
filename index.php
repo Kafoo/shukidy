@@ -7,7 +7,6 @@ use core\DBAuth;
 
 //Controllers
 use App\Controller\AvController;
-use App\Controller\HomeController;
 use App\Controller\ProfilController;
 use App\Controller\HelpController;
 use App\Controller\AjaxController;
