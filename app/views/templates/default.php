@@ -5,35 +5,16 @@
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 	<?=\app\Manager::getInstance()->getDefaultStyle()?>
 	<?=\app\Manager::getInstance()->getStyle()?>
-	<script src="app/js/libraries/jquery.js"></script>
 	<title><?=\app\Manager::getInstance()->getTitle()?></title>
 </head>
 <body>
 
 
-<?php 
-
-$isMobile = \app\Manager::getInstance()->isMobile();
-
-if ($isMobile) {
-	echo 'Mobile';
-}else{
-	echo "Desktop";
-}
-
-/*$controller->getPV('templates.desktopHead')
-
-$controller->header()
-$controller*/
-
-
-?>
-
-
 
 <!------- HEADER DESKTOP ------->
 <header id="headerDesktop" class="desktop">
-		
+	
+
 	<img src="/public/img/main/header_title_blanc2.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
 
 	<!---- CONNECTION DESKTOP ---->
@@ -99,6 +80,7 @@ $controller*/
 
 
 <!---- NAV MOBILE ---->
+<!-- 
 <div class="mobile">
 	<nav id="navMobile" hidden>
 		<ul>
@@ -109,13 +91,15 @@ $controller*/
 			<li><a class="nav6" href="index.php?p=creauniv?univID=2">EDITION FANTASY</a></li>
 		</ul>
 	</nav>
-</div>
+</div> 
+-->
 
 <!---- CONNECTION MOBILE ---->
+<!-- 
 <div class="mobile">
 	<div id="connectionMobile" hidden>
 
-		<!-- Disconnected User -->
+		Disconnected User
 		<?php if (!isset($_SESSION['connected'])) {
 			?>
 			<div id="disconnectedMobile">
@@ -128,7 +112,7 @@ $controller*/
 			</div>
 		<?php } ?>
 
-		<!-- Connected User -->
+		Connected User
 		<?php if (isset($_SESSION['connected'])) {
 			?>
 			<div id="connectedMobile"> 
@@ -140,10 +124,12 @@ $controller*/
 
 	</div>
 </div>
-
+ -->
 
 <!------ JAVASCRIPT STOCK HEADER ----->
 <div id="userID" hidden><?=$_SESSION['id']?></div>
+<div id="root" hidden><?=ROOT?></div>
+
 
 
 <!-- -------- CONTENU -------- -->
@@ -153,8 +139,9 @@ $controller*/
 
 </section>
 
+<script src="<?=ROOT?>/app/js/libraries/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-<script src="app/js/main.js"></script>
+<script src="<?=ROOT?>/app/js/main.js"></script>
 
 
 <!-- 
