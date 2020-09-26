@@ -3,7 +3,6 @@
 namespace app\Table;
 
 use core\Table\MainTable;
-use app\Manager;
 /**
  * 
  */
@@ -14,6 +13,7 @@ class AventuresTable extends MainTable{
 
 
 	public function getAll(){
+
 		$data = $this->query("
 			SELECT 
 			av.id, av.name as name, av.visibility, 
@@ -29,6 +29,7 @@ class AventuresTable extends MainTable{
 	}
 
 	public function find($avId){
+
 		$data = $this->query("
 			SELECT *
 			FROM {$this->table_name}

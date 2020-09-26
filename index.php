@@ -6,6 +6,7 @@ use app\Router\Router;
 use core\DBAuth;
 
 //Controllers
+use App\Controller\HomeController;
 use App\Controller\AvController;
 use App\Controller\ProfilController;
 use App\Controller\HelpController;
@@ -18,7 +19,6 @@ else{define('ROOT', __DIR__);}
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
-
 
 //ROUTING
 if (isset($_GET['url'])) {
@@ -40,7 +40,6 @@ if (isset($_GET['url'])) {
 	//SHOW AVENTURE
 	$router->get('/aventures/:id', function($id){
 		$controller = new AvController;
-		$controller->setSession();
 		$controller->show($id);
 	});
 

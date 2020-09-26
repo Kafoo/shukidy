@@ -1,4 +1,6 @@
 <?php
+$img = new app\Controller\ImgController;
+
 $entry = $variables['entry'];
 $post = $variables['post'];
 $user = $post->userInfos;
@@ -12,7 +14,7 @@ $entry->resultFinal = floatval($entry->result)+floatval($entry->caracVal)+floatv
 	<div class="centering">
 		<div class="diceRollDigits">
 			<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$entry->result?></div>
-			<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$entry->caracID?>_color.png);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($entry->caracName)?> de <?=$character->name?>">+<?=$entry->caracVal?></div>
+			<div class="diceRollDigit digit-carac" style="background-image: url(<?=$img->carac($entry->caracID)?>);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($entry->caracName)?> de <?=$character->name?>">+<?=$entry->caracVal?></div>
 			<div class="diceRollDigit digit-cond <?php if($entry->caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" data-toggle="tooltip" data-placement="top" title="Condition">
 				<?php if($entry->caracCond>=0){echo'+'.$entry->caracCond;}else{echo $entry->caracCond;}?>
 			</div>
@@ -23,9 +25,9 @@ $entry->resultFinal = floatval($entry->result)+floatval($entry->caracVal)+floatv
 					<span class="digit-difficulty"> /<?=$entry->difficulty?></span>
 					<?php
 					if ($entry->resultFinal>=$entry->difficulty) {
-						echo '<img src="./img/icones/tic_yes.png" class="diceRoll-tic">';
+						$img->icon('tic_yes');
 					}else{
-						echo '<img src="./img/icones/tic_no.png" class="diceRoll-tic">';
+						$img->icon('tic_no');					
 					}?>
 				</div>
 			</div>

@@ -1,11 +1,25 @@
 <?php
-$entry = $variables['entry'];
+$img = new app\Controller\ImgController;
+
+/*$aventure = $variables['aventure'];*/
 $post = $variables['post'];
-$user = $post->userInfos;
+$entry = $variables['entry'];
 $character = $post->characterInfos;
+$user = $post->userInfos;
+$userChars = unserialize($_SESSION['characters']);
+
+
 $entry->resultFinal = floatval($entry->result)+floatval($entry->caracVal)+floatval($entry->caracCond);
 if ($entry->difficulty<$entry->resultFinal) {$success = 1;}
 elseif ($entry->difficulty>=$entry->resultFinal) {$success = 0;}
+
+foreach ($userChars as $userChar) {
+	if ($userChar->id === $character->id) {
+		$charMatch = True;
+	}else{
+		$charMatch = False;
+	}
+}
 
 ?>
 
@@ -15,7 +29,7 @@ elseif ($entry->difficulty>=$entry->resultFinal) {$success = 0;}
 
 <div>
 
-<!-- 	<div class="diceRollBox">
+ 	<div class="diceRollBox">
 	<div class="diceRollPerso">
 		<div class="box">
 			<b><u><?=$character->name?></u></b>
@@ -25,7 +39,7 @@ elseif ($entry->difficulty>=$entry->resultFinal) {$success = 0;}
 		</div>
 
 		<?php
-		if ($msg['persoID'] == $persoID) {
+		if ($charMatch) {
 		// IF CURRENT USER
 		if ($entry->result == 0) { ?>
 			Not Rolled
@@ -36,20 +50,20 @@ elseif ($entry->difficulty>=$entry->resultFinal) {$success = 0;}
 		}else{ ?>
 			Rolled
 			<div class="box rollBox dieRolled">
-				Résultat du jet : <?=$result?>
+				Résultat du jet : <?=$entry->result?>
 			</div>
 		<?php
 		}
 	}else{
 		// IF OTHER USER
-		if ($result == 0) { ?>
+		if ($entry->result == 0) { ?>
 			Not Rolled
 			<div class="box rollBox">En attente</div>
 		<?php
 		}else{ ?>
 			Rolled
 			<div class="box rollBox dieRolled">
-				Résultat : <?=$result?>			
+				Résultat : <?=$entry->result?>			
 			</div>
 		<?php
 		} ?>
@@ -59,31 +73,31 @@ elseif ($entry->difficulty>=$entry->resultFinal) {$success = 0;}
 	</div>
 	<div class="centering">
 		<div class="diceRollDigits">
-			<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$result?></div>
-			<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracName)?> de <?=$perso?>">+<?=$caracVal?></div>
-		<div class="diceRollDigit digit-cond <?php if($caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" data-toggle="tooltip" data-placement="top" title="Condition">+<?=$caracCond?></div>
+			<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$entry->result?></div>
+			<div class="diceRollDigit digit-carac" style="background-image: url(<?=$img->icon($entry->caracID)?>);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($entry->caracName)?> de <?=$entry->charName?>">+<?=$entry->caracVal?></div>
+		<div class="diceRollDigit digit-cond <?php if($entry->caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" data-toggle="tooltip" data-placement="top" title="Condition">+<?=$entry->caracCond?></div>
 			<div class="inline">
 				<span style="font-weight: bolder">=</span>	
 				<div class="diceRollDigit digit-resultFinal" data-toggle="tooltip" data-placement="top" title="Résultat final">
-					<?=$resultFinal?>
-					<span class="digit-difficulty"> /<?=$difficulty?></span>
+					<?=$entry->resultFinal?>
+					<span class="digit-difficulty"> /<?=$entry->difficulty?></span>
 					<?php
-					if ($resultFinal>=$difficulty) {
-						echo '<img src="./img/icones/tic_yes.png" class="diceRoll-tic">';
+					if ($entry->resultFinal>=$entry->difficulty) {
+						echo '<img src="'.ROOT.'/public/img/icons/tic_yes.png" class="diceRoll-tic">';
 					}else{
-						echo '<img src="./img/icones/tic_no.png" class="diceRoll-tic">';
+						echo '<img src="'.ROOT.'/public/img/icons/tic_no.png" class="diceRoll-tic">';
 					}?>
 				</div>
 			</div>
 			<div class="resultText">
 				<?php
-				if ($resultFinal>=$difficulty) {echo '<div class="yes">Réussi !</div>';}
+				if ($entry->resultFinal>=$entry->difficulty) {echo '<div class="yes">Réussi !</div>';}
 				else{echo '<div class="no">Raté !</div>';}
 				?>
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
 
 	
 </div>

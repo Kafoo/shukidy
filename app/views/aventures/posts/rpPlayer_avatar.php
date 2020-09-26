@@ -1,7 +1,5 @@
 <?php
-use app\Controller\ImgController;
-
-$img = new ImgController;
+$img = new app\Controller\ImgController;
 
 $post = $variables;
 $user = $post->userInfos;
@@ -11,7 +9,7 @@ $character = $post->characterInfos;
 <div class="writerAvatarSlider">
 	
 	<?php if ($post->avatar): ?>
-		<div class="writerAvatar" style="background-image: url(<?=$img->getAvatar($character->id)?>);">
+		<div class="writerAvatar" style="background-image: url(<?=$img->avatar($character->id)?>);">
 			<div class="layer desktop">
 				<b><u><?=$character->name?></u><br><br>
 				<?=$user->username?></b><br>

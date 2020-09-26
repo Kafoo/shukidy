@@ -1,0 +1,203 @@
+	.loading {
+	  margin: auto;
+	  display: inline-block;
+	  position: relative;
+	  width: 64px;
+	  height: 64px;
+	}
+	.loading div {
+	  position: absolute;
+	  top: 27px;
+	  width: 11px;
+	  height: 11px;
+	  border-radius: 50%;
+	  background: #fff;
+	  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+	}
+	.loading div:nth-child(1) {
+	  left: 6px;
+	  animation: loading1 0.6s infinite;
+	}
+	.loading div:nth-child(2) {
+	  left: 6px;
+	  animation: loading2 0.6s infinite;
+	}
+	.loading div:nth-child(3) {
+	  left: 26px;
+	  animation: loading2 0.6s infinite;
+	}
+	.loading div:nth-child(4) {
+	  left: 45px;
+	  animation: loading3 0.6s infinite;
+	}
+	@keyframes loading1 {
+	  0% {
+	    transform: scale(0);
+	  }
+	  100% {
+	    transform: scale(1);
+	  }
+	}
+	@keyframes loading3 {
+	  0% {
+	    transform: scale(1);
+	  }
+	  100% {
+	    transform: scale(0);
+	  }
+	}
+	@keyframes loading2 {
+	  0% {
+	    transform: translate(0, 0);
+	  }
+	  100% {
+	    transform: translate(19px, 0);
+	  }
+	}
+
+
+
+
+
+
+	/*ALLOGM*/
+
+	.temp{
+		position: relative;
+	}
+
+	.temp:before {
+	position: absolute;
+	left: -23px;
+	font-size: 1.5em;
+	line-height: 0.5em;
+  	content: ' .';
+  	animation: dots 1s steps(5, end) infinite;}
+
+	@keyframes dots {
+	  0%, 20% {
+	    color: rgba(0,0,0,0);
+	    text-shadow:
+	      .25em 0 0 rgba(0,0,0,0),
+	      .5em 0 0 rgba(0,0,0,0);}
+	  40% {
+	    color: black;
+	    text-shadow:
+	      .25em 0 0 rgba(0,0,0,0),
+	      .5em 0 0 rgba(0,0,0,0);}
+	  60% {
+	    text-shadow:
+	      .25em 0 0 black,
+	      .5em 0 0 rgba(0,0,0,0);}
+	  80%, 100% {
+	    text-shadow:
+	      .25em 0 0 black,
+	      .5em 0 0 black;}
+	  }
+
+
+	.littleLoading:after {
+	display: inline;
+	font-size: 1.5em;
+	line-height: 0.5em;
+  	content: ' .';
+  	animation: dots 1s steps(5, end) infinite;}
+
+	@keyframes dots {
+	  0%, 20% {
+	    color: rgba(0,0,0,0);
+	    text-shadow:
+	      .25em 0 0 rgba(0,0,0,0),
+	      .5em 0 0 rgba(0,0,0,0);}
+	  40% {
+	    color: black;
+	    text-shadow:
+	      .25em 0 0 rgba(0,0,0,0),
+	      .5em 0 0 rgba(0,0,0,0);}
+	  60% {
+	    text-shadow:
+	      .25em 0 0 black,
+	      .5em 0 0 rgba(0,0,0,0);}
+	  80%, 100% {
+	    text-shadow:
+	      .25em 0 0 black,
+	      .5em 0 0 black;}
+	  }
+
+	  .littleComplete:after{
+	  	display: inline;
+	  	width: 10px;
+	  	height : 10px;
+	  	content: ' [ok!]';
+	  }
+
+
+
+
+/*-------------------------------------*/
+
+
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+      opacity: .2;
+    }
+}
+
+.saving span {
+    /**
+     * Use the blink animation, which is defined above
+     */
+    animation-name: blink;
+    /**
+     * The animation should take 1.4 seconds
+     */
+    animation-duration: 1.4s;
+    /**
+     * It will repeat itself forever
+     */
+    animation-iteration-count: infinite;
+    /**
+     * This makes sure that the starting style (opacity: .2)
+     * of the animation is applied before the animation starts.
+     * Otherwise we would see a short flash or would have
+     * to set the default styling of the dots to the same
+     * as the animation. Same applies for the ending styles.
+     */
+    animation-fill-mode: both;
+}
+
+.saving span:nth-child(2) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .2s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .2s;
+}
+
+.saving span:nth-child(3) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .4s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .4s;
+}

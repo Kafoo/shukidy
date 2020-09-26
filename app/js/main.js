@@ -1,5 +1,6 @@
 const ROOT = $('#root').html();
 
+
 new Vue({
 	el: '#headerDesktop',
 
@@ -9,7 +10,7 @@ new Vue({
 	methods: {
 
 		trylogin: function(){
-			posting = $.post( ROOT+"/ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
+			posting = $.post(ROOT+"/ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
 			posting.done(function(data) {
 				if (data === "loggedin") {
 					location.reload()
@@ -26,3 +27,6 @@ new Vue({
 		}
 	}
 })
+
+var sectionHeight = $('section').height();
+$('.fixInfosSlider').height(sectionHeight-200);

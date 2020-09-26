@@ -23,7 +23,6 @@ class AjaxController extends AppController{
 
 		if ($user) {
 			if ($user->password === $password) {
-
 				Manager::getInstance()->login($user);
 				echo 'loggedin';
 

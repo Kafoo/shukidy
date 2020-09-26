@@ -1,6 +1,6 @@
 <?php
 $manager = \app\Manager::getInstance();
-
+$manager->setStyle('aventures');
 $manager->setTitle('Aventures');
 ?>
 

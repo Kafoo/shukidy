@@ -6,6 +6,7 @@
 	<?=\app\Manager::getInstance()->getDefaultStyle()?>
 	<?=\app\Manager::getInstance()->getStyle()?>
 	<title><?=\app\Manager::getInstance()->getTitle()?></title>
+
 </head>
 <body>
 
@@ -22,11 +23,11 @@
 		<!-- Disconnected User -->
 		<?php if (!isset($_SESSION['connected'])) { ?>
 			<div id="disconnectedDesktop">
-				<form method="POST" action="">
+				<form method="POST" onsubmit="return false">
 					<input type="text" name="pseudoConnect" placeholder="Pseudo" id ="un">
 					<input type="password" name="passwordConnect" placeholder="Mot de passe" id ="deux">
-					<input type="submit" name="connectionSubmit" value="Se connecter">
-					<div id="nouveau" @click=trylogin()>Nouveau ?</div>
+					<input type="submit" value="Se connecter" @click=trylogin()>
+					<div id="nouveau">Nouveau ?</div>
 				</form>
 			</div>
 		<?php } ?>
@@ -133,15 +134,19 @@
 
 
 <!-- -------- CONTENU -------- -->
-<section>
-
+<section id="app">
+<?=\app\Manager::getInstance()->getStyle()?>
 <?=$content?>
 
 </section>
 
 <script src="<?=ROOT?>/app/js/libraries/jquery.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="<?=ROOT?>/vendor/tinymce/tinymce/tinymce.js"></script>
+<script src="<?=ROOT?>/node_modules/vue/dist/vue.js"></script>
 <script src="<?=ROOT?>/app/js/main.js"></script>
+<?=\app\Manager::getInstance()->getScript()?>
+
+
 
 
 <!-- 

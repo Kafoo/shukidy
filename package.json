@@ -1,0 +1,22 @@
+{
+  "name": "shukidy",
+  "version": "1.0.0",
+  "description": "shukidy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kafoo/shukidy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kafoo/shukidy/issues"
+  },
+  "homepage": "https://github.com/Kafoo/shukidy#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}

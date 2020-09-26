@@ -46,13 +46,23 @@ class Manager{
 		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
 	}
-	
+
+
 	public function login($user){
         setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, null, null, false, true);
 		$_SESSION['connected'] = true;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['grade'] = $user->grade;
 		$_SESSION['auth'] = $user->id;
+		$_SESSION['characters'] = serialize($this->getTable('characters')->findByUser($user->id));
+	}
+
+	public function loggedIn(){
+		if (isset($_SESSION['auth'])) {
+			return True;
+		}else{
+			return False;
+		}
 	}
 
 	public function getDb(){
@@ -78,7 +88,7 @@ class Manager{
 	}
 
 	public function getDefaultStyle(){
-		return '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/style.css">';
+		return '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/_shared_/style.css">';
 	}
 
 	public function getStyle(){
@@ -93,11 +103,23 @@ class Manager{
 		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/'.$style.'.css">';
 	}
 
+	public function getScript(){
+		if (isset($this->script)) {
+			return $this->script;
+		} else{
+			return False;
+		}
+	}
+
+	public function setScript($script){
+		$this->script = '<script src="'.ROOT.'/app/js/'.$script.'.js"></script>';
+	}
+
 	public function isMobile(){
 		require ROOT.'/vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
 		$mobiledetect = new \Mobile_Detect;
 		return $mobiledetect->isMobile();
 	}
-
+	
 }
 ?>

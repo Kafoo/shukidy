@@ -37,7 +37,8 @@ class EntriesTable extends MainTable{
 			carac.name as caracName,
 			av.id as avID, av.name as avName,
 			user.username, user.id as userID,
-			ch.name as chName
+			ch.name as charName,
+			ch.id as charID
 			FROM {$this->table_name} as ent
 			LEFT JOIN {$this->rp_table} as rp
 			ON ent.id = rp.entryID
@@ -58,6 +59,56 @@ class EntriesTable extends MainTable{
 			[$avID]);
 		return $this->formatContent($res);
 	}
+
+
+	public function findByPosts($avID, $first, $last){
+
+		$res = $this->query("
+			SELECT 
+			ent.*,
+			rp.content as content, 
+			dr.*,
+			carac.name as caracName,
+			av.id as avID, av.name as avName,
+			user.username, user.id as userID,
+			ch.name as charName,
+			ch.id as charID
+			FROM {$this->table_name} as ent
+			LEFT JOIN {$this->rp_table} as rp
+			ON ent.id = rp.entryID
+			LEFT JOIN {$this->dicerolls_table} as dr
+			ON ent.id = dr.entryID
+			LEFT JOIN {$this->carac_table} as carac
+			ON dr.caracID = carac.id
+			LEFT JOIN {$this->log_table} as log
+			ON ent.id = log.entryID
+			LEFT JOIN {$this->av_table} as av
+			ON ent.avID = av.id
+			LEFT JOIN {$this->characters_table} as ch
+			ON ent.characterID = ch.id
+			LEFT JOIN {$this->users_table} as user
+			ON ch.userID = user.id
+			WHERE av.id = ?
+			AND postID BETWEEN $first AND $last
+			ORDER BY ent.id", 
+			[$avID]);
+		return $this->formatContent($res);
+
+	}
+
+	public function countPosts($avID){
+
+		$data = $this->query("
+			SELECT COUNT(DISTINCT postID) as count
+			FROM {$this->table_name}
+			WHERE avID = ?",
+			[$avID], true);
+		return $data->count;
+
+	}
+
+
+
 }
 
 ?>

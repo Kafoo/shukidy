@@ -21,11 +21,15 @@ class Controller{
 	}
 
 
-	public function forbidden(){
+	public function forbidden($error = null){
 		header('HTTP/1.0 403 Forbidden');
-		die('Accès Interdit');
+		$this->render('403', $error);
 	}
 
+	public function mustLogIn($error = 'Tu dois être connecté pour accéder à cette page !'){
+		header('HTTP/1.0 403 Forbidden');
+		$this->render('403', $error);
+	}
 
 	public function notFound($error = null){
 		header('HTTP/1.0 404 Not Found');

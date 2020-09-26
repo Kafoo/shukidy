@@ -20,7 +20,7 @@ class ProfilController extends AppController{
 	public function show($userID)
 	{
 		$user = $this->users->find($userID);
-		$characters = $this->characters->getAllByUser($userID);
+		$characters = $this->characters->findByUser($userID);
 
 		if ($user) {		
 			$this->render($this->mainName, compact('user', 'characters'));

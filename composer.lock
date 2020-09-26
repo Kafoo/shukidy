@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67cb4e26be7894cf8100f6f4804b0ce7",
+    "content-hash": "daf1fb9e15ccd925488ad4ca1ff3db90",
     "packages": [
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -276,6 +276,54 @@
             "description": "fast openSSL-compatible implementation of the Elliptic Curve Digital Signature Algorithm (ECDSA)",
             "homepage": "https://github.com/starkbank/ecdsa-php",
             "time": "2020-05-15T15:46:20+00:00"
+        },
+        {
+            "name": "tinymce/tinymce",
+            "version": "5.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tinymce/tinymce-dist.git",
+                "reference": "71197b6a12405d7a6e2067f725c387595bd9b3f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/71197b6a12405d7a6e2067f725c387595bd9b3f4",
+                "reference": "71197b6a12405d7a6e2067f725c387595bd9b3f4",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "tinymce.js",
+                        "plugins/*/plugin.js",
+                        "themes/*/theme.js",
+                        "themes/*/icons.js"
+                    ],
+                    "files": [
+                        "tinymce.min.js",
+                        "plugins/*/plugin.min.js",
+                        "themes/*/theme.min.js",
+                        "skins/**",
+                        "icons/*/icons.min.js"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-only"
+            ],
+            "description": "Web based JavaScript HTML WYSIWYG editor control.",
+            "homepage": "http://www.tinymce.com",
+            "keywords": [
+                "editor",
+                "html",
+                "javascript",
+                "richtext",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "time": "2020-08-17T04:00:30+00:00"
         }
     ],
     "packages-dev": [],

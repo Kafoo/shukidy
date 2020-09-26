@@ -14,14 +14,24 @@ class CharactersTable extends MainTable{
 	protected $table_name = 'characters';
 
 
-	public function getAllByUser($userID){
+	public function findByUser($userID){
 		$res = $this->query("
 			SELECT *
 			FROM {$this->table_name}
 			WHERE userID = ?", 
 			[$userID]);
-
 		return $res;
+	}
+
+	public function findByAv($avID){
+		$res = $this->query("
+			SELECT *
+			FROM {$this->table_name} as ch
+			JOIN mas_leveling as lvl
+			ON lvl.lvl = ch.lvl
+			WHERE ch.avID = ?", 
+			[$avID]);
+		return $res;	
 	}
 
 }
