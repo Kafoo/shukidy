@@ -241,7 +241,8 @@ function refreshNotifUnseen(){
 	http_notif.send();
 }
 
-setInterval(refreshNotifUnseen, 10000);
+
+/*setInterval(refreshNotifUnseen, 10000);*/
 
 
 // ---------- GM DASHBOARD ---------
