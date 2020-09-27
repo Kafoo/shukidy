@@ -11,7 +11,6 @@ $manager = \app\Manager::getInstance();
 $manager->setTitle($aventure->name);
 $manager->setStyle('aventures');
 $manager->setScript('aventures');
-
 ?>
 
 <h1> <?= strtoupper($aventure->name) ?> </h1>
@@ -59,7 +58,7 @@ $manager->setScript('aventures');
 			<img src="<?=$img->icon('notes')?>">
 		</div>
 		<?php
-		if ($aventure->lastIsUser == True) { //diceReply possible ou non?>
+		if ($aventure->lastIsUser == False) { //diceReply possible ou non?>
 		<div class="showingOW replyOption" OW="diceReply">
 			<img src="<?=$img->icon('d20black2')?>">
 		</div>
@@ -100,131 +99,26 @@ $manager->setScript('aventures');
 
 	</div>
 
+
 	<div class="OWContainer replyContainer">
 		<!-- REPONSE TEXTE -->
-		<form class="OW" id="classicReply" method="POST" action="">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<textarea class="mytextarea" id="tinymce-classicReply" name="message"></textarea>
-			<input type="text" name="persoID" value="<?=$userChar->id?>" hidden>
-			<input type="submit" name="submit" value='Je réponds !'>
-		</form>
+
+		<?php require ROOT."/app/views/aventures/reply/textreply.php" ?>
 
 		<!-- LANCER DE DES -->
-		<div class="OW" id="diceReply">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<h3>LANCE DE DES</h3>
-			<div class="OWContent">
-				<form method="POST" action="">
 
-					<h4>Titre</h4>
-					<input type="text" name="diceReply-title" placeholder="titre du lancé">
-					<h4>Caractéristique</h4>
-					<div class="diceReply-caracContainer container centering">	
-						<div class="carac1 diceReply-carac button"
-						onclick="choose('carac', '1')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c1_name'])?>"></div>
-						<div class="carac2 diceReply-carac button" 
-						onclick="choose('carac', '2')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c2_name'])?>"></div>
-						<div class="carac3 diceReply-carac button" 
-						onclick="choose('carac', '3')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c3_name'])?>"></div>
-						<div class="carac4 diceReply-carac button" 
-						onclick="choose('carac', '4')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c4_name'])?>"></div>
-						<div class="carac5 diceReply-carac button" 
-						onclick="choose('carac', '5')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c5_name'])?>"></div>
-					</div>
-					<input id="caracStock" type="text" name="diceReply-carac" hidden>
-
-					<h4>Difficulté</h4>
-					<div class="diff8 diceReply-diff button"
-					onclick="choose('diff','8')">Facile</div>
-					<div class="diff10 diceReply-diff button"
-					onclick="choose('diff','10')">Normal</div>
-					<div class="diff12 diceReply-diff button"
-					onclick="choose('diff','12')">Difficile</div>
-					<input id="diffStock" type="text" name="diceReply-diff" hidden>
-					
-					<br>
-					<input id="resultStock" type="text" name="diceReply-result" hidden>
-					<input type="text" name="persoID" value="<?=$persoID?>" hidden>
-					<?php 
-					$persoObjectID = 'perso'.$persoID;
-					$persoObjectJson = json_encode($$persoObjectID); 
-					?>
-					<input type="text" name="persoObjectJson" value='<?=$persoObjectJson?>' hidden>
-
-					<input id="diceReply-submit"  type="submit" name="diceReply-submit" value="Je lance mon dé !">
-				</form>
-			</div>
-		</div>
-		<div class="OW" id="diceReply_error">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<h3>LANCE DE DES</h3>
-			<div class="OWContent">
-				<br>
-				Avant de lancer un dé, tu dois écrire et poster un message qui décrit ton action ! ;-)
-			</div>
-		</div>
-
+		<?php require ROOT."/app/views/aventures/reply/dicereply.php" ?>
 
 		<!-- ALLO GM -->
-		<div class="OW" id="alloGM-menu">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<h3>ALLO GM</h3>
-			<div class="OWContent">
-				<?php
-				foreach ($coterie as $perso) {
-					if ($perso['nom'] !== "GM") { ?>
-						<div class="alloGM-playerChoice choice-gen button" id="<?=$perso['userID']?>">
-							<?=$perso['nom']?>
-						</div>
-					<?php
-					}
-				}
-				?>
-			</div>
-		</div>
-		<div class="OW" id="alloGM">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<h3>ALLO GM</h3>
-			<div class="OWContent">
-				<!-- ajax -->
-				<div class="alloGM-content">
-				</div>
-				<textarea class="alloGM-textArea"></textarea>
-				<div class="alloGM-submit button"></div>
-			</div>
-		</div>
 
+		<?php require ROOT."/app/views/aventures/reply/allogm.php" ?>
 
 		<!-- NOTES PERSOS -->
-		<div class="OW" id="notes">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<h3>NOTES</h3>
-			<div class="OWContent">
-				<div class="notesPaper">
-					<div class="notesPaperStyle">
-						<span class="notesContent"></span>
-					</div>
-				</div>
-				<div class="editNotesBlock" hidden>
-					<textarea class="notesPaperStyle" id="editNotesArea"></textarea>
-					<div class="confirmEditNotes button">OK</div>
-				</div>
-			</div>
-		</div>
+
+		<?php require ROOT."/app/views/aventures/reply/notes.php" ?>
 
 		<!-- FIXINFOS MOBILE -->
+
 		<div class="OW" id="fixinfosMobile">
 			<div class="mobile">
 				<div class="closingArrow"></div>
@@ -236,43 +130,15 @@ $manager->setScript('aventures');
 		</div>
 
 		<!-- GM DASHBOARD -->
-		<div class="OW" id="GMDashBoard-menu">
-			<div class="mobile">
-				<div class="closingArrow"></div>
-			</div>
-			<h3>GM DASHBOARD</h3>
-			<div class="OWContent">
-				<?php
-				foreach ($characters as $character) {
-					if ($character->name !== "GM") { ?>
-						<div class="GMDashBoard-playerChoice choice-gen button" id="<?=$character->userID?>">
-							<?=$character->name?>
-						</div>
-					<?php
-					}
-				} ?>
-			</div>
 
-		</div>
+		<?php include ROOT."/app/views/aventures/reply/dashboard.php" ?>
 
-		<!-- Pour chaque perso, on créé le dashboard correspondant -->
-		<?php
-		foreach ($characters as $character) {
-			if ($character->name !== "GM") { ?>
-				<div class="OW GMDashBoard" id="GMDashBoard-<?=$character->userID?>">
-					<div class="mobile">
-						<div class="closingArrow"></div>
-					</div>
-					<!-- ajax -->
-					<div class="GMDashBoard-content OWContent">
-					 <?php include ('ajax/aventures_gmdashboard.php');?>
-					</div>
-				</div>
-			<?php
-			}
-		} ?>
 
 	</div>
+
+
+
+	<!-- NEXTBOX -->
 
 	<?php
 	if ($aventure->writerID == '0') { ?>

@@ -17,6 +17,7 @@ class Manager{
 	private $db_instance;
 
 	private $cssPath = '/public/css';
+	private $jsPath = '/app/js';
 
 	public function __construct(){
 
@@ -103,6 +104,10 @@ class Manager{
 		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/'.$style.'.css">';
 	}
 
+	public function getDefaultScript(){
+		return '<script src="'.$this->jsPath.'/index.js"></script>';
+	}
+
 	public function getScript(){
 		if (isset($this->script)) {
 			return $this->script;
@@ -112,7 +117,7 @@ class Manager{
 	}
 
 	public function setScript($script){
-		$this->script = '<script src="'.ROOT.'/app/js/'.$script.'.js"></script>';
+		$this->script = '<script src="'.$this->jsPath.'/'.$script.'.js"></script>';
 	}
 
 	public function isMobile(){

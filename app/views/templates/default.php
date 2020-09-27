@@ -135,11 +135,12 @@
 
 <!-- -------- CONTENU -------- -->
 <section id="app">
-<?=\app\Manager::getInstance()->getStyle()?>
 <?=$content?>
 
 </section>
 
+
+<?=\app\Manager::getInstance()->getDefaultScript()?>
 <script src="/app/js/libraries/jquery.js"></script>
 <script src="/vendor/tinymce/tinymce/tinymce.js"></script>
 <script src="/node_modules/vue/dist/vue.js"></script>
