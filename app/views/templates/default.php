@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<?php
+	$img = new app\Controller\ImgController;
+	?>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 	<?=\app\Manager::getInstance()->getDefaultStyle()?>
 	<?=\app\Manager::getInstance()->getStyle()?>
 	<title><?=\app\Manager::getInstance()->getTitle()?></title>
-
 </head>
 <body>
-
 
 
 <!------- HEADER DESKTOP ------->
