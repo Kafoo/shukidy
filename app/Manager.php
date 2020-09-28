@@ -50,7 +50,7 @@ class Manager{
 
 
 	public function login($user){
-        setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, null, null, false, true);
+        setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, "/", null, false, true);
 		$_SESSION['connected'] = true;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['grade'] = $user->grade;
@@ -105,7 +105,7 @@ class Manager{
 	}
 
 	public function getDefaultScript(){
-		return '<script src="'.$this->jsPath.'/index.js"></script>';
+		return '<script type="module" src="'.$this->jsPath.'/index.js"></script>';
 	}
 
 	public function getScript(){

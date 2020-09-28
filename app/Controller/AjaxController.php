@@ -36,7 +36,7 @@ class AjaxController extends AppController{
 
 	public function logout(){
 		$_SESSION = array();
-		setcookie('auth', "", time()-3600);
+		setcookie('auth', "", time()-3600, '/');
 		session_destroy();
 
 	}

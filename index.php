@@ -13,12 +13,18 @@ use App\Controller\HelpController;
 use App\Controller\AjaxController;
 
 //Different ROOT if local or not
-if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
-else{define('ROOT', __DIR__);}
+
+if (substr(__DIR__, 0, 2) == 'D:') {
+	define('ROOT', '');
+}
+else{
+	define('ROOT', __DIR__);
+}
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
+
 
 //ROUTING
 if (isset($_GET['url'])) {

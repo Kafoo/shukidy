@@ -64,10 +64,10 @@
 <!------- HEADER MOBILE ------->
 <div class="mobile">
 	<header id="headerMobile">
-		<img id="navLogo" src="img/mobile/menu.png">
-		<img id="croixNav" src="img/mobile/croix.png" hidden>
-		<img id="croixConnection" src="img/mobile/croix.png" hidden>
-		<img id="connectionLogo" src="img/mobile/userlogo.png">
+		<img id="navLogo" src="<?=$img->icon('mobile.menu')?>">
+		<img id="croixNav" src="<?=$img->icon('mobile.croix')?>" hidden>
+		<img id="croixConnection" src="<?=$img->icon('mobile.croix')?>" hidden>
+		<img id="connectionLogo" src="<?=$img->icon('mobile.userlogo')?>">
 	</header>
 </div>
 

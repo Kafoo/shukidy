@@ -4,7 +4,7 @@ function tinymceInit($format){
 		if ($format == 'desktop') {
 			tinymce.init({
 			    selector: '.mytextarea',
-			    content_css : "style/_shared_/tinymce.css",
+			    content_css : "/public/css/_shared_/tinymce.css",
 			    height: 340,
 			    menubar: false,
 			    forced_root_block : "",
@@ -16,7 +16,7 @@ function tinymceInit($format){
 			    paste_strip_class_attributes: true,
 			    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
 			    toolbar: 'undo redo | bold italic | link image | forecolor backcolor | fontsizeselect | code',
-			    plugins: 'code image textcolor preview paste'
+			    plugins: 'code image preview paste'
 			});
 		}
 		if ($format == 'mobile') {
@@ -34,7 +34,7 @@ function tinymceInit($format){
 			    paste_strip_class_attributes: true,
 			    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
 			    toolbar: 'bold italic | forecolor fontsizeselect',
-			    plugins: 'code image textcolor preview paste'
+			    plugins: 'code image preview paste'
 			});
 		}
 	}

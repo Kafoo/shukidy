@@ -3,6 +3,7 @@ $img = new app\Controller\ImgController;
 
 $aventure = $variables;
 $characters = $aventure->characters;
+
 $carac = $aventure->carac;
 
 ?>
