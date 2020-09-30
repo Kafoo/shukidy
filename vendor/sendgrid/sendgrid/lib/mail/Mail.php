@@ -39,10 +39,16 @@ class Mail implements \JsonSerializable
     /** @var $categories Category[] Category names for this message */
     private $categories;
 
-    /** @var $custom_args CustomArg[] Values that are specific to the entire send that will be carried along with the email and its activity data */
+    /**
+     * @var $custom_args CustomArg[] Values that are specific to the entire send that will be carried along with the
+     *                               email and its activity data
+     */
     private $custom_args;
 
-    /** @var $substitutions Substitution[] Substitutions that will apply to the text and html content of the body of your email, in addition to the subject and reply-to parameters */
+    /**
+     * @var $substitutions Substitution[] Substitutions that will apply to the text and html content of the body of your
+     *                                    email, in addition to the subject and reply-to parameters
+     */
     private $substitutions;
 
     /** @var $send_at SendAt A unix timestamp allowing you to specify when you want your email to be delivered */
@@ -57,10 +63,16 @@ class Mail implements \JsonSerializable
     /** @var $ip_pool_name IpPoolName The IP Pool that you would like to send this email from */
     private $ip_pool_name;
 
-    /** @var $mail_settings MailSettings A collection of different mail settings that you can use to specify how you would like this email to be handled */
+    /**
+     * @var $mail_settings MailSettings A collection of different mail settings that you can use to specify how you
+     *                                  would like this email to be handled
+     */
     private $mail_settings;
 
-    /** @var $tracking_settings TrackingSettings Settings to determine how you would like to track the metrics of how your recipients interact with your email */
+    /**
+     * @var $tracking_settings TrackingSettings Settings to determine how you would like to track the metrics of how
+     *                                          your recipients interact with your email
+     */
     private $tracking_settings;
 
     /** @var $reply_to ReplyTo Email to be use when replied to */
@@ -105,31 +117,25 @@ class Mail implements \JsonSerializable
             $this->setFrom($from);
         }
         if (isset($to)) {
-            if (!is_array($to)) {
+            if (!\is_array($to)) {
                 $to = [$to];
             }
             $subjectCount = 0;
-            $personalization = new Personalization();
             foreach ($to as $email) {
-                if ($email->getSubstitutions()) {
+                if (\is_array($subject) || $email->isPersonalized()) {
                     $personalization = new Personalization();
+                    $this->addTo($email, null, null, null, $personalization);
+                } else {
+                    $this->addTo($email);
+                    $personalization = \end($this->personalization);
                 }
-                $personalization->addTo($email);
-                if ($subs = $email->getSubstitutions()) {
-                    foreach ($subs as $key => $value) {
-                        $personalization->addSubstitution($key, $value);
-                    }
-                }
-                if ($email->getSubject()) {
-                    $personalization->setSubject($email->getSubject());
-                }
-                if (is_array($subject)) {
-                    if ($subjectCount < \count($subject)) {
-                        $personalization->setSubject($subject[$subjectCount]);
-                    }
+
+                if (\is_array($subject) && $subjectCount < \count($subject)) {
+                    $personalization->setSubject($subject[$subjectCount]);
                     $subjectCount++;
                 }
-                if (is_array($globalSubstitutions)) {
+
+                if (\is_array($globalSubstitutions)) {
                     foreach ($globalSubstitutions as $key => $value) {
                         if ($value instanceof Substitution) {
                             $personalization->addSubstitution($value);
@@ -138,15 +144,9 @@ class Mail implements \JsonSerializable
                         }
                     }
                 }
-                if ($email->getSubstitutions()) {
-                    $this->addPersonalization($personalization);
-                }
-            }
-            if (isset($email) && !$email->getSubstitutions()) {
-                $this->addPersonalization($personalization);
             }
         }
-        if (isset($subject) && !is_array($subject)) {
+        if (isset($subject) && !\is_array($subject)) {
             $this->setSubject($subject);
         }
         if (isset($plainTextContent)) {
@@ -185,13 +185,18 @@ class Mail implements \JsonSerializable
         $personalization = null
     ) {
         $personalizationFunctionCall = 'add' . $emailType;
-        $emailType = '\SendGrid\Mail\\' . $emailType;
-        if (!($email instanceof $emailType)) {
-            $email = new $emailType(
+        $emailTypeClass = '\SendGrid\Mail\\' . $emailType;
+        if (!($email instanceof $emailTypeClass)) {
+            $email = new $emailTypeClass(
                 $email,
                 $name,
                 $substitutions
             );
+        }
+
+        if ($personalizationIndex === null && $personalization === null
+            && $emailType === 'To' && $email->isPersonalized()) {
+            $personalization = new Personalization();
         }
 
         $personalization = $this->getPersonalization($personalizationIndex, $personalization);
@@ -201,6 +206,10 @@ class Mail implements \JsonSerializable
             foreach ($subs as $key => $value) {
                 $personalization->addSubstitution($key, $value);
             }
+        }
+
+        if ($email->getSubject()) {
+            $personalization->setSubject($email->getSubject());
         }
     }
 
@@ -224,7 +233,7 @@ class Mail implements \JsonSerializable
     ) {
         $emailFunctionCall = 'add' . $emailType;
 
-        if (current($emails) instanceof EmailAddress) {
+        if (\current($emails) instanceof EmailAddress) {
             foreach ($emails as $email) {
                 $this->$emailFunctionCall(
                     $email,
@@ -348,7 +357,7 @@ class Mail implements \JsonSerializable
      */
     public function getPersonalizationCount()
     {
-        return isset($this->personalization) ? count($this->personalization) : 0;
+        return isset($this->personalization) ? \count($this->personalization) : 0;
     }
 
     /**
@@ -371,11 +380,6 @@ class Mail implements \JsonSerializable
         $personalizationIndex = null,
         $personalization = null
     ) {
-        if ($to instanceof To) {
-            $name = $to->getName();
-            $substitutions = $to->getSubstitutions();
-            $to = $to->getEmailAddress();
-        }
         $this->addRecipientEmail(
             'To',
             $to,
@@ -435,10 +439,6 @@ class Mail implements \JsonSerializable
         $personalizationIndex = null,
         $personalization = null
     ) {
-        if ($cc instanceof Cc) {
-            $name = $cc->getName();
-            $cc = $cc->getEmailAddress();
-        }
         $this->addRecipientEmail(
             'Cc',
             $cc,
@@ -498,10 +498,6 @@ class Mail implements \JsonSerializable
         $personalizationIndex = null,
         $personalization = null
     ) {
-        if ($bcc instanceof Bcc) {
-            $name = $bcc->getName();
-            $bcc = $bcc->getEmailAddress();
-        }
         $this->addRecipientEmail(
             'Bcc',
             $bcc,
@@ -642,7 +638,7 @@ class Mail implements \JsonSerializable
         $personalizationIndex = null,
         $personalization = null
     ) {
-        if (current($headers) instanceof Header) {
+        if (\current($headers) instanceof Header) {
             foreach ($headers as $header) {
                 $this->addHeader($header);
             }
@@ -777,7 +773,7 @@ class Mail implements \JsonSerializable
         $personalizationIndex = null,
         $personalization = null
     ) {
-        if (current($substitutions) instanceof Substitution) {
+        if (\current($substitutions) instanceof Substitution) {
             foreach ($substitutions as $substitution) {
                 $this->addSubstitution($substitution);
             }
@@ -858,7 +854,7 @@ class Mail implements \JsonSerializable
         $personalizationIndex = null,
         $personalization = null
     ) {
-        if (current($custom_args) instanceof CustomArg) {
+        if (\current($custom_args) instanceof CustomArg) {
             foreach ($custom_args as $custom_arg) {
                 $this->addCustomArg($custom_arg);
             }
@@ -1046,7 +1042,7 @@ class Mail implements \JsonSerializable
      */
     public function addContents($contents)
     {
-        if (current($contents) instanceof Content) {
+        if (\current($contents) instanceof Content) {
             foreach ($contents as $content) {
                 $this->addContent($content);
             }
@@ -1107,7 +1103,7 @@ class Mail implements \JsonSerializable
         $disposition = null,
         $content_id = null
     ) {
-        if (is_array($attachment)) {
+        if (\is_array($attachment)) {
             $attachment = new Attachment(
                 $attachment[0],
                 $attachment[1],
@@ -1201,7 +1197,7 @@ class Mail implements \JsonSerializable
      */
     public function addSections($sections)
     {
-        if (current($sections) instanceof Section) {
+        if (\current($sections) instanceof Section) {
             foreach ($sections as $section) {
                 $this->addSection($section);
             }
@@ -1252,7 +1248,7 @@ class Mail implements \JsonSerializable
      */
     public function addGlobalHeaders($headers)
     {
-        if (current($headers) instanceof Header) {
+        if (\current($headers) instanceof Header) {
             foreach ($headers as $header) {
                 $this->addGlobalHeader($header);
             }
@@ -1303,7 +1299,7 @@ class Mail implements \JsonSerializable
      */
     public function addGlobalSubstitutions($substitutions)
     {
-        if (current($substitutions) instanceof Substitution) {
+        if (\current($substitutions) instanceof Substitution) {
             foreach ($substitutions as $substitution) {
                 $this->addGlobalSubstitution($substitution);
             }
@@ -1400,7 +1396,7 @@ class Mail implements \JsonSerializable
      */
     public function addGlobalCustomArgs($custom_args)
     {
-        if (current($custom_args) instanceof CustomArg) {
+        if (\current($custom_args) instanceof CustomArg) {
             foreach ($custom_args as $custom_arg) {
                 $this->addGlobalCustomArg($custom_arg);
             }
