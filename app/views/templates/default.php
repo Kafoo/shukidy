@@ -145,7 +145,7 @@
 
 <?=\app\Manager::getInstance()->getDefaultScript()?>
 <script src="/app/js/libraries/jquery.js"></script>
-<script src="/vendor/tinymce/tinymce/tinymce.js"></script>
+<script src="/v/tinymce/tinymce/tinymce.js"></script>
 <script src="/node_modules/vue/dist/vue.js"></script>
 <script src="/app/js/main.js"></script>
 <?=\app\Manager::getInstance()->getScript()?>
