@@ -46,6 +46,7 @@ class Manager{
 		session_start();
 		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
+
 	}
 
 
