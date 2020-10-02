@@ -81,12 +81,11 @@ foreach ($userChars as $userChar) {
 				<div class="diceRollDigit digit-resultFinal" data-toggle="tooltip" data-placement="top" title="Résultat final">
 					<?=$entry->resultFinal?>
 					<span class="digit-difficulty"> /<?=$entry->difficulty?></span>
-					<?php
-					if ($entry->resultFinal>=$entry->difficulty) {
-						echo '<img src="'.ROOT.'/public/img/icons/tic_yes.png" class="diceRoll-tic">';
-					}else{
-						echo '<img src="'.ROOT.'/public/img/icons/tic_no.png" class="diceRoll-tic">';
-					}?>
+					<?php if ($entry->resultFinal>=$entry->difficulty) : ?>
+						<img src="<?=$img->icon('tic_yes')?>" class="diceRoll-tic">
+					<?php else :?>
+						<img src="<?=$img->icon('tic_no')?>" class="diceRoll-tic">
+					<?php endif; ?>
 				</div>
 			</div>
 			<div class="resultText">

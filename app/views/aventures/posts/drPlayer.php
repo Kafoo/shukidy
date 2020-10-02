@@ -23,12 +23,11 @@ $entry->resultFinal = floatval($entry->result)+floatval($entry->caracVal)+floatv
 				<div class="diceRollDigit digit-resultFinal" data-toggle="tooltip" data-placement="top" title="Résultat final">
 					<?=$entry->resultFinal?>
 					<span class="digit-difficulty"> /<?=$entry->difficulty?></span>
-					<?php
-					if ($entry->resultFinal>=$entry->difficulty) {
-						$img->icon('tic_yes');
-					}else{
-						$img->icon('tic_no');					
-					}?>
+					<?php if ($entry->resultFinal>=$entry->difficulty) : ?>
+						<img src="<?=$img->icon('tic_yes')?>" class="diceRoll-tic">
+					<?php else :?>
+						<img src="<?=$img->icon('tic_no')?>" class="diceRoll-tic">				
+					<?php endif ?>
 				</div>
 			</div>
 			<div class="resultText">
