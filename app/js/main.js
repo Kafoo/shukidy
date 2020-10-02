@@ -7,7 +7,7 @@ new Vue({
 	methods: {
 
 		trylogin: function(){
-			posting = $.post("/ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
+			let posting = $.post("/ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
 			posting.done(function(data) {
 				if (data === "loggedin") {
 					location.reload()
@@ -18,7 +18,7 @@ new Vue({
 		},
 
 		logout: function(){
-			posting = $.post("/ajax/logout", function(data) {
+			let posting = $.post("/ajax/logout", function(data) {
 				location.reload();
 			});
 		}

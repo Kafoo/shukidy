@@ -143,10 +143,9 @@
 </section>
 
 
-<?=\app\Manager::getInstance()->getDefaultScript()?>
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script src="/node_modules/vue/dist/vue.js"></script>
-<script src="/app/js/main.js"></script>
+<?=\app\Manager::getInstance()->getDefaultScript()?>
 <?=\app\Manager::getInstance()->getScripts()?>
 
 
