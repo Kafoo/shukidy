@@ -10,7 +10,8 @@ $HTML = $variables['HTML'];
 $manager = \app\Manager::getInstance();
 $manager->setTitle($aventure->name);
 $manager->setStyle('aventures');
-$manager->setScript('aventures');
+$manager->addScript('node','tinymce.tinymce');
+$manager->addScript('app','aventures');
 ?>
 
 <h1> <?= strtoupper($aventure->name) ?> </h1>

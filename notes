@@ -1,1 +1,0 @@
-AvController::90 -> les "find" demandent trop de requêtes à la page, voir pour récupérer les infos de tous les users de l'aventure dès le début et les réutiliser ensuite.

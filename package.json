@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/Kafoo/shukidy#readme",
   "dependencies": {
+    "jquery": "^3.5.1",
+    "tinymce": "^5.5.1",
     "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }

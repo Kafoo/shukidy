@@ -144,23 +144,11 @@
 
 
 <?=\app\Manager::getInstance()->getDefaultScript()?>
-<script src="/app/js/libraries/jquery.js"></script>
-<script src="/vendor/tinymce/tinymce/tinymce.js"></script>
+<script src="/node_modules/jquery/dist/jquery.js"></script>
 <script src="/node_modules/vue/dist/vue.js"></script>
 <script src="/app/js/main.js"></script>
-<?=\app\Manager::getInstance()->getScript()?>
+<?=\app\Manager::getInstance()->getScripts()?>
 
-
-
-
-<!-- 
-<script type="text/javascript" src="../public/js/_shared_/pager.js"></script>
-<script type="text/javascript" src="../public/js/_shared_/controller_carac.js"></script>
-<script type="text/javascript" src="../public/js/main.js?v=2"></script>
-<script type="text/javascript" src="../public/js/bootstrap.js"></script>
-<script type="text/javascript" src="../public/js/materialize.js"></script>
-<script type="text/javascript" src="../public/js/_shared_/dotdotdot.js"></script>
- -->
 
 </body>
 </html>

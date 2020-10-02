@@ -18,6 +18,8 @@ class Manager{
 
 	private $cssPath = '/public/css';
 	private $jsPath = '/app/js';
+	private $nodePath = '/node_modules';
+	private $script = '';
 
 	public function __construct(){
 
@@ -48,8 +50,7 @@ class Manager{
 		Autoloader::register();
 
 	}
-
-
+        
 	public function login($user){
         setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, "/", null, false, true);
 		$_SESSION['connected'] = true;
@@ -106,10 +107,10 @@ class Manager{
 	}
 
 	public function getDefaultScript(){
-		return '<script type="module" src="'.$this->jsPath.'/index.js"></script>';
+		return '<script type="module" src="'.$this->jsPath.'/main.js"></script>';
 	}
 
-	public function getScript(){
+	public function getScripts(){
 		if (isset($this->script)) {
 			return $this->script;
 		} else{
@@ -117,8 +118,18 @@ class Manager{
 		}
 	}
 
-	public function setScript($script){
-		$this->script = '<script src="'.$this->jsPath.'/'.$script.'.js"></script>';
+	public function addScript($src, $script){
+
+		$script = str_replace('.', '/', $script);
+
+		if ($src == 'app') {
+			$src = $this->jsPath.'/'.$script.'.js';
+
+		}elseif ($src == 'node'){
+			$src = $this->nodePath.'/'.$script.'.js';
+		}
+		
+		$this->script .= '<script type="module" src="'.$src.'"></script>';
 	}
 
 	public function isMobile(){
