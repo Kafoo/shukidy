@@ -9,7 +9,7 @@ new Vue({
 		trylogin: function(){
 			let posting = $.post("/ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
 			posting.done(function(data) {
-				if (data === "loggedin") {
+				if (data === '1') {
 					location.reload()
 				}else{
 					alert(data);

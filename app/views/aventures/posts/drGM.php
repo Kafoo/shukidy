@@ -74,7 +74,7 @@ foreach ($userChars as $userChar) {
 	<div class="centering">
 		<div class="diceRollDigits">
 			<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$entry->result?></div>
-			<div class="diceRollDigit digit-carac" style="background-image: url(<?=$img->icon($entry->caracID)?>);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($entry->caracName)?> de <?=$entry->charName?>">+<?=$entry->caracVal?></div>
+			<div class="diceRollDigit digit-carac" style="background-image: url(<?=$img->carac($entry->caracID)?>);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($entry->caracName)?> de <?=$entry->charName?>">+<?=$entry->caracVal?></div>
 		<div class="diceRollDigit digit-cond <?php if($entry->caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" data-toggle="tooltip" data-placement="top" title="Condition">+<?=$entry->caracCond?></div>
 			<div class="inline">
 				<span style="font-weight: bolder">=</span>	

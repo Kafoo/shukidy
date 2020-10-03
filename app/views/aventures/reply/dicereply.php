@@ -13,7 +13,11 @@
 
 				<?php foreach ($carac as $key => $carac) : ?>
 					<div class="carac<?=$key+1?> diceReply-carac button"
-					onclick="choose('carac', <?=$key+1?>)" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($carac->name)?>"></div>
+					onclick="choose('carac', <?=$key+1?>)" 
+					data-toggle="tooltip" 
+					data-placement="top" title="<?=ucfirst($carac->name)?>"
+					style="background-image: url('<?=$img->gameicon($carac->icon)?>');
+					background-color: <?=$carac->color?>"></div>
 				<?php endforeach ?>
 
 			</div>

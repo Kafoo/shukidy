@@ -1,5 +1,4 @@
 <?php
-
 use app\Manager;
 use core\Autoloader;
 use app\Router\Router;
@@ -11,19 +10,19 @@ use App\Controller\AvController;
 use App\Controller\ProfilController;
 use App\Controller\HelpController;
 use App\Controller\AjaxController;
+use App\Controller\AuthController;
 
 //Different ROOT if local or not
 
-if (substr(__DIR__, 0, 2) == 'D:') {
-	define('ROOT', '');
-}
-else{
-	define('ROOT', __DIR__);
-}
+if (substr(__DIR__, 0, 2) == 'D:') {define('ROOT', '');}
+else{define('ROOT', __DIR__);}
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
 Manager::load();
+
+//AUTH
+Manager::checkAuth();
 
 
 //ROUTING
@@ -67,13 +66,6 @@ if (isset($_GET['url'])) {
 		$controller->$action();
 	});
 	
-
 	$router->run();
 
-
-
 }
-
-
-
-?>

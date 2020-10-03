@@ -11,7 +11,7 @@ use app\Controller\PostController;
 class AvController extends AppController
 {
 
-	private $postsPerPage = 5;
+	private $postsPerPage = 6;
 	
 	public function __construct(){
 		parent::__construct();
@@ -182,6 +182,10 @@ class AvController extends AppController
 		$paging['pageCount'] = ceil($paging['count']/$this->postsPerPage);
 
 		if (isset($_GET['p'])) {
+			if (!$_GET['p'] > 0 OR $_GET['p'] > $paging['pageCount']) {
+				$this->forbidden('Perdu ? =P');
+				exit;
+			}
 			$paging['page'] = $_GET['p'];
 		}else{
 			$paging['page'] = 1;

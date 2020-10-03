@@ -15,15 +15,6 @@ class DBAuth{
 		$this->db = $db;
 	}
 
-	public function getUserID(){
-
-		if ($this->logged()) {
-			return $_SESSION['auth'];
-		}
-		return false;
-
-	}
-
 	public function login($username, $password){
 		$user = $this->db->prepare(
 			"SELECT *
@@ -36,7 +27,7 @@ class DBAuth{
 			if ($user->password === sha1($password)){
                 setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, null, null, false, true);
 				$_SESSION['connected'] = true;
-				$_SESSION['username'] = $user->username;
+				$_SESSION['username'] = $user->us/ername;
 				$_SESSION['grade'] = $user->grade;
 				$_SESSION['auth'] = $user->id;
 				return true;

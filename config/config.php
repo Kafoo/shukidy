@@ -4,7 +4,7 @@ if (substr(__DIR__, 0, 2) == 'D:') {
 
 	return array(
 		'title' => 'Shukidy',
-		'db_name' => 'heroku_3ca6f2b572bf369',
+		'db_name' => 'heroku_1dc514cb1b72fc8',
 		'db_user' => 'root',
 		'db_pass' => '',
 		'db_host' => '127.0.0.1'

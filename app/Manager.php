@@ -5,6 +5,7 @@ use core\Config;
 use core\Autoloader;
 use core\Database;
 use core\Controller;
+use app\Controller\AuthController;
 
 /**
  * Recupère la config, la db, les tables...
@@ -48,17 +49,48 @@ class Manager{
 		session_start();
 		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
+	}
+
+
+	public function login($username, $password){
+
+		$authController = new AuthController;
+
+		$user = $authController->users->findByName($username);
+
+		if ($user) {
+			if ($user->password === $password) {
+				$authController->auth($user);
+				return True;
+
+			}else{
+				return "Mot de passe invalide";
+			}
+		}else{
+			return "Pseudo invalide";
+		}
+	}
+
+	public static function checkAuth(){
+
+		$authController = new AuthController;
+
+		if (isset($_COOKIE['auth'])) {
+
+	        $auth = $_COOKIE['auth'];
+	        $auth = explode("---", $auth);
+	        $userID = $auth[0];
+	        $usernameSha = $auth[1];
+	        $user = $authController->users->find($userID);
+
+	        if ($user AND sha1($user->username) == $usernameSha) {
+	        	$authController->auth($user);
+	        }
+
+		}
 
 	}
-        
-	public function login($user){
-        setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, "/", null, false, true);
-		$_SESSION['connected'] = true;
-		$_SESSION['username'] = $user->username;
-		$_SESSION['grade'] = $user->grade;
-		$_SESSION['auth'] = $user->id;
-		$_SESSION['characters'] = serialize($this->getTable('characters')->findByUser($user->id));
-	}
+
 
 	public function loggedIn(){
 		if (isset($_SESSION['auth'])) {

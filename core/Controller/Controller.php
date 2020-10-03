@@ -20,7 +20,6 @@ class Controller{
 		require($this->viewpath . 'templates/' . $this->template . '.php');
 	}
 
-
 	public function forbidden($error = null){
 		header('HTTP/1.0 403 Forbidden');
 		$this->render('403', $error);
@@ -35,7 +34,6 @@ class Controller{
 		header('HTTP/1.0 404 Not Found');
 		$this->render('404', $error);
 	}
-
 
 	public function getPV($partialView, $variables = null){
 		ob_start();
