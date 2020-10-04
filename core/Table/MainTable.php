@@ -2,7 +2,6 @@
 
 namespace core\Table;
 
-use app\Manager;
 use core\Database;
 /**
  * 
@@ -48,7 +47,7 @@ class MainTable
 
 
 	public function find($id){
-		$data = $this->query("
+    		$data = $this->query("
 			SELECT *
 			FROM {$this->table_name}
 			WHERE id = ?",

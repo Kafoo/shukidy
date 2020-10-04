@@ -2,8 +2,6 @@
 
 namespace app\Controller;
 
-use core\Database;
-
 /**
  * 
  */

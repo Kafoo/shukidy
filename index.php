@@ -1,6 +1,5 @@
 <?php
 use app\Manager;
-use core\Autoloader;
 use app\Router\Router;
 use core\DBAuth;
 
@@ -8,9 +7,7 @@ use core\DBAuth;
 use App\Controller\HomeController;
 use App\Controller\AvController;
 use App\Controller\ProfilController;
-use App\Controller\HelpController;
 use App\Controller\AjaxController;
-use App\Controller\AuthController;
 
 //Different ROOT if local or not
 

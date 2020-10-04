@@ -1,4 +1,8 @@
-new Vue({
+import tak from './tak.js'
+
+console.log(tak)
+
+	new Vue({
 	el: '#headerDesktop',
 
 	data: {

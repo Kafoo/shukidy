@@ -4,7 +4,6 @@ namespace app;
 use core\Config;
 use core\Autoloader;
 use core\Database;
-use core\Controller;
 use app\Controller\AuthController;
 
 /**
@@ -139,7 +138,7 @@ class Manager{
 	}
 
 	public function getDefaultScript(){
-		return '<script type="module" src="'.$this->jsPath.'/main.js"></script>';
+		return '<script type="module" src="'.$this->jsPath.'/index.js"></script>';
 	}
 
 	public function getScripts(){

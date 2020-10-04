@@ -1,3 +1,7 @@
+import palouf from './palouf.js'
+
+console.log(palouf)
+
 // TINYMCE INITIALISATION
 function tinymceInit($format){
 	if (typeof tinymce !== 'undefined') {
