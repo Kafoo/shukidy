@@ -57,12 +57,15 @@ if (isset($_GET['url'])) {
 		$DBAuth->$action;
 	});
 
-	//EXEMPLE DE POST
-	$router->post('/ajax/:action', function($action){
-		$controller = new AjaxController;
+	//AJAX
+	$router->post('/ajax/:controller/:action', function($controller, $action){
+		$controller = str_replace('.', '\\', $controller);
+		$controller = 'app\Controller\\'.$controller;
+		$controller = new $controller;
 		$controller->$action();
 	});
-	
+
+
 	$router->run();
 
 }

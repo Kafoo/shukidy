@@ -25,7 +25,7 @@ class CharactersTable extends MainTable{
 
 	public function findByAv($avID){
 		$res = $this->query("
-			SELECT *
+			SELECT *, ch.id as id
 			FROM {$this->table_name} as ch
 			JOIN mas_leveling as lvl
 			ON lvl.lvl = ch.lvl

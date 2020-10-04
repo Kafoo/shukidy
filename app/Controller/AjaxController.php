@@ -18,18 +18,16 @@ class AjaxController extends AppController{
 
 		$username = $_POST['username'];
 		$password = sha1($_POST['password']);
-
 		$login = Manager::getInstance()->login($username, $password);
 
 		echo $login;
-
 	}
 
 	public function logout(){
+
 		$_SESSION = array();
 		setcookie('auth', "", time()-3600, '/');
 		session_destroy();
-
 	}
 
 

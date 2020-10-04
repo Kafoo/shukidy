@@ -49,8 +49,9 @@ class Database{
 
 	public function prepare($statement, $values, $class = null, $one = false){
 		$req = $this->getPDO()->prepare($statement);
-
 		$res = $req->execute($values);
+		
+		$statement =trim($statement);
 		if (strpos($statement, "INSERT") === 0 
 		|| strpos($statement, "DELETE") === 0
 		|| strpos($statement, "UPDATE") === 0) {

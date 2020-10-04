@@ -24,27 +24,6 @@ class AuthController extends AppController
 
 	}
 
-/*	public function check(){
-
-		if (isset($_COOKIE['auth'])) {
-
-	        $auth = $_COOKIE['auth'];
-	        $auth = explode("---", $auth);
-	        $checkUser = $bdd->query("SELECT * FROM mas_users WHERE id='$auth[0]' ")->fetch();
-	        $key = sha1($checkUser['pseudo']);
-	        if ($key === $auth[1]) {
-	            $userID = $checkUser['id'];
-	            $reqUser = $bdd->query("SELECT * FROM mas_users WHERE id='$userID' ");
-	                $userInfo = $reqUser->fetch();
-	                $canSetSession = True;
-	        }
-
-		}
-
-	}*/
-
-
-
 }
 
 

@@ -19,14 +19,37 @@ class EntriesTable extends MainTable{
 	private $characters_table = 'characters';
 	private $carac_table = 'carac';
 
-	private function formatContent($res){
+	public function add($entry){
 
-		foreach ($res as $key => $value) {
-			$value->content = htmlspecialchars_decode(nl2br($value->content));
-		}
-		return $res;
+		$this->query("
+			INSERT INTO 
+			av_entries (avID, postID, type, dat, charID)
+			VALUES 
+			(?, ?, ?, ?, ?)",
+			[$entry->avID, $entry->postID, $entry->type, $entry->dat, $entry->charID]);
+
+		$last = $this->lastByAv($entry->avID);
+		$this->query("
+			INSERT INTO 
+			av_rp (entryID, charID, content)
+			VALUES 
+			(?, ?, ?)",
+			[$last->id, $entry->charID, $entry->content]);
 	}
 
+
+	private function formatContent($res){
+
+		if (is_array($res)) {
+			foreach ($res as $key => $value) {
+				$value->content = htmlspecialchars_decode(nl2br($value->content));
+			}
+		}else{
+			$res->content = htmlspecialchars_decode(nl2br($res->content));
+		}
+
+		return $res;
+	}
 
 	public function getAllByAv($avID){
 		$res = $this->query("
@@ -51,7 +74,7 @@ class EntriesTable extends MainTable{
 			LEFT JOIN {$this->av_table} as av
 			ON ent.avID = av.id
 			LEFT JOIN {$this->characters_table} as ch
-			ON ent.characterID = ch.id
+			ON ent.charID = ch.id
 			LEFT JOIN {$this->users_table} as user
 			ON ch.userID = user.id
 			WHERE av.id = ?
@@ -85,7 +108,7 @@ class EntriesTable extends MainTable{
 			LEFT JOIN {$this->av_table} as av
 			ON ent.avID = av.id
 			LEFT JOIN {$this->characters_table} as ch
-			ON ent.characterID = ch.id
+			ON ent.charID = ch.id
 			LEFT JOIN {$this->users_table} as user
 			ON ch.userID = user.id
 			WHERE av.id = ?
@@ -95,6 +118,19 @@ class EntriesTable extends MainTable{
 		return $this->formatContent($res);
 
 	}
+
+	public function lastByAv($avID){
+
+		$res = $this->query("
+			SELECT *
+			FROM {$this->table_name} as ent
+			WHERE avID = ?
+			ORDER BY ent.id DESC", 
+			[$avID], true);
+		return $res;
+
+	}
+
 
 	public function countPosts($avID){
 

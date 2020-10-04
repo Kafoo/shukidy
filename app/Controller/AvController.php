@@ -81,7 +81,7 @@ class AvController extends AppController
 
 		foreach ($entries as $key => $entry) {
 			$userID = $entry->userID;
-			$characterID = $entry->characterID;
+			$charID = $entry->charID;
 
 			//POST BEGINS
 			if ($key == 0 OR $entry->postID > $entries[$key-1]->postID ) {
@@ -89,7 +89,7 @@ class AvController extends AppController
 				//Creation of POST object
 				$post = new \stdClass;
 				$post->userInfos = $this->users->find($userID);
-				$post->characterInfos = $this->characters->find($characterID);
+				$post->characterInfos = $this->characters->find($charID);
 				$post->type = $entry->type;
 				$post->dat = $entry->dat;
 				$post->avatar = True;

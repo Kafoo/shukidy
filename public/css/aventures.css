@@ -217,6 +217,7 @@
 
 	.msg img{
 		display: block;
+		width: auto;
 		margin: auto;
 		max-width: 90%;
 		height: auto;

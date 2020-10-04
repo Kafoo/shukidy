@@ -1,8 +1,4 @@
-import tak from './tak.js'
-
-console.log(tak)
-
-	new Vue({
+new Vue({
 	el: '#headerDesktop',
 
 	data: {
@@ -11,7 +7,7 @@ console.log(tak)
 	methods: {
 
 		trylogin: function(){
-			let posting = $.post("/ajax/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
+			let posting = $.post("/ajax/AjaxController/trylogin", { username: $('#un').val(), password: $('#deux').val() } );
 			posting.done(function(data) {
 				if (data === '1') {
 					location.reload()
@@ -22,7 +18,7 @@ console.log(tak)
 		},
 
 		logout: function(){
-			let posting = $.post("/ajax/logout", function(data) {
+			let posting = $.post("/ajax/AjaxController/logout", function(data) {
 				location.reload();
 			});
 		}
