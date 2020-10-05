@@ -21,7 +21,6 @@ Manager::load();
 //AUTH
 Manager::checkAuth();
 
-
 //ROUTING
 if (isset($_GET['url'])) {
 

@@ -37,7 +37,7 @@ $manager->addScript('app','aventures');
 				<?=$entry->HTML?>
 				<!-- separation if entry is not the last of post -->
 				<?php if ($entry->separation == True): ?>
-					<div class="separate"></div>
+					<hr>
 				<?php endif ?>
 
 			<?php endforeach ?>

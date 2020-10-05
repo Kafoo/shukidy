@@ -13,6 +13,7 @@ class PostController extends AppController
 	public function __construct(){
 		parent::__construct();
 		$this->loadModel('entries');
+		$this->loadModel('characters');
 	}
 
 
@@ -23,7 +24,15 @@ class PostController extends AppController
 		$entry->avID = $_POST['avID'];
 		$entry->charID = $_POST['charID'];
 		$entry->content = $_POST['content'];
-		$entry->type = 'rpPlayer';
+
+		$userChar = $this->characters->findUserChar($_POST['avID']);
+		if ($userChar->name == 'GM') {
+			$entry->type = 'rpGM';
+		}else{
+			$entry->type = 'rpPlayer';
+		}
+
+
 		$entry->dat = 
 		sprintf('%02d', getdate()['mday']) . '/' . 
 		sprintf('%02d', getdate()['mon']) . '/' . 
@@ -35,7 +44,7 @@ class PostController extends AppController
 		$last = $this->entries->lastByAv($entry->avID);
 		//On défini le postID (incrémentation ou non)
 		if ($entry->charID == $last->charID 
-		AND ($last->type == 'rp' OR $last->type == 'drPlayer')) {
+		AND ($last->type == 'rpPlayer' OR $last->type == 'drPlayer' OR $last->type == 'rpGM')) {
 			$entry->postID = $last->postID;
 		} else {
 			$entry->postID = $last->postID+1;

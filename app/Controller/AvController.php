@@ -144,14 +144,9 @@ class AvController extends AppController
 		$aventure = $this->aventures->find($avID);
 		$aventure->characters = $this->characters->findByAv($avID);
 		$aventure->carac = $this->carac->findByAv($avID);
+		$aventure->userChar = $this->characters->findUserChar($avID);
 		$aventure->lastIsUser = False;
 		$aventure->userIsGM = True;
-
-		foreach ($aventure->characters as $character) {
-			if ($character->userID == $_SESSION['auth']) {
-				$aventure->userChar = $character;
-			}
-		}
 
 		return $aventure;
 	}

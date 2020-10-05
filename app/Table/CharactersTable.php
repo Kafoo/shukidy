@@ -34,6 +34,18 @@ class CharactersTable extends MainTable{
 		return $res;	
 	}
 
+	public function findUserChar($avID){
+
+		$userID = $_SESSION['auth'];
+
+		$res = $this->query("
+			SELECT *, ch.id as id
+			FROM {$this->table_name} as ch
+			WHERE ch.avID = ? AND ch.userID = ?", 
+			[$avID, $userID], true);
+		return $res;	
+	}
+
 }
 
 ?>
