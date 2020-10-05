@@ -4,7 +4,7 @@
 	</div>
 	<h3>LANCE DE DES</h3>
 	<div class="OWContent">
-		<form method="POST" action="">
+		<form method="POST" onsubmit="return false">
 
 			<h4>Titre</h4>
 			<input type="text" name="diceReply-title" placeholder="titre du lancé">
@@ -31,13 +31,10 @@
 			<div class="diff12 diceReply-diff button"
 			onclick="choose('diff','12')">Difficile</div>
 			<input id="diffStock" type="text" name="diceReply-diff" hidden>
-			
 			<br>
-			<input id="resultStock" type="text" name="diceReply-result" hidden>
-			<input type="text" name="persoID" value="<?=$userChar->id?>" hidden>
-			<?php 
-			$persoObjectID = 'perso'.$userChar->id;
-			?>
+
+			<input type="text" name="diceReply-avID" value="<?=$aventure->id?>" hidden>
+			<input type="text" name="diceReply-charID" value="<?=$userChar->id?>" hidden>
 
 			<input id="diceReply-submit"  type="submit" name="diceReply-submit" value="Je lance mon dé !">
 		</form>

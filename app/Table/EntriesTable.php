@@ -19,6 +19,32 @@ class EntriesTable extends MainTable{
 	private $characters_table = 'characters';
 	private $carac_table = 'carac';
 
+	private function addRp($entry){
+
+		$last = $this->lastByAv($entry->avID);
+
+		$this->query("
+			INSERT INTO 
+			av_rp (entryID, charID, content)
+			VALUES 
+			(?, ?, ?)",
+			[$last->id, $entry->charID, $entry->content]);
+	}
+
+	private function addDr($entry){
+
+		$last = $this->lastByAv($entry->avID);
+
+		$this->query("
+			INSERT INTO 
+			av_dicerolls (entryID, charID, title, caracID, caracVal, caracCond, difficulty, result, GM)
+			VALUES 
+			(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			[$last->id, $entry->charID, $entry->title, $entry->caracID, $entry->caracVal, $entry->caracCond, $entry->diff, $entry->result, $entry->GM]);
+	}
+
+	
+
 	public function add($entry){
 
 		$this->query("
@@ -28,13 +54,14 @@ class EntriesTable extends MainTable{
 			(?, ?, ?, ?, ?)",
 			[$entry->avID, $entry->postID, $entry->type, $entry->dat, $entry->charID]);
 
-		$last = $this->lastByAv($entry->avID);
-		$this->query("
-			INSERT INTO 
-			av_rp (entryID, charID, content)
-			VALUES 
-			(?, ?, ?)",
-			[$last->id, $entry->charID, $entry->content]);
+		if ($entry->type == "drPlayer" 
+			OR $entry->type == "drGM") {
+			$this->addDr($entry);
+		}elseif ($entry->type == "rpPlayer" 
+			OR $entry->type == "rpGM") {
+			$this->addRp($entry);
+		}
+
 	}
 
 

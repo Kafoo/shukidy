@@ -1,12 +1,18 @@
 import tinymce_init from './assets/tinymce_init.js'
 import textreply from './aventures/textreply.js'
+import {dicereply, choose} from './aventures/dicereply.js'
 import allogm from './aventures/allogm.js'
 import showingOW from './assets/showingOW.js'
 import GMDashboard from './aventures/GMDashboard.js'
 
+
 tinymce_init('desktop')
-textreply();
 showingOW()
+
+textreply();
+dicereply();
+window.choose = choose
+
 allogm()
 GMDashboard()
 
