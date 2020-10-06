@@ -141,12 +141,26 @@ class AvController extends AppController
 	}
 
 	public function setAventure($avID){
+
 		$aventure = $this->aventures->find($avID);
 		$aventure->characters = $this->characters->findByAv($avID);
 		$aventure->carac = $this->carac->findByAv($avID);
 		$aventure->userChar = $this->characters->findUserChar($avID);
-		$aventure->lastIsUser = False;
-		$aventure->userIsGM = True;
+
+		//Last is user ?
+		$aventure->last = $this->entries->lastByAv($avID);
+		if ($aventure->last->charID === $aventure->userChar->id) {
+			$aventure->lastIsUser = True;
+		}else{
+			$aventure->lastIsUser = False;
+		}
+
+		//User is GM ?
+		if ($aventure->userChar->name === 'GM') {
+			$aventure->userIsGM = True;
+		}else{
+			$aventure->userIsGM = False;			
+		}
 
 		return $aventure;
 	}

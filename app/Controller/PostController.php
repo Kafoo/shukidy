@@ -21,15 +21,15 @@ class PostController extends AppController
 
 		$entry = new EntriesEntity;
 
-		$entry->avID = $_POST['avID'];
-		$entry->title = $_POST['title'];
-		$entry->caracID = $_POST['caracID'];
-		$entry->diff = $_POST['diff'];
-		$entry->charID = $_POST['charID'];
-		$entry->result = $_POST['result'];
-		$entry->GM = $_POST['GM'];
+		var_dump($_POST['data']);
 
-		$userChar = $this->characters->findUserChar($_POST['avID']);
+		foreach ($_POST['data'] as $key => $post) {
+			$entry->$key = $post;
+		}
+
+		var_dump($entry);
+
+		$userChar = $this->characters->findUserChar($entry->avID);
 		$valCall = 'c'.$entry->caracID;
 		$entry->caracVal = $userChar->$valCall;
 		$condCall = 'c'.$entry->caracID.'Cond';
@@ -57,8 +57,9 @@ class PostController extends AppController
 		} else {
 			$entry->postID = $last->postID+1;
 		}
-		$this->entries->add($entry);
 
+		$this->entries->add($entry);
+		
 	}
 
 	public function post(){
@@ -94,8 +95,5 @@ class PostController extends AppController
 			$entry->postID = $last->postID+1;
 		}
 		$this->entries->add($entry);
-
 	}
-
-
 }

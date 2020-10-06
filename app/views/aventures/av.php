@@ -59,13 +59,13 @@ $manager->addScript('app','aventures');
 			<img src="<?=$img->icon('notes')?>">
 		</div>
 		<?php
-		if ($aventure->lastIsUser == False) { //diceReply possible ou non?>
-		<div class="showingOW replyOption" OW="diceReply">
+		if ($aventure->userIsGM === False AND $aventure->lastIsUser === False) { //diceReply possible ou non?>
+		<div class="showingOW replyOption" OW="diceReply_error">
 			<img src="<?=$img->icon('d20black2')?>">
 		</div>
 		<?php
 		} else{ ?>
-		<div class="showingOW replyOption" OW="diceReply_error">
+		<div class="showingOW replyOption" OW="diceReply">
 			<img src="<?=$img->icon('d20black2')?>">
 		</div>
 		<?php

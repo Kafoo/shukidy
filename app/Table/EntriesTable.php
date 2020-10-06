@@ -34,7 +34,7 @@ class EntriesTable extends MainTable{
 	private function addDr($entry){
 
 		$last = $this->lastByAv($entry->avID);
-
+		var_dump($entry->GM);
 		$this->query("
 			INSERT INTO 
 			av_dicerolls (entryID, charID, title, caracID, caracVal, caracCond, difficulty, result, GM)

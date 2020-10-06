@@ -87,7 +87,7 @@ class Manager{
 	        }
 
 	        //FAKE USER
-	        $userID = 152;
+	        $userID = 132;
 	        $user = $authController->users->find($userID);
 			$authController->auth($user);
 

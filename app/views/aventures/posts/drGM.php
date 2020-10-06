@@ -8,7 +8,6 @@ $character = $post->characterInfos;
 $user = $post->userInfos;
 $userChars = unserialize($_SESSION['characters']);
 
-
 $entry->resultFinal = floatval($entry->result)+floatval($entry->caracVal)+floatval($entry->caracCond);
 if ($entry->difficulty<$entry->resultFinal) {$success = 1;}
 elseif ($entry->difficulty>=$entry->resultFinal) {$success = 0;}
