@@ -6,3 +6,4 @@ $manager->setTitle('Accueil');
 
 
 <h1>ACCUEIL</h1>
+

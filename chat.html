@@ -1,0 +1,93 @@
+
+<div class="chatbox" id="app" @click="
+		showOptions = false
+		showUserMenu = false
+		showColorPalette = false
+	" :class="darkMode ? 'darkMode':''">
+
+  <div class="chatbox__popupMenu" v-show="showOptions">
+
+    <button @click="darkMode = !darkMode">Dark mode {{darkMode? 'Off':'On'}}</button>
+    <button @click.stop.prevent="showColorPalette = true; showOptions = false">Change channel color</button>
+    <button @click="deleteCurrentChannel()" :disabled="selectedContact.selectedChannelIndex === 0">Delete current channel</button>
+
+  </div>
+
+  <div class="chatbox__colorPalette" v-show="showColorPalette">
+
+    <div class="chatbox__color" v-for="i in 12" @click="changeChannelColor"></div>
+
+  </div>
+
+  <ul class="chatbox__contacts">
+
+    <li class="chatbox__contact" v-for="(contact, contactIndex) in contacts" :style="{'background-image': 'url(' + contact.profileImage + ')'}" :class="contactIndex === selectedContactIndex ? 'chatbox__contact--selected':''" @click="selectedContactIndex = contactIndex">
+      <div class="chatbox__onlineIndicator" v-if="contactIndex &lt; 3"></div>
+    </li>
+
+  </ul>
+
+  <div class="chatbox__container">
+
+    <div class="chatbox__userMenu" v-if="showUserMenu">
+      <button @click="deleteCurrentContact()" :disabled="selectedContactIndex === 0">Remove from contacts</button>
+    </div>
+
+    <div class="chatbox__info"><img src="https://image.flaticon.com/icons/svg/149/149452.svg" @click.stop.prevent="showUserMenu = !showUserMenu" height="26"/>
+      <p>{{ contacts[selectedContactIndex].name }}</p><img src="https://image.flaticon.com/icons/svg/149/149403.svg" height="24" width="22" @click.stop.prevent="showOptions = !showOptions; showColorPalette = false"/>
+    </div>
+
+    <nav class="chatbox__navigation">
+
+      <button class="chatbox__channelSwitchButton" v-for="(channel, channelIndex) in selectedContact.channels" :class="channelIndex === selectedContact.selectedChannelIndex ? 'chatbox__channelSwitchButton--selected':''" :style="{
+					backgroundColor: channelIndex === selectedContact.selectedChannelIndex ? selectedContact.channels[channelIndex].color:'initial',
+					borderColor: selectedContact.channels[channelIndex].color,
+					color: channelIndex !== selectedContact.selectedChannelIndex ? selectedContact.channels[channelIndex].color:'default'
+				}" @click="selectedContact.selectedChannelIndex = channelIndex">
+        <p>{{ channel.name }}</p>
+      </button>
+
+      <button class="chatbox__channelSwitchButton chatbox__channelNewButton--input" v-if="selectedContact.makeNewChannel">
+        <input type="text" v-model="selectedContact.newChannelInput" name="newChannelInput" placeholder="Channel name" ref="newChannelInput" aria-label="New channel input" @blur="onChannelInputBlur()" @keyup.enter="newChannel(selectedContact.newChannelInput)"/>
+      </button>
+
+      <button class="chatbox__channelNewButton" v-if="!selectedContact.makeNewChannel" @click="addButtonClick()"><img src="https://image.flaticon.com/icons/svg/149/149156.svg" height="13"/></button>
+
+    </nav>
+
+    <div class="chatbox__chat">
+
+      <input class="chatbox__messageInput" v-model="selectedContact.messageInput" ref="newMessageInput" :placeholder="firstMessageSent ? 'New message...':'New message... (press enter to send)'" @keyup.enter="newMessage()"/>
+
+      <div class="chatbox__messages">
+
+        <template v-for="(message, messageIndex) in selectedChannel.messages">
+
+          <div class="chatbox__date" v-if="messageIndex === 0 || messageIndex &gt; 0 &amp;&amp; selectedChannel.messages[messageIndex - 1].date !== message.date">
+            {{message.date}}
+          </div>
+
+          <div class="chatbox__messageContainer" :class="message.authorId === userId ? 'chatbox__messageContainer--right':''" :style="{
+							'margin-top': messageIndex &gt; 0 &amp;&amp; selectedChannel.messages[messageIndex - 1].authorId !== message.authorId ? '12px':'4px',
+							'margin-bottom': messageIndex &lt; (selectedChannel.messages.length - 1) &amp;&amp; selectedChannel.messages[messageIndex + 1].authorId !== message.authorId ? '12px':'4px'
+						}">
+
+            <div class="chatbox__message" aria-label="message.content" :style="{
+								'background-color': message.authorId === userId ? selectedChannel.color:'',
+								'border-top-right-radius': (messageIndex &gt; 0 &amp;&amp; selectedChannel.messages[messageIndex - 1].authorId === userId &amp;&amp; message.authorId === userId) ? '5px':'20px',
+								'border-bottom-right-radius': (messageIndex &lt; (selectedChannel.messages.length - 1) &amp;&amp; selectedChannel.messages[messageIndex + 1].authorId === userId &amp;&amp; message.authorId === userId) ? '5px':'20px',
+								'border-top-left-radius': (messageIndex &gt; 0 &amp;&amp; selectedChannel.messages[messageIndex - 1].authorId === message.authorId &amp;&amp; message.authorId !== userId) ? '5px':'20px',
+								'border-bottom-left-radius': (messageIndex &lt; (selectedChannel.messages.length - 1) &amp;&amp; selectedChannel.messages[messageIndex + 1].authorId === message.authorId &amp;&amp; message.authorId !== userId) ? '5px':'20px'
+							}">
+              {{ message.content }}
+              <div class="chatbox__time" :class="message.authorId === userId ? 'chatbox__time--left':''">
+                {{message.time}}
+              </div>
+
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</div>

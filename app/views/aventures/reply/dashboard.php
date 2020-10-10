@@ -47,26 +47,13 @@ foreach ($characters as $character) {
 					<div class="condBlock">
 						<h4>Conditions :</h4>
 						<table>
-							<tr>
-								<td>Force : </td>
-								<td><textarea class="condTextArea c1Cond_val"><?php if ($character->c1Cond >= 0) {echo '+'.$character->c1Cond;}else{echo $character->c1Cond;}?></textarea></td>
-							</tr>
-							<tr>
-								<td>Dextérité : </td>
-								<td><textarea class="condTextArea c2Cond_val"><?php if ($character->c2Cond >= 0) {echo '+'.$character->c2Cond;}else{echo $character->c2Cond;}?></textarea></td>
-							</tr>
-							<tr>
-								<td>Intelligence : </td>
-								<td><textarea class="condTextArea c3Cond_val"><?php if ($character->c3Cond >= 0) {echo '+'.$character->c3Cond;}else{echo $character->c3Cond;}?></textarea></td>
-							</tr>
-							<tr>
-								<td>Charisme : </td>
-								<td><textarea class="condTextArea c4Cond_val"><?php if ($character->c4Cond >= 0) {echo '+'.$character->c4Cond;}else{echo $character->c4Cond;}?></textarea></td>
-							</tr>
-							<tr>
-								<td>Perception : </td>
-								<td><textarea class="condTextArea c5Cond_val"><?php if ($character->c5Cond >= 0) {echo '+'.$character->c5Cond;}else{echo $character->c15Cond;}?></textarea></td>
-							</tr>
+							<?php foreach ($character->caracs as $carac): ?>
+								<tr>
+									<td><?=$carac->name?> : </td>
+									<td><textarea class="condTextArea c<?=$carac->id?>Cond_val"><?=$carac->cond?></textarea></td>
+								</tr>
+							<?php endforeach ?>
+
 						</table>
 					</div>
 				</div>

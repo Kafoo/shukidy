@@ -2,11 +2,11 @@
 
 namespace app\Table;
 
-use core\Table\MainTable;
+use app\Table\AppTable;
 /**
  * 
  */
-class CaracTable extends MainTable{
+class CaracTable extends AppTable{
 
 
 	protected $table_name = 'carac';
@@ -21,6 +21,18 @@ class CaracTable extends MainTable{
 			ON carac.univID = av.univID
 			WHERE av.id = ?",
 			[$avID]);
+		return $data;
+	}
+
+	public function findByChar($charID){
+
+		$data = $this->query("
+			SELECT carac.*, rel.*, carac.id as id
+			FROM {$this->table_name} as carac
+			JOIN rel_char2carac as rel
+			ON carac.id = rel.caracID
+			WHERE rel.charID = ?",
+			[$charID]);
 		return $data;
 	}
 

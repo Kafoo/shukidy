@@ -69,19 +69,12 @@ $manager->addScript('app','aventures');
 			<img src="<?=$img->icon('d20black2')?>">
 		</div>
 		<?php
-		}
-		if ($aventure->userIsGM == True) { //Si GM, choix des players?>
-			<div class="showingOW replyOption showingAlloGM showingAlloGM_menu" OW="alloGM_menu">
-				<img src="<?=$img->icon('allogm2')?>"><div class="unseen"></div>
-			</div>
-		<?php
-		}
-		else{ //Sinon, direct la messagerie?>
-			<div class="showingOW replyOption showingAlloGM showingAlloGM_direct" OW="alloGM">
-				<img src="<?=$img->icon('allogm2')?>">
-			</div>
-		<?php
-		}?>
+		} ?>
+
+		<div class="showingOW replyOption showingAlloGM showingAlloGM_direct" OW="alloGM">
+			<img src="<?=$img->icon('allogm2')?>">
+		</div>
+
 		<div class="showingOW replyOption showingNotes" OW="notes">
 			<img src="<?=$img->icon('notes2')?>">
 		</div>
@@ -91,7 +84,7 @@ $manager->addScript('app','aventures');
 		</div>
 
 		<?php
-		if ($aventure->userIsGM == True){ ?>
+		if ($aventure->userIsGM){ ?>
 			<div class="showingOW replyOption showingGMDashBoard" OW="GMDashBoard-menu">
 				<img src="<?=$img->icon('baguette')?>">
 			</div>
@@ -126,7 +119,7 @@ $manager->addScript('app','aventures');
 			</div>
 			<h3>INFOS PERSOS</h3>
 			<div class="OWContent">
-				<?php include('content/aventures/fixinfos.php');?>
+				
 			</div>
 		</div>
 
@@ -159,13 +152,15 @@ $manager->addScript('app','aventures');
 	<?php
 	}?>
 
-
 	</div>
 
-
-
-
 </div>
+
+<script type="text/javascript">
+	var avID = <?=$aventure->id?>;
+	var gmID = <?=$aventure->gmID?>;
+	var userIsGM = <?= $aventure->userIsGM ? '1' : '0'?>;
+</script>
 
 
 

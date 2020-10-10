@@ -5,7 +5,7 @@ export default function tinymceInit($format){
 			tinymce.init({
 			    selector: '.mytextarea',
 			    content_css : "/public/css/_shared_/tinymce.css",
-			    height: 340,
+			    height: 390,
 			    menubar: false,
 			    forced_root_block : "",
 			    statusbar : false,

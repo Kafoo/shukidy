@@ -58,11 +58,12 @@ export default function GMDashboard() {
 			invent3 : parent.find('.invent3_val').val().trim(),
 			invent4 : parent.find('.invent4_val').val().trim(),
 			invent5 : parent.find('.invent5_val').val().trim(),
-			c1Cond : parseInt(parent.find('.c1Cond_val').val()),
+			//Faire plutôt un foreach cond, suivant la nouvelle archi bdd
+			/*c1Cond : parseInt(parent.find('.c1Cond_val').val()),
 			c2Cond : parseInt(parent.find('.c2Cond_val').val()),
 			c3Cond : parseInt(parent.find('.c3Cond_val').val()),
 			c4Cond : parseInt(parent.find('.c4Cond_val').val()),
-			c5Cond : parseInt(parent.find('.c5Cond_val').val()),
+			c5Cond : parseInt(parent.find('.c5Cond_val').val()),*/
 			addedXP : parseInt(parent.find('.xpTextArea').val().trim())
 		}
 	    perso = JSON.stringify(perso);

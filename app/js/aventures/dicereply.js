@@ -14,8 +14,6 @@ export function dicereply() {
 				result : result,
 				GM: GM
 			}
-	
-			console.log(data)
 
 			let posting = $.post("/ajax/PostController/dicereply", {
 				data:data
@@ -25,12 +23,10 @@ export function dicereply() {
 				if (data === '') {
 					location.reload()
 				}else{
-					/*alert(data);*/
+					alert(data);
 				}
 			});
 		}
-
-
 
 
 		let title = $('input[name="diceReply-title"]').val()
@@ -40,8 +36,9 @@ export function dicereply() {
 		let charID = $('input[name="diceReply-charID"]').val()
 		let GM = $('input[name="diceReply-GM"]').val()
 		let result
+
 		if (GM === '1') {
-			result = '0'
+			result = '?'
 		}else{
 			result = Math.ceil(Math.random()*10)
 		}
@@ -59,17 +56,16 @@ export function dicereply() {
 
 						if (GM === '1') {
 							charDom.each(function(index){
-
+								console.log($(this))
+								console.log($(charDom[index]))
 								charID = $(this).attr('value')
-
 								postOne(charID)
-
 							})
 						}else{
+
 							charID = $('input[name="diceReply-charID"]').val()
 							postOne(charID)
 						}
-
 
 					}else{
 						alert('tu dois choisir une difficulté')

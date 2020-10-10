@@ -32,7 +32,8 @@ class AvController extends AppController
 			$HTML = $this->getPV('aventures.posts.rpGM', $entry);
 		}
 		elseif ($entry->type == 'drGM') {
-			$HTML = $this->getPV('aventures.posts.drGM', compact('aventure', 'post', 'entry'));
+
+			$HTML = $this->getPV('aventures.posts.drGM', compact('post', 'entry'));
 		}
 		elseif ($entry->type == 'drPlayer') {
 			$HTML = $this->getPV('aventures.posts.drPlayer', compact('entry', 'post'));
@@ -90,16 +91,12 @@ class AvController extends AppController
 				$post = new \stdClass;
 				$post->userInfos = $this->users->find($userID);
 				$post->characterInfos = $this->characters->find($charID);
+				$post->characterInfos->caracs = $this->carac->findByChar($charID);
 				$post->type = $entry->type;
 				$post->dat = $entry->dat;
-				$post->avatar = True;
 				$post->avatarHTML = '';
 				$post->entries = [];
 
-				//No avatar for specific kind of post
-				if ($entry->type == "log") {
-					$post->avatar = False;
-				}
 			}
 
 			//SEPARATION between rp entries or log entries
@@ -144,6 +141,11 @@ class AvController extends AppController
 
 		$aventure = $this->aventures->find($avID);
 		$aventure->characters = $this->characters->findByAv($avID);
+
+		foreach ($aventure->characters as $char) {
+			$char->caracs = $this->carac->findByChar($char->id);
+		}
+
 		$aventure->carac = $this->carac->findByAv($avID);
 		$aventure->userChar = $this->characters->findUserChar($avID);
 

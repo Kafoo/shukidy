@@ -26,8 +26,9 @@ class ImgController extends AppController
 		return $this->imgPath . 'gameicons/' . $icon;
 	}
 
-	public function carac($caracID){
-		return $this->imgPath . 'carac/' . $caracID . '.png';
+	public function carac($icon, $color){
+		$url = $this->imgPath . 'gameicons/' . $icon;
+		return 'style="background-image: url('.$url.'); background-color: '.$color.'"';
 	}
 
 	public function rpg($img){

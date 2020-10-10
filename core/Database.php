@@ -28,6 +28,14 @@ class Database{
 		return $this->pdo;
 	}
 
+	public function count($statement){
+
+		$req = $this->getPDO()->query($statement);
+		$req->setFetchMode(PDO::FETCH_OBJ);
+		$data = $req->fetch();
+		return $data;
+	}
+
 	public function directQuery($statement, $class = null, $one = false){
 
 		$req = $this->getPDO()->query($statement);
@@ -58,7 +66,7 @@ class Database{
 			return $res;
 		}
 
-		if ($class === null) {
+		if ($class === null || strpos($statement, "SELECT COUNT") === 0) {
 			$req->setFetchMode(PDO::FETCH_OBJ);
 		}else{
 			$class = '\\'.$class;

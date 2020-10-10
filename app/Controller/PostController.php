@@ -14,26 +14,37 @@ class PostController extends AppController
 		parent::__construct();
 		$this->loadModel('entries');
 		$this->loadModel('characters');
+		$this->loadModel('carac');
 	}
 
+	public function rollTheDice(){
+
+		foreach ($_POST['data'] as $key => $value) {
+			$$key = $value;
+		}
+
+		$this->entries->rollUpdate($entryID, $result);
+
+	}
 
 	public function dicereply(){
 
 		$entry = new EntriesEntity;
 
-		var_dump($_POST['data']);
-
 		foreach ($_POST['data'] as $key => $post) {
 			$entry->$key = $post;
 		}
 
-		var_dump($entry);
-
 		$userChar = $this->characters->findUserChar($entry->avID);
-		$valCall = 'c'.$entry->caracID;
-		$entry->caracVal = $userChar->$valCall;
-		$condCall = 'c'.$entry->caracID.'Cond';
-		$entry->caracCond = $userChar->$condCall;
+		$UserCaracs = $this->carac->findByChar($entry->charID);
+		
+		foreach ($UserCaracs as $carac) {
+			if ($entry->caracID === $carac->id) {
+				$entry->caracVal = $carac->value;
+				$entry->caracCond = $carac->cond;
+			}
+		}
+
 
 		if ($entry->GM == 1) {
 			$entry->type = "drGM";
@@ -52,7 +63,8 @@ class PostController extends AppController
 		$last = $this->entries->lastByAv($entry->avID);
 		//On défini le postID (incrémentation ou non)
 		if ($entry->charID == $last->charID 
-		AND ($last->type == 'rpPlayer' OR $last->type == 'drPlayer')) {
+		AND ($last->type == 'rpPlayer' OR $last->type == 'drPlayer')
+		OR ($last->type == 'drGM' AND $entry->type == 'drGM')) {
 			$entry->postID = $last->postID;
 		} else {
 			$entry->postID = $last->postID+1;

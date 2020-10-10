@@ -34,9 +34,7 @@ class MainTable
 		}
 
 		return $data;
-
 	}
-
 
 	public function getAll(){
 		$data = $this->query("
@@ -81,6 +79,7 @@ class MainTable
 
 		return $this->query($statement, [$id], true);
 	}
+
 
 
 }

@@ -1,4 +1,4 @@
-<div class="persoID-stock" hidden><?=$character->id?></div>
+<div class="persoID-stock" hidden><?=$character->ido?></div>
 <h3><?=$character->nom?></h3>
 <h4>PV :</h4>
 <div class="button operate_update update_lessPV">-</div>

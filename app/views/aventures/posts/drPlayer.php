@@ -1,6 +1,5 @@
 <?php
 $img = new app\Controller\ImgController;
-
 $entry = $variables['entry'];
 $post = $variables['post'];
 $user = $post->userInfos;
@@ -13,9 +12,23 @@ $entry->resultFinal = floatval($entry->result)+floatval($entry->caracVal)+floatv
 <div class="diceRollBox">
 	<div class="centering">
 		<div class="diceRollDigits">
-			<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$entry->result?></div>
-			<div class="diceRollDigit digit-carac" style="background-image: url(<?=$img->carac($entry->caracID)?>);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($entry->caracName)?> de <?=$character->name?>">+<?=$entry->caracVal?></div>
-			<div class="diceRollDigit digit-cond <?php if($entry->caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" data-toggle="tooltip" data-placement="top" title="Condition">
+			<div class="diceRollDigit digit-roll" 
+			data-toggle="tooltip" 
+			data-placement="top" 
+			title="Résultat du lancé">
+				<?=$entry->result?>
+			</div>
+			<div class="diceRollDigit digit-carac"
+			<?=$img->carac($entry->caracIcon, $entry->caracColor)?>
+			data-toggle="tooltip" 
+			data-placement="top" 
+			title="<?=ucfirst($entry->caracName)?> de <?=$character->name?>">
+				+<?=$entry->caracVal?>
+			</div>
+			<div class="diceRollDigit digit-cond <?php if($entry->caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" 
+				data-toggle="tooltip" 
+				data-placement="top" 
+				title="Condition">
 				<?php if($entry->caracCond>=0){echo'+'.$entry->caracCond;}else{echo $entry->caracCond;}?>
 			</div>
 			<div class="inline">

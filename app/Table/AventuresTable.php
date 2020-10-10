@@ -2,11 +2,11 @@
 
 namespace app\Table;
 
-use core\Table\MainTable;
+use app\Table\AppTable;
 /**
  * 
  */
-class AventuresTable extends MainTable{
+class AventuresTable extends AppTable{
 
 
 	protected $table_name = 'aventures';

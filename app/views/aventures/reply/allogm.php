@@ -1,33 +1,45 @@
-<div class="OW" id="alloGM_menu">
-	<div class="mobile">
-		<div class="closingArrow"></div>
-	</div>
-	<h3>ALLO GM</h3>
-	<div class="OWContent">
-		<?php
-		foreach ($aventure->characters as $character) {
-			if ($character->name !== "GM") { ?>
-				<div class="alloGM-playerChoice choice-gen button" id="<?=$character->userID?>">
-					<?=$character->name?>
-				</div>
-			<?php
-			}
-		}
-		?>
-	</div>
-</div>
-
-
 <div class="OW" id="alloGM">
-	<div class="mobile">
-		<div class="closingArrow"></div>
-	</div>
 	<h3>ALLO GM</h3>
-	<div class="OWContent">
-		<!-- ajax -->
-		<div class="alloGM-content">
+
+	<?php if ($aventure->userIsGM): ?>
+
+		<div class="alloGMChoices">	
+			<?php foreach ($aventure->characters as $character): ?>
+				<?php if ($character->name !== 'GM'): ?>
+
+					<div class="alloGMChoice choice-gen button"
+					@click="chooseUser(<?=$character->userID?>)"
+
+					><?=$character->name?></div>
+
+				<?php endif ?>
+
+			<?php endforeach ?>
 		</div>
-		<textarea class="alloGM-textArea"></textarea>
-		<div class="alloGM-submit button"></div>
+
+	<?php endif ?>
+
+
+	<div class="OWContent">
+
+
+			<div class="alloGM-content">
+
+				<div v-for="message in messages"
+				class="alloGM-msg"
+				:class="message.class"
+				id="message.id" 
+				data-toggle="tooltip" 
+				:data-placement="message.placement" 
+				:title="message.title">
+					{{message.content}}
+				</div>
+
+			</div>
+			<form method="POST" onsubmit="return false">				
+				<textarea class="alloGM-textArea" v-model="messageInput" @keydown.enter.prevent @keydown.enter=send()></textarea>
+				<input type="submit" class="alloGM-submit button" @click="send()" value="">
+			</form>			
+			
 	</div>
 </div>

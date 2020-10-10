@@ -2,13 +2,13 @@
 
 namespace app\Table;
 
-use core\Table\MainTable;
+use app\Table\AppTable;
 use app\Manager;
 
 /**
  * 
  */
-class CharactersTable extends MainTable{
+class CharactersTable extends AppTable{
 	
 
 	protected $table_name = 'characters';

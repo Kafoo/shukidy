@@ -130,8 +130,10 @@
 </div>
  -->
 
-<!------ JAVASCRIPT STOCK HEADER ----->
-<div id="userID" hidden><?=$_SESSION['id']?></div>
+<!------ JAVASCRIPT STOCK ----->
+<script type="text/JavaScript"> 
+  var userID = <?= $_SESSION['auth'] ?>
+</script>
 <div id="root" hidden><?=ROOT?></div>
 
 

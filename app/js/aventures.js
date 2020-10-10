@@ -1,16 +1,19 @@
 import tinymce_init from './assets/tinymce_init.js'
 import textreply from './aventures/textreply.js'
 import {dicereply, choose, chooseChar} from './aventures/dicereply.js'
+import rollTheDice from './aventures/rollthedice.js'
 import allogm from './aventures/allogm.js'
 import showingOW from './assets/showingOW.js'
 import GMDashboard from './aventures/GMDashboard.js'
 
-
 tinymce_init('desktop')
 showingOW()
 
-textreply();
-dicereply();
+window.rollTheDice = rollTheDice
+
+textreply()
+
+dicereply()
 window.choose = choose
 window.chooseChar = chooseChar
 
@@ -18,11 +21,33 @@ allogm()
 GMDashboard()
 
 
+
+//Gère la transition de fixInfo, puisque la max-height doit être générée dynamiquement
+$('.infoPerso').each(function(index){
+
+	let dropdown = $(this).children('.infoPersoDropdown')
+	let dropdownHeight = 0
+	let dropdownElements = dropdown.children()
+	dropdownElements.each(function(){
+		dropdownHeight = dropdownHeight+$(this).height()
+	})
+
+	//Animation
+	$(this).hover(function(){
+		dropdown.css('max-height', dropdownHeight);
+		dropdown.css('transition', 'max-height 0.3s');
+	}, function(){
+		dropdown.css('max-height', '0');
+		dropdown.css('transition', 'max-height 0.3s');	
+	})
+
+})
+
+
 //Si Desktop, on affiche le classicReply par défaut
 if (window.matchMedia("(min-width: 720px)").matches) {
 	$('.showingOW:first').click();
 }
-
 
 // Fonction exécutée au redimensionnement, contenu executé seulement au passage mobile/desktop et desktop/mobile
 var isMobile;
