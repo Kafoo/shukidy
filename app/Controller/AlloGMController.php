@@ -22,7 +22,7 @@ class AlloGMController extends AppController
 		$avID = $_POST['avID'];
 		$content = $_POST['content'];
 
-		$this->allogm->add($avID, $fromID, $toID, $content);
+		$this->alloGM->add($avID, $fromID, $toID, $content);
 
 	}
 
