@@ -12,7 +12,7 @@ class AlloGMController extends AppController
 
 	public function __construct(){
 		parent::__construct();
-		$this->loadModel('allogm');
+		$this->loadModel('alloGM');
 	}
 
 	public function add(){
