@@ -31,7 +31,7 @@ class AlloGMController extends AppController
 		$userID = $_POST['userID'];
 		$gmID = $_POST['gmID'];
 
-		$res = $this->allogm->getAllByUsers($userID, $gmID);
+		$res = $this->alloGM->getAllByUsers($userID, $gmID);
 
 		echo json_encode($res);
 
