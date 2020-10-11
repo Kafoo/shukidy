@@ -29,11 +29,11 @@
 				class="alloGM-msg"
 				:class="message.class"
 				id="message.id" 
-				data-toggle="tooltip" 
-				:data-placement="message.placement" 
-				:title="message.title">
+				v-tooltipmsg="message">
 					{{message.content}}
 				</div>
+
+
 
 			</div>
 			<form method="POST" onsubmit="return false">				

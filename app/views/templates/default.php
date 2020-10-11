@@ -7,7 +7,7 @@
 	?>
 
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, shrink-to-fit=no">
 	<?=\app\Manager::getInstance()->getDefaultStyle()?>
 	<?=\app\Manager::getInstance()->getStyle()?>
 	<title><?=\app\Manager::getInstance()->getTitle()?></title>
@@ -146,6 +146,7 @@
 
 
 <script src="/node_modules/jquery/dist/jquery.js"></script>
+<script src="/app/js/assets/bootstrap.js"></script>
 <script src="/node_modules/vue/dist/vue.js"></script>
 <?=\app\Manager::getInstance()->getDefaultScript()?>
 <?=\app\Manager::getInstance()->getScripts()?>

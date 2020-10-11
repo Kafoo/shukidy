@@ -20,6 +20,10 @@ src: url("../font/Cinzel-Regular.ttf");
 	padding: 0;
 }
 
+*[data-toggle]{
+	cursor: pointer;
+}
+
 body{
 	height: 100%;
 	background-image: url("../../img/main/fondcadre.png"), url("../../img/main/fondvert.png");

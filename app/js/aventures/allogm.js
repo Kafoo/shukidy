@@ -1,5 +1,13 @@
 export default function allogm(){
 
+Vue.directive('tooltipmsg', function(el, binding){
+    $(el).tooltip({
+             title: binding.value.dat,
+             placement: binding.value.placement,
+             trigger: 'hover'             
+         })
+})
+
 new Vue({
 	el: '#alloGM',
 
@@ -7,7 +15,6 @@ new Vue({
 		if (!userIsGM) {
 			this.update()
 		}
-
 		setInterval(()=>{this.update()}, 3000);
 
 	},
@@ -69,6 +76,9 @@ new Vue({
 
 			posting.done(data => {
 				this.messages = JSON.parse(data)
+	        Vue.nextTick(function () {
+	            $('[data-toggle="tooltip"]').tooltip()
+	        })
 				this.scrolltoLast()
 			});
 		}

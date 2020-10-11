@@ -78,10 +78,7 @@ $carac = $aventure->carac;
 									background-color: <?=$carac->color?>">
 										<?=$carac->value?>
 									</div>
-									<div class="displayCarac-cond <?= $isPositive ? 'pos' : 'neg'?>"
-										data-toggle="tooltip" 
-										data-placement="top" 
-										title="Condition de <?=ucfirst($carac->name)?>">
+									<div class="displayCarac-cond <?= $isPositive ? 'pos' : 'neg'?>">
 										<?=$carac->cond?>
 									</div>
 								</div> 
@@ -91,7 +88,8 @@ $carac = $aventure->carac;
 
 						</div>
 
-						<div class="infoPersoInventory">
+						<div class="infoPersoInventory"
+										v-tooltipp:top="'tiktok'">
 							<?=$character->invent1?> <br>
 							<?=$character->invent2?> <br>
 							<?=$character->invent3?> <br>
