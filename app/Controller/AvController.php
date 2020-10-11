@@ -169,18 +169,22 @@ class AvController extends AppController
 
 	public function show($avID){
 
-		if (!Manager::getInstance()->loggedIn()) {
-			$this->mustLogIn();
-		}else{		
-			$aventure = $this->setAventure($avID);
-			$paging = $this->paging($avID);
-			$entries = $this->entries->findByPosts($avID, $paging['first'], $paging['last']);
-			$posts = $this->groupByPosts($aventure, $entries);
+		if (Manager::getInstance()->loggedIn()) {
+			if($this->characters->findUserChar($avID)){
+				$aventure = $this->setAventure($avID);
+				$paging = $this->paging($avID);
+				$entries = $this->entries->findByPosts($avID, $paging['first'], $paging['last']);
+				$posts = $this->groupByPosts($aventure, $entries);
 
-			$HTML = [];
-			$HTML['paging'] = $paging['HTML'];
-			$HTML['fixInfos'] = $this->getPV('aventures.fixInfos', $aventure);
-			$this->render('aventures.av', compact('aventure', 'posts', 'HTML'));
+				$HTML = [];
+				$HTML['paging'] = $paging['HTML'];
+				$HTML['fixInfos'] = $this->getPV('aventures.fixInfos', $aventure);
+				$this->render('aventures.av', compact('aventure', 'posts', 'HTML'));
+			}else{
+				$this->forbidden('Ton personnage ne fais pas partie de l\'aventure ;-)');
+			}
+		}else{
+			$this->mustLogIn();
 		}
 	}
 

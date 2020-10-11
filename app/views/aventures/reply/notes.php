@@ -1,17 +1,16 @@
 <div class="OW" id="notes">
-	<div class="mobile">
-		<div class="closingArrow"></div>
-	</div>
 	<h3>NOTES</h3>
 	<div class="OWContent">
-		<div class="notesPaper">
+		<div class="notesPaper" @click="edit()">
 			<div class="notesPaperStyle">
-				<span class="notesContent"></span>
+				<span class="notesContent">
+					
+				</span>
 			</div>
 		</div>
 		<div class="editNotesBlock" hidden>
-			<textarea class="notesPaperStyle" id="editNotesArea"></textarea>
-			<div class="confirmEditNotes button">OK</div>
+			<textarea class="notesPaperStyle" id="editNotesArea" v-model="notesInput"></textarea>
+			<div class="confirmEditNotes button" @click="send()">OK</div>
 		</div>
 	</div>
 </div>

@@ -53,25 +53,6 @@ class MainTable
 		return $data;
 	}
 
-	public function update($id, $changes){
-
-		$sql_parts = [];
-		$values= [];
-		foreach ($changes as $k => $v) {
-			$sql_parts[] = $k . " = ?";
-			$values[] = $v;
-		}
-
-		$values[] = $id;
-		$sql_part = implode(',', $sql_parts);
-		$statement = "UPDATE {$this->table_name}
-			SET $sql_part
-			WHERE id = ?
-		";
-
-		return $this->query($statement, $values, true);
-	}
-
 	public function delete($id){
 
 		$statement = "DELETE FROM {$this->table_name} WHERE id = ?

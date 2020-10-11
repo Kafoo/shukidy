@@ -5,6 +5,7 @@ import rollTheDice from './aventures/rollthedice.js'
 import allogm from './aventures/allogm.js'
 import showingOW from './assets/showingOW.js'
 import GMDashboard from './aventures/GMDashboard.js'
+import notes from './aventures/notes.js'
 
 tinymce_init('desktop')
 showingOW()
@@ -18,6 +19,7 @@ window.choose = choose
 window.chooseChar = chooseChar
 
 allogm()
+notes()
 GMDashboard()
 
 

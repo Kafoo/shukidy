@@ -63,6 +63,7 @@ new Vue({
 
 			let posting = $.post('/ajax/AlloGMController/show', {				
 				userID: this.userID,
+				avID: this.avID,
 				gmID: this.gmID
 			} );
 

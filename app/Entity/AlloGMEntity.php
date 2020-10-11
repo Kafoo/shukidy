@@ -20,7 +20,7 @@ class AlloGMEntity extends MainEntity{
 
 	public function getClass(){
 
-		if ($this->fromID == $_SESSION['auth']) {
+		if ($this->fromID === $_SESSION['auth']) {
 			return 'msg-user';
 		}else{
 			return 'msg-other';

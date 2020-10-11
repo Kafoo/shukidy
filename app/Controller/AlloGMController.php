@@ -30,8 +30,9 @@ class AlloGMController extends AppController
 
 		$userID = $_POST['userID'];
 		$gmID = $_POST['gmID'];
+		$avID = $_POST['avID'];
 
-		$res = $this->alloGM->getAllByUsers($userID, $gmID);
+		$res = $this->alloGM->getByUsersAndAv($userID, $gmID, $avID);
 
 		echo json_encode($res);
 

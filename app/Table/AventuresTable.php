@@ -16,7 +16,7 @@ class AventuresTable extends AppTable{
 
 		$data = $this->query("
 			SELECT 
-			av.id, av.name as name, av.visibility, 
+			av.id, av.name as name, av.visibility,  av.description,
 			univ.name as univ_name,
 			users.username as gm_name
 			FROM {$this->table_name} as av

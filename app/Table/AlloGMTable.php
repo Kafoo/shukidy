@@ -15,8 +15,6 @@ class AlloGMTable extends AppTable{
 
 	public function add($avID, $fromID, $toID, $content){
 
-
-
 		$this->query("
 			INSERT INTO {$this->table_name} 
 			(avID, fromID, toID, content, dat)
@@ -26,15 +24,15 @@ class AlloGMTable extends AppTable{
 
 	}
 
-	public function getAllByUsers($userID, $gmID){
+	public function getByUsersAndAv($userID, $gmID, $avID){
 
 		$res = $this->query("
 			SELECT *
 			FROM {$this->table_name} as allo
-			WHERE fromID = ? AND toID = ?
-			OR fromID = ? AND toID = ?
+			WHERE fromID = ? AND toID = ? AND avID = ?
+			OR fromID = ? AND toID = ? AND avID = ?
 			ORDER BY allo.id", 
-			[$userID, $gmID, $gmID, $userID]);
+			[$userID, $gmID, $avID, $gmID, $userID, $avID]);
 		return $res;
 
 	}

@@ -46,7 +46,9 @@ $carac = $aventure->carac;
 					<div class="infoPersoDropdown"> 
 						<img src="<?=$img->rpg('pv_'.$character->pv) ?>" class="pvBar" data-toggle="tooltip" data-placement="left" title="<?=$character->pv?>/10 PV"> 
 						<br>
-						<div class="infoPersoLvl">lvl <?=$character->lvl?></div> 
+						<div class="infoPersoLvl">
+							lvl <?=$character->lvl?>
+						</div> 
 						<div class="infoPersoXP-container">
 							<div class="infoPersoXP"  
 							style="background: linear-gradient(to right, #5154bd <?=$pourcent?>%, rgb(200,200,200) <?=$pourcent?>%);"> 
@@ -74,17 +76,15 @@ $carac = $aventure->carac;
 									title="<?=ucfirst($carac->name)?>"
 									style="background-image: url('<?=$img->gameicon($carac->icon)?>');
 									background-color: <?=$carac->color?>">
-									</div>
-									<div class="displayCarac-value">
 										<?=$carac->value?>
 									</div>
+									<div class="displayCarac-cond <?= $isPositive ? 'pos' : 'neg'?>"
+										data-toggle="tooltip" 
+										data-placement="top" 
+										title="Condition de <?=ucfirst($carac->name)?>">
+										<?=$carac->cond?>
+									</div>
 								</div> 
-
-							<div class="infoPersoCond <?php if($isPositive){echo 'infoPersoCond-pos';}else{echo 'infoPersoCond-neg';} ?>" data-toggle="tooltip" data-placement="top" title="Condition de <?=ucfirst($carac->name)?>">
-
-								<?=$carac->cond?>
-									
-							</div>
 
 							<?php endforeach ?>
 
