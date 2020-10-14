@@ -147,7 +147,11 @@
 
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script src="/app/js/assets/bootstrap.js"></script>
-<script src="/node_modules/vue/dist/vue.js"></script>
+<?php if ($_SESSION['isLocal']): ?>
+	<script src="/node_modules/vue/dist/vue.js"></script>
+<?php else : ?>
+	<script src="/node_modules/vue/dist/vue.min.js"></script>	
+<?php endif; ?>
 <?=\app\Manager::getInstance()->getDefaultScript()?>
 <?=\app\Manager::getInstance()->getScripts()?>
 
