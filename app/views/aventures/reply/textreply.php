@@ -4,6 +4,7 @@
 			<div class="mobile">
 				<div class="closingArrow"></div>
 			</div>
+			<div class="loading"><div></div><div></div><div></div><div></div></div>
 			<textarea class="mytextarea" id="tinymce-classicReply" name="message"></textarea>
 			<input type="text" name="charID" value="<?=$userChar->id?>" hidden>
 			<input type="text" name="avID" value="<?=$aventure->id?>" hidden>

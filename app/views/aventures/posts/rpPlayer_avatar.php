@@ -13,8 +13,8 @@ $character = $post->characterInfos;
 			<?=$user->username?></b><br>
 			<?=$user->msgCount?> messages<br>
 			(<?=$user->grade?>)<br><br>
-			<i><?=$post->dat?><br>
-			à 4h30</i>
+			<i>le <?=$post->date?><br>
+			à <?=$post->time?></i>
 		</div>
 	</div>
 </div>	

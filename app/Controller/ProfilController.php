@@ -28,5 +28,4 @@ class ProfilController extends AppController{
 			$this->notFound('User not found');
 		}
 	}
-
 }

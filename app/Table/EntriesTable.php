@@ -21,8 +21,6 @@ class EntriesTable extends AppTable{
 			[$result, $entryID]);
 	}
 
-
-
 	private function addRp($entry){
 
 		$last = $this->lastByAv($entry->avID);

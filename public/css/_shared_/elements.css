@@ -445,6 +445,24 @@ white-space: nowrap;
     box-shadow: inset 0 0 3px 3px #0000006e;
 }
 
+.displayCarac-value{
+    display: inline-block;
+    position: absolute;
+    top: 17%;
+    left: 43%;
+    border: 1px solid black;
+    background-color: #b0b0b0;
+    padding: 0% 3% 7% 16%;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    width: 31%;
+    height: 45%;
+    font-weight: bold;
+}
+
+
 .displayCarac-cond{
     display: inline-block;
     position: absolute;

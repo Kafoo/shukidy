@@ -11,6 +11,16 @@ class CaracTable extends AppTable{
 
 	protected $table_name = 'carac';
 
+	public function findByUniv($univID){
+
+		$data = $this->query("
+			SELECT carac.*
+			FROM {$this->table_name} as carac
+			WHERE carac.univID = ?",
+			[$univID]);
+		return $data;
+	}
+
 
 	public function findByAv($avID){
 

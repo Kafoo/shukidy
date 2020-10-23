@@ -4,13 +4,25 @@ Vue.directive('tooltip', function(el, binding){
     $(el).tooltip({
              title: binding.value,
              placement: binding.arg,
-             trigger: 'hover'             
+             trigger: 'hover'
          })
+})
+
+Vue.directive('loading', function(el,binding){
+	if (binding == 'true') {
+		$(el).html('<div class="loading"><div></div><div></div><div></div><div></div></div>')
+	}
+	
+})
+
+Vue.component('loading', {
+    template: `<div class="loading"><div></div><div></div><div></div><div></div></div>`,
+
 })
 
 new Vue({
 	el: '#headerDesktop',
-
+	name:'header',
 	data: {
 	},
 

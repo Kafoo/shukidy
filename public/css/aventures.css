@@ -828,7 +828,7 @@
 		background-repeat: no-repeat;
 	}
 
-	.loading{
+/*	.loading{
 		display: inline-block;
 		width: 75px;
 		height: 75px;
@@ -840,7 +840,7 @@
 		background-size: 45px;
 		background-position: top 15px left 15px;
 		background-repeat: no-repeat;
-	}
+	}*/
 
 	#notes{
 		background-color: rgb(159, 163, 159);

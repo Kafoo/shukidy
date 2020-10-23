@@ -15,7 +15,6 @@ $manager->addScript('app','aventures');
 ?>
 
 <h1> <?= strtoupper($aventure->name) ?> </h1>
-
 <?= $HTML['paging'] ?>
 
 <?= $HTML['fixInfos'] ?>
@@ -55,7 +54,7 @@ $manager->addScript('app','aventures');
 
 		<div class="desktop" style="height: 15px" SPACER></div>
 
-		<div class="showingOW replyOption" OW="classicReply" @click="show">
+		<div class="showingOW replyOption" OW="classicReply">
 			<img src="<?=$img->icon('notes')?>">
 		</div>
 		<?php
@@ -71,21 +70,21 @@ $manager->addScript('app','aventures');
 		<?php
 		} ?>
 
-		<div class="showingOW replyOption showingAlloGM showingAlloGM_direct" OW="alloGM">
+		<div class="showingOW replyOption" OW="alloGM">
 			<img src="<?=$img->icon('allogm2')?>">
 		</div>
 
-		<div class="showingOW replyOption showingNotes" OW="notes">
+		<div class="showingOW replyOption" OW="notes">
 			<img src="<?=$img->icon('notes2')?>">
 		</div>
 
-		<div class="showingOW replyOption mobile showingFixInfos" OW="fixinfosMobile">
+		<div class="showingOW replyOption mobile" OW="fixinfosMobile">
 			<img src="<?=$img->icon('perso')?>">
 		</div>
 
 		<?php
 		if ($aventure->userIsGM){ ?>
-			<div class="showingOW replyOption showingGMDashBoard" OW="GMDashBoard-menu">
+			<div class="showingOW replyOption" OW="GMDashBoard-menu">
 				<img src="<?=$img->icon('baguette')?>">
 			</div>
 		<?php 
@@ -156,7 +155,7 @@ $manager->addScript('app','aventures');
 
 </div>
 
-<script type="text/javascript">
+<script type="application/javascript">
 	var avID = <?=$aventure->id?>;
 	var gmID = <?=$aventure->gmID?>;
 	var userIsGM = <?= $aventure->userIsGM ? '1' : '0'?>;

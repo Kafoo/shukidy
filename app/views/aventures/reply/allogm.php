@@ -1,5 +1,5 @@
 <div class="OW" id="alloGM">
-	<h3>ALLO GM</h3>
+ 	<h3>ALLO GM</h3>
 
 	<?php if ($aventure->userIsGM): ?>
 
@@ -19,21 +19,18 @@
 
 	<?php endif ?>
 
-
 	<div class="OWContent">
 
-
 			<div class="alloGM-content">
-
-				<div v-for="message in messages"
+				<loading v-if="loading"></loading>
+				<div v-else
+				v-for="message in messages"
 				class="alloGM-msg"
 				:class="message.class"
 				id="message.id" 
 				v-tooltipmsg="message">
 					{{message.content}}
 				</div>
-
-
 
 			</div>
 			<form method="POST" onsubmit="return false">				

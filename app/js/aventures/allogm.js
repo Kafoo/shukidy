@@ -8,18 +8,16 @@ Vue.directive('tooltipmsg', function(el, binding){
          })
 })
 
+
 new Vue({
 	el: '#alloGM',
 
 	mounted(){
 		if (!userIsGM) {
+			this.loading = true
 			this.update()
 		}
-		setInterval(()=>{this.update()}, 3000);
-
-	},
-
-	computed: {
+		setInterval(()=>{this.update()}, 10000);
 
 	},
 
@@ -27,6 +25,7 @@ new Vue({
 
 		chooseUser(userID){
 			this.userID = userID
+			this.loading = true
 			this.update()
 		},
 
@@ -35,6 +34,8 @@ new Vue({
 			$('.alloGM-content').animate({
 			    scrollTop: 99999
 			});
+
+			console.log('scrolled')
 
 		},
 
@@ -75,23 +76,37 @@ new Vue({
 			} );
 
 			posting.done(data => {
+
+				let oldCount = Object.keys(this.messages).length
+
 				this.messages = JSON.parse(data)
-	        Vue.nextTick(function () {
-	            $('[data-toggle="tooltip"]').tooltip()
-	        })
-				this.scrolltoLast()
+
+				let newCount = Object.keys(this.messages).length
+
+
+		        Vue.nextTick(() => {
+
+					if (oldCount !== newCount) {
+						this.scrolltoLast()
+					}
+
+		        	this.loading = false
+
+		            $('.alloGM-content[data-toggle="tooltip"]').tooltip()
+		        })
 			});
 		}
 	},
 
 	data: {
-
-		avID : avID,
-		userID : userID,
-		gmID: gmID,
+		avID,
+		userID,
+		gmID,
 		messages: [],
-		messageInput: ''
+		messageInput: '',
+		loading: false
 	}
 })
+
 
 }

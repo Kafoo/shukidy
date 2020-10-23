@@ -88,8 +88,7 @@ $carac = $aventure->carac;
 
 						</div>
 
-						<div class="infoPersoInventory"
-										v-tooltipp:top="'tiktok'">
+						<div class="infoPersoInventory">
 							<?=$character->invent1?> <br>
 							<?=$character->invent2?> <br>
 							<?=$character->invent3?> <br>

@@ -4,11 +4,9 @@ $img = new app\Controller\ImgController;
 $post = $variables;
 $user = $post->userInfos;
 $character = $post->characterInfos;
-
 ?>
 
 <div class="writerAvatarSlider">
-	
 	<div class="writerAvatar GM" style="background-image: url(<?=$img->avatar('GM')?>);">
 		<div class="layer desktop">
 			<b><u><?=$character->name?></u><br><br>

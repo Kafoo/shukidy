@@ -93,7 +93,8 @@ class AvController extends AppController
 				$post->characterInfos = $this->characters->find($charID);
 				$post->characterInfos->caracs = $this->carac->findByChar($charID);
 				$post->type = $entry->type;
-				$post->dat = $entry->dat;
+				$post->date = $entry->date;
+				$post->time = $entry->time;
 				$post->avatarHTML = '';
 				$post->entries = [];
 
@@ -203,7 +204,7 @@ class AvController extends AppController
 			}
 			$paging['page'] = $_GET['p'];
 		}else{
-			$paging['page'] = 1;
+			$paging['page'] = $paging['pageCount'];
 		}
 
 		$paging['last'] = $paging['page'] * $this->postsPerPage;

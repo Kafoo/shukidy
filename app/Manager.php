@@ -44,8 +44,9 @@ class Manager{
 		return self::$_instance;
 	} 
 
-	public static function load(){
+	public static function load($isLocal){
 		session_start();
+		$_SESSION['isLocal'] = $isLocal;
 		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
 	}

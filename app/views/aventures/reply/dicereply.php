@@ -5,11 +5,10 @@
 	<h3
 	>LANCE DE DES</h3>
 	<div class="OWContent">
+
 		<form method="POST" onsubmit="return false">
 
-			<h4				data-toggle="tooltip" 
-				data-placement="top" 
-				title="bouh">Titre</h4>
+			<h4>Titre</h4>
 
 			<input type="text" name="diceReply-GM" value="<?php if($aventure->userIsGM){echo 1;}else{echo 0;}?>" hidden>
 

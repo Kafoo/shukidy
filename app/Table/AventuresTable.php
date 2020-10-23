@@ -20,7 +20,7 @@ class AventuresTable extends AppTable{
 			univ.name as univ_name,
 			users.username as gm_name
 			FROM {$this->table_name} as av
-			JOIN mas_univers as univ
+			JOIN univers as univ
 			ON univ.id = av.univID
 			JOIN users
 			ON av.gmID = users.id

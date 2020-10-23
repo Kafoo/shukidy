@@ -54,4 +54,14 @@ class EntriesEntity extends MainEntity
 		return $this->rolled;
 	}
 
+	public function getDate(){
+		$datime = explode(' ', $this->dat);
+		return $datime[0];
+	}
+
+	public function getTime(){
+		$datime = explode(' ', $this->dat);
+		return $datime[1];
+	}
+
 }

@@ -21,7 +21,8 @@ export function dicereply() {
 
 			posting.done(function(data) {
 				if (data === '') {
-					location.reload()
+					window.location = window.location.href.split("?")[0];
+
 				}else{
 					alert(data);
 				}

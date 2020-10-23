@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Kafoo/shukidy#readme",
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.4",
     "jquery": "^3.5.1",
     "tinymce": "^5.5.1",
     "vue": "^2.6.12"

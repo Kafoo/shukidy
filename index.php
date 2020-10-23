@@ -8,20 +8,21 @@ use App\Controller\HomeController;
 use App\Controller\AvController;
 use App\Controller\ProfilController;
 use App\Controller\AjaxController;
+use App\Controller\CharactersController;
 
 //Different ROOT if local or not
 
 if (substr(__DIR__, 0, 2) == 'D:') {
-	$_SESSION['isLocal'] = True;
 	define('ROOT', '');
+	$isLocal = True;
 }else{
 	define('ROOT', __DIR__);
-	$_SESSION['isLocal'] = False;
+	$isLocal = False;
 }
 
 //AUTOLOADER
 require ROOT . '/app/Manager.php';
-Manager::load();
+Manager::load($isLocal);
 
 //AUTH
 Manager::checkAuth();
@@ -55,6 +56,12 @@ if (isset($_GET['url'])) {
 		$controller->show(133);
 	});
 
+	//CHARACTER CREATION
+	$router->get('/crea/char/:userID', function($userID){
+		$controller = new CharactersController;
+		$controller->showCrea($userID);
+	});
+
 	//AUTH
 	$router->post('/auth/:action', function($action){
 		$DBAuth = new DBAuth;
@@ -68,7 +75,6 @@ if (isset($_GET['url'])) {
 		$controller = new $controller;
 		$controller->$action();
 	});
-
 
 	$router->run();
 

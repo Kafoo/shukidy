@@ -23,6 +23,7 @@ notes()
 GMDashboard()
 
 
+
 //Gère la transition de fixInfo, puisque la max-height doit être générée dynamiquement
 $('.infoPerso').each(function(index){
 
