@@ -17,8 +17,13 @@ class ImgController extends AppController
 	public function avatar($avatar, $option = ''){
 
 		$path = $this->imgPath . 'avatars/' . str_replace('.', '/', $avatar) . $option .'.jpg';
-		return ROOT.substr($path, 1);
-		if (file_exists(ROOT.substr($path, 1))) {
+		if (substr(__DIR__, 0, 2) == 'D:') {
+			$file = ROOT.substr($path, 1);
+		}else{
+			$file = ROOT.$path;
+		}
+
+		if (file_exists($file)) {
 			return $path;
 		}else{
 			return $this->genericAvatar();
