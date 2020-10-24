@@ -67,7 +67,7 @@ if (isset($_GET['url'])) {
 	//PROFIL
 	$router->get('/profil', function(){
 		$controller = new ProfilController;
-		$controller->show($_SESSION['auth']);
+		$controller->show();
 	});
 
 	//CHARACTER SHEET

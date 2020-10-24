@@ -138,8 +138,12 @@ class AvController extends AppController
 
 	public function index(){
 
-		$aventures = $this->aventures->getAll();
-		$this->render('aventures.av_list', $aventures);
+		if (Manager::getInstance()->loggedIn()) {
+			$aventures = $this->aventures->getAll();
+			$this->render('aventures.av_list', $aventures);
+		}else{
+			$this->mustLogIn();
+		}
 	}
 
 	public function setAventure($avID){

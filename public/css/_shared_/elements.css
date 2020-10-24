@@ -358,7 +358,7 @@ white-space: nowrap;
     height: 40px;
     margin: 5px 10% 0 10%;
     font-size: 18px;
-    line-height: 50px;
+    line-height: 32px;
     text-align: center;
     text-align-last: center;
     background-color: #565656;
@@ -367,6 +367,12 @@ white-space: nowrap;
     border-bottom: none;
     cursor: pointer;
     font-weight: bold;
+    -webkit-appearance: none;
+    background-image: url(/public/img/icons/closingArrow.png), url(/public/img/icons/closingArrow.png);
+    background-position: 5% center, 95% center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 30px;
+    outline: none;
 }
 
 .descriptionContainer{

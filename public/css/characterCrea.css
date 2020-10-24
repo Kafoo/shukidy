@@ -4,6 +4,7 @@
 .selectBox{
 	margin: 10px auto 0 auto;
 	padding: 5px;
+	-webkit-appearance: none;
 	overflow: auto;
 }
 
@@ -12,7 +13,7 @@
 	height: 30px;
 	margin: 5px;
 	font-size: 16px;
-	line-height: 50px;
+	line-height: 39px;
 	text-align: center;
 	text-align-last: center;
 	background-color: grey;

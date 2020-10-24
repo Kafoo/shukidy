@@ -268,7 +268,6 @@ function checkPager(page){
 		let totalCarac = controller.totalCarac
 
 		if (totalCarac !== caracGoal) {
-			debugger
 			msg = 'Le total des valeurs de tes caractéristiques doit être de '+caracGoal
 			success = 0
 		}

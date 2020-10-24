@@ -17,15 +17,23 @@ class ProfilController extends AppController{
 		$this->loadModel('characters');
 	}
 
-	public function show($userID)
+	public function show()
 	{
-		$user = $this->users->find($userID);
 
-		if ($user) {		
-			$characters = $this->characters->findByUser($userID);
-			$this->render($this->mainName, compact('user', 'characters'));
+		if (Manager::getInstance()->loggedIn()) {
+
+			$userID = $_SESSION['auth'];
+			$user = $this->users->find($userID);
+
+			if ($user) {		
+				$characters = $this->characters->findByUser($userID);
+				$this->render($this->mainName, compact('user', 'characters'));
+			}else{
+				$this->notFound('User not found');
+			}
 		}else{
-			$this->notFound('User not found');
+			$this->mustLogIn();
 		}
+
 	}
 }
