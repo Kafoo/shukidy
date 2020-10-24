@@ -36,14 +36,6 @@
 				<div class="helpDiv" id="helpDefaut" hidden>Un petit défaut de ton choix, pour donner un peu de réalisme à ton perso !</i></div>
 			</td>
 		</tr>
-		<tr>
-			<td><label for="charPhysique">Physique :</label></td>
-			<td><textarea name="charPhysique" placeholder="Ton physique"><?php if (isset($_POST['charPhysique'])){echo $_POST['charPhysique'];}else{echo'';}?></textarea></td>
-
-			<td>
-				<div class="helpDiv" id="helpPhysique" hidden>Le physique de ton personnage</i></div>
-			</td>
-		</tr>
 	</table>
 </div>
 
@@ -52,5 +44,5 @@
 	<div class="helper">
 		<b>C'est ici que tu vas décrire librement ton personnage, ce qu'il a vécu, ce qui fait ce qu'il est aujourd'hui, son physique.</b><br><br>Quel âge a-t-il ? A-t-il un travail, de la famille, des amis ? Est-qu'une cicatrice lui fend le visage, aime-t-il rester seul plutôt qu'entouré ?<br><br>Libre à toi d'écrire 3 lignes, ou un bouquin ;-)
 	</div>
-	<textarea name="charLore" placeholder="Allez, raconte-nous tout."><?php if (isset($_POST['charLore'])){echo $_POST['charLore'];}else{echo'';}?></textarea>
+	<textarea id="descriptionLore" name="charLore" placeholder="Allez, raconte-nous tout."><?php if (isset($_POST['charLore'])){echo $_POST['charLore'];}else{echo'';}?></textarea>
 </div>

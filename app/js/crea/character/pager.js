@@ -28,10 +28,12 @@ export default function Pager(){
 			$('.pagerPrev').hide()
 		}
 		if (page < totalPages) {
+			$('.pagerSubmit').hide()
 			$('.pagerNext').show()
 			$('.pagerNext').html(getPageName(page+1)+' ->')		
-		}else{ //On cache le dernier si besoin
-			$('.pagerNext').hide()	
+		}else{ //On affiche le submit en dernière page
+			$('.pagerNext').hide()			
+			$('.pagerSubmit').show()
 		}
 	}
 
@@ -60,7 +62,7 @@ export default function Pager(){
 		hideError()
 	});
 
-	var changePage = function(previousPage, nextPage){
+	var changePage = (previousPage, nextPage)=>{
 		//On enlève les erreurs
 		hideError()
 		//On change la navigation
@@ -77,8 +79,8 @@ export default function Pager(){
 		}
 		nextPageContainer.animate({left:'0'}, {"duration":200, "queue": false})
 		//On ramène le scroll au title
+		this.scrollToTitle()
 	}
-
 
 	this.getCurrentPage = function(){
 		return currentPage;

@@ -27,12 +27,12 @@ $carac = $aventure->carac;
 					if ($character->userID === $_SESSION['auth']) { ?> 
 						<img src="<?=$img->icon('monperso')?>" style="width: 10px;"> 
 						<div class="infoPersoNom">
-							<a href="profil.php?persoID=<?=$character->id?>"><?=$character->name?></a>
+							<a href="/sheet/<?=$character->id?>"><?=$character->name?></a>
 							</div>
 						<img src="<?=$img->icon('monperso')?>" style="width: 10px;"> 
 					<?php 
 					} else {?> 
-						<div class="infoPersoNom"><a href="profil.php?persoID=<?=$character->id?>"><?=$character->name?></a></div> 
+						<div class="infoPersoNom"><a href="/sheet/<?=$character->id?>"><?=$character->name?></a></div> 
 
 					<?php 
 					} 

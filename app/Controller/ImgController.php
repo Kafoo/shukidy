@@ -14,8 +14,19 @@ class ImgController extends AppController
 		parent::__construct();
 	}
 
-	public function avatar($avatar){
-		return $this->imgPath . 'avatars/' . str_replace('.', '/', $avatar) . '.jpg';
+	public function avatar($avatar, $option = ''){
+
+		$path = $this->imgPath . 'avatars/' . str_replace('.', '/', $avatar) . $option .'.jpg';
+
+		if (file_exists(ROOT.substr($path, 1))) {
+			return $path;
+		}else{
+			return $this->genericAvatar();
+		}
+	}
+
+	public function genericAvatar(){
+		return $this->imgPath . 'avatars/null.jpg';
 	}
 
 	public function icon($icon){

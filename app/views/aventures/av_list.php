@@ -2,6 +2,7 @@
 $manager = \app\Manager::getInstance();
 $manager->setStyle('aventures');
 $manager->setTitle('Aventures');
+
 ?>
 
 
@@ -12,24 +13,31 @@ $manager->setTitle('Aventures');
 	
 	<?php 
 
-	foreach ($variables as $av): ?>
+	foreach ($variables as $aventure): ?>
+
 
       <div class="card small z-depth-2">
 
-	      <span class="card-title"> <?= $av->name ?></span>
+	      <span class="card-title"> <?= $aventure->name ?></span>
 
 	          <div class="card-info">
-				     <b>Univers</b> : <?=ucfirst($av->univ_name)?> <br>
-				     <b>GM</b> : <?= $av->gm_name ?> <br>
+				     <b>Univers</b> : <?=ucfirst($aventure->univ_name)?> <br>
+				     <b>GM</b> : <?= $aventure->gm_name ?> <br>
 	          </div>
 	          
 	          <div class="card-desc">
-	          	<?= $av->description ?>
+	          	<?= $aventure->description ?>
 	         </div>
 
 	        <div class="card-action">
-	          <a href="<?=$av->url?>">Continuer</a>
-	          <a href="#">+ Infos</a>
+	        	<?php if ($aventure->userIsIn): ?>
+		        	<a href="<?=$aventure->url?>">Continuer</a>
+	        	<?php else : ?>
+	        		<a href="">Rejoindre</a>
+	        	<?php endif ?>
+
+        		<a href="#">+ Infos</a>
+
 	        </div>
         
         </div>

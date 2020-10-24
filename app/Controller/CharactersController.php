@@ -18,31 +18,69 @@ class CharactersController extends AppController{
 		$this->loadModel('characters');
 	}
 
+	public function delete(){
+
+		$charID = $_POST['charID'];
+
+		$this->characters->remove($charID);
+
+	}
 
 	public function create(){
 
 		$char = new CharactersEntity;
 
 		foreach ($_POST['data'] as $key => $value) {
-			$char->$key = $value;
+
+			$this->hydrate($char, $key, $value);
+
 		}
 
 		$this->characters->add($char);
 
+		$newChar = $this->characters->findByName($char->name);
+		echo $newChar->id;
+
 	}
 
-	public function showCrea($userID)
+
+	public function showCrea()
 	{
 
-		$user = $this->users->find($userID);
-
-		if ($user) {		
+		if (Manager::getInstance()->loggedIn()) {
 
 			$univers = $this->univers->find(2);
 			$univers->caracs = $this->carac->findByUniv($univers->id);
 			$this->render('crea.character.characterCrea', $univers);
+
 		}else{
-			$this->notFound('User not found');
+			$this->mustLogIn();
 		}
 	}
+
+	public function showSheet($charID){
+
+		if (Manager::getInstance()->loggedIn()) {
+
+			$char = $this->characters->find($charID);
+			if ($char) {
+				if ($char->userID = $_SESSION['auth']) {
+					$char->fromUser = true;
+				}else{
+					$char->fromUser = false;
+				}
+			}else{
+				$this->notFound('Personnage inconnu !');
+			}
+
+			$char->caracs = $this->carac->findByChar($char->id);
+			$this->render('sheet', $char);
+
+
+		}else{
+			$this->mustLogIn();
+		}	
+
+	}
+
 }

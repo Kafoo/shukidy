@@ -7,7 +7,9 @@ $character = $post->characterInfos;
 ?>
 
 <div class="writerAvatarSlider">
-	<div class="writerAvatar" style="background-image: url(<?=$img->avatar($character->id)?>);">
+	<div class="writerAvatar" 
+	style="background-image: url(<?=$img->avatar($character->id, '.min')?>);"
+	onclick="window.location = '/sheet/<?=$character->id?>'">
 		<div class="layer desktop">
 			<b><u><?=$character->name?></u><br><br>
 			<?=$user->username?></b><br>

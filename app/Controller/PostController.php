@@ -35,7 +35,7 @@ class PostController extends AppController
 			$entry->$key = $post;
 		}
 
-		$userChar = $this->characters->findUserChar($entry->avID);
+		$userChar = $this->characters->findByUserAndAv($entry->avID);
 		$UserCaracs = $this->carac->findByChar($entry->charID);
 		
 		foreach ($UserCaracs as $carac) {
@@ -82,7 +82,7 @@ class PostController extends AppController
 		$entry->charID = $_POST['charID'];
 		$entry->content = $_POST['content'];
 
-		$userChar = $this->characters->findUserChar($_POST['avID']);
+		$userChar = $this->characters->findByUserAndAv($_POST['avID']);
 		if ($userChar->name == 'GM') {
 			$entry->type = 'rpGM';
 		}else{

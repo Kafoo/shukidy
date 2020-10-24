@@ -24,6 +24,18 @@ class PowersTable extends AppTable{
 		return $data;
 	}
 
+
+	public function findByChar($charID){
+		$data = $this->query("
+			SELECT p.id, p.name, p.description, p.icon, p.type
+			FROM {$this->table_name} as p
+			JOIN rel_char2powers as c2p
+			ON p.id = c2p.powerID
+			WHERE c2p.charID = ?",
+			[$charID]);
+		return $data;
+	}
+
 }
 
 ?>

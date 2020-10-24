@@ -47,6 +47,15 @@
 	right: 10%;
 }
 
+.submit.pagerSubmit{
+    position: absolute;
+    background-color: #66d566;
+    font-size: 1.2em;
+    font-style: initial;
+    top: 0;
+    right: 10%;
+}
+
 .pagesBigContainer{
 	position: relative;
 	overflow: hidden;

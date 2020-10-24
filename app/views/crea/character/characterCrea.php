@@ -55,5 +55,5 @@ $univers = $variables;
 <div class="pagerNav">
 	<div class="button pagerbutton pagerPrev"></div>
 	<div class="button pagerbutton pagerNext"></div>
+	<div class="button pagerbutton pagerSubmit" hidden>Je valide mon perso !</div>
 </div>
-<input type="submit" name="submitCharCrea" class="button">

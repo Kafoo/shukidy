@@ -53,8 +53,8 @@ class EntriesTable extends AppTable{
 			INSERT INTO 
 			av_entries (avID, postID, type, dat, charID)
 			VALUES 
-			(?, ?, ?, ?, ?)",
-			[$entry->avID, $entry->postID, $entry->type, $entry->dat, $entry->charID]);
+			(?, ?, ?, NOW(), ?)",
+			[$entry->avID, $entry->postID, $entry->type, $entry->charID]);
 
 		if ($entry->type == "drPlayer" 
 			OR $entry->type == "drGM") {
@@ -89,7 +89,7 @@ class EntriesTable extends AppTable{
 			carac.name as caracName,
 			carac.icon as caracIcon,
 			carac.color as caracColor,
-			av.id as avID, av.name as avName,
+			av.id as avID, av.name as avName, av.writerID,
 			user.username, user.id as userID,
 			ch.name as charName,
 			ch.id as charID,

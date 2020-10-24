@@ -81,6 +81,7 @@
 
 	/*REVOIR*/
 	.choice-gen{
+		display: inline-block;
 		position: relative;
 		width: max-content;
 		margin: 10px auto;
@@ -88,6 +89,14 @@
 		background-color: grey;
 		border: 1px solid black;
 		border-radius: 3px;
+	}
+
+	.choice-add{
+		background-color: #4CAF50;
+	}
+
+	.choice-delete{
+		background-color: #d10000;
 	}
 
 	/*REVOIR*/

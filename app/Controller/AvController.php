@@ -32,7 +32,6 @@ class AvController extends AppController
 			$HTML = $this->getPV('aventures.posts.rpGM', $entry);
 		}
 		elseif ($entry->type == 'drGM') {
-
 			$HTML = $this->getPV('aventures.posts.drGM', compact('post', 'entry'));
 		}
 		elseif ($entry->type == 'drPlayer') {
@@ -40,6 +39,9 @@ class AvController extends AppController
 		}
 		elseif ($entry->type == 'log') {
 			$HTML = $this->getPV('aventures.posts.log', $entry);
+		}
+		elseif($entry->type == 'start'){
+			$HTML = 'Poste un premier message ;-)';
 		}
 		else{
 			$HTML = '';
@@ -90,8 +92,10 @@ class AvController extends AppController
 				//Creation of POST object
 				$post = new \stdClass;
 				$post->userInfos = $this->users->find($userID);
-				$post->characterInfos = $this->characters->find($charID);
-				$post->characterInfos->caracs = $this->carac->findByChar($charID);
+				if ($post->userInfos) {				# code...
+					$post->characterInfos = $this->characters->find($charID);
+					$post->characterInfos->caracs = $this->carac->findByChar($charID);
+				}
 				$post->type = $entry->type;
 				$post->date = $entry->date;
 				$post->time = $entry->time;
@@ -148,7 +152,7 @@ class AvController extends AppController
 		}
 
 		$aventure->carac = $this->carac->findByAv($avID);
-		$aventure->userChar = $this->characters->findUserChar($avID);
+		$aventure->userChar = $this->characters->findByUserAndAv($avID);
 
 		//Last is user ?
 		$aventure->last = $this->entries->lastByAv($avID);
@@ -171,7 +175,7 @@ class AvController extends AppController
 	public function show($avID){
 
 		if (Manager::getInstance()->loggedIn()) {
-			if($this->characters->findUserChar($avID)){
+			if($this->characters->findByUserAndAv($avID)){
 				$aventure = $this->setAventure($avID);
 				$paging = $this->paging($avID);
 				$entries = $this->entries->findByPosts($avID, $paging['first'], $paging['last']);

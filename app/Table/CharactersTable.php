@@ -13,14 +13,34 @@ class CharactersTable extends AppTable{
 
 	protected $table_name = 'characters';
 
+
+	public function remove($charID){
+
+		$this->query("
+			DELETE FROM {$this->table_name}
+			WHERE id = ?",
+			[$charID]);
+
+		$this->query("
+			DELETE FROM rel_char2powers
+			WHERE charID = ?",
+			[$charID]);		
+
+		$this->query("
+			DELETE FROM rel_char2carac
+			WHERE charID = ?",
+			[$charID]);
+
+	}
+
 	public function add($char){
 
 		$this->query("
 			INSERT INTO {$this->table_name}
-			(userID, name, nature, attitude, concept, defaut, physique, univID, raceID, classeID, lore)
+			(userID, name, nature, attitude, concept, defaut, univID, raceID, classeID, lore)
 			VALUES 
-			(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-			[$char->userID, $char->name, $char->nature, $char->attitude, $char->concept, $char->defaut, $char->physique, $char->univID, $char->raceID, $char->classeID, $char->lore]);
+			(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			[$char->userID, $char->name, $char->nature, $char->attitude, $char->concept, $char->defaut, $char->univID, $char->raceID, $char->classeID, $char->lore]);
 
 		$userChars = $this->findByUser($char->userID);
 		$last = end($userChars);
@@ -54,11 +74,35 @@ class CharactersTable extends AppTable{
 
 	}
 
-	public function findByUser($userID){
+	public function find($charID){
+		$res = $this->query("
+			SELECT *, ch.id as id
+			FROM {$this->table_name} as ch
+			JOIN leveling as lvl
+			ON lvl.lvl = ch.lvl
+			WHERE ch.id = ?", 
+			[$charID], true);
+		return $res;
+	}
+
+	public function findByName($name){
 		$res = $this->query("
 			SELECT *
 			FROM {$this->table_name}
-			WHERE userID = ?", 
+			WHERE name = ?", 
+			[$name], true);
+		return $res;
+	}
+
+
+	public function findByUser($userID){
+		$res = $this->query("
+			SELECT *, ch.id as id
+			FROM {$this->table_name} as ch
+			JOIN leveling as lvl
+			ON lvl.lvl = ch.lvl
+			WHERE userID = ?
+			ORDER BY ch.id", 
 			[$userID]);
 		return $res;
 	}
@@ -76,7 +120,7 @@ class CharactersTable extends AppTable{
 		return $res;	
 	}
 
-	public function findUserChar($avID){
+	public function findByUserAndAv($avID){
 
 		$userID = $_SESSION['auth'];
 

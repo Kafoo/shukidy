@@ -68,17 +68,13 @@ table label{
 
 #descriptionLore{
 	width: 60%;
+	height: 150px;
+	resize: none;
 	border: 2px solid black;
 	border-radius: 3px;
 	margin: 20px auto;
 	padding: 20px;
 	background-color: #4e5556;
-}
-
-#lore{
-	width: 80%;
-	margin: 20px auto 5px auto;
-	height: 100px;
 }
 
 @media (max-width: 760px){

@@ -7,7 +7,7 @@ $character = $post->characterInfos;
 ?>
 
 <div class="writerAvatarSlider">
-	<div class="writerAvatar GM" style="background-image: url(<?=$img->avatar('GM')?>);">
+	<div class="writerAvatar GM" style="background-image: url(<?=$img->avatar('GM', '.min')?>);">
 		<div class="layer desktop">
 			<b><u><?=$character->name?></u><br><br>
 			<?=$user->username?></b><br>

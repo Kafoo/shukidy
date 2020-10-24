@@ -56,9 +56,9 @@
 		<ul>
 			<li><a class="nav1" href="/">ACCUEIL</a></li>|
 			<li><a class="nav2" href="/aventures">AVENTURES</a></li>|
+			<li><a class="nav3" href="/univers">UNIVERS</a></li>|
 			<li><a class="nav4" href="/profil">PROFIL</a></li>|
-			<li><a class="nav5" href="/help">HELP</a></li>|
-			<li><a class="nav6" href="/univedit/1">EDITION FANTASY</a></li>
+			<li><a class="nav5" href="/help">HELP</a></li>
 		</ul>
 	</div>
 </nav>

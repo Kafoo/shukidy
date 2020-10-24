@@ -26,10 +26,18 @@ class AppController extends Controller{
 
 	}
 
-	public function index()
-	{
+	public function index(){
 		$this->render($this->mainName, null);
 	}
 
+	public function hydrate($object, $prop, $value){
+		
+		$method = 'set'.ucfirst($prop);
+		if (method_exists ($object , $method )) {
+			$object->$method($value);
+		}else{
+			$object->$prop = $value;
+		}
+	}
 	
 }

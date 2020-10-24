@@ -9,6 +9,8 @@ use app\Manager;
  */
 class UniversController extends AppController{
 
+	protected $mainName = 'univers';
+
 	public function __construct(){
 		parent::__construct();
 		$this->loadModel('natures');
@@ -43,5 +45,12 @@ class UniversController extends AppController{
 		}
 
 	}
+
+
+	public function index()
+	{
+		$this->render($this->mainName, null);
+	}
+
 
 }

@@ -9,6 +9,8 @@ use App\Controller\AvController;
 use App\Controller\ProfilController;
 use App\Controller\AjaxController;
 use App\Controller\CharactersController;
+use App\Controller\HelpController;
+use App\Controller\UniversController;
 
 //Different ROOT if local or not
 
@@ -38,6 +40,18 @@ if (isset($_GET['url'])) {
 		$controller->index();
 	});
 
+	//HELP
+	$router->get('/help', function(){
+		$controller = new HelpController;
+		$controller->index();
+	});
+
+	//UNIVERS
+	$router->get('/univers', function(){
+		$controller = new UniversController;
+		$controller->index();
+	});
+
 	//INDEX AVENTURES
 	$router->get('/aventures', function(){
 		$controller = new AvController;
@@ -53,13 +67,19 @@ if (isset($_GET['url'])) {
 	//PROFIL
 	$router->get('/profil', function(){
 		$controller = new ProfilController;
-		$controller->show(133);
+		$controller->show($_SESSION['auth']);
+	});
+
+	//CHARACTER SHEET
+	$router->get('/sheet/:id', function($charID){
+		$controller = new CharactersController;
+		$controller->showSheet($charID);
 	});
 
 	//CHARACTER CREATION
-	$router->get('/crea/char/:userID', function($userID){
+	$router->get('/crea/char', function(){
 		$controller = new CharactersController;
-		$controller->showCrea($userID);
+		$controller->showCrea();
 	});
 
 	//AUTH

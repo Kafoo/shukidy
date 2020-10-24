@@ -20,9 +20,9 @@ class ProfilController extends AppController{
 	public function show($userID)
 	{
 		$user = $this->users->find($userID);
-		$characters = $this->characters->findByUser($userID);
 
 		if ($user) {		
+			$characters = $this->characters->findByUser($userID);
 			$this->render($this->mainName, compact('user', 'characters'));
 		}else{
 			$this->notFound('User not found');

@@ -24,6 +24,18 @@ class NaturesTable extends AppTable{
 		return $data;
 	}
 
+	public function findByChar($charID){
+		$data = $this->query("
+			SELECT nat.id, nat.name, nat.description, nat.icon, nat.type
+			FROM {$this->table_name} as nat
+			JOIN characters as ch 
+			ON nat.id = ch.raceID
+			OR nat.id = ch.classeID
+			WHERE ch.id = ?",
+			[$charID]);
+		return $data;
+	}
+
 }
 
 ?>

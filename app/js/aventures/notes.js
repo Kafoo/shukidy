@@ -5,6 +5,7 @@ new Vue({
  
 	mounted(){ 
 		this.update()
+		console.log(this)
 	}, 
  
 	methods: { 

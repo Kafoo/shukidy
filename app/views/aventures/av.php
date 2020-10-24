@@ -124,7 +124,7 @@ $manager->addScript('app','aventures');
 
 		<!-- GM DASHBOARD -->
 
-		<?php include ROOT."/app/views/aventures/reply/dashboard.php" ?>
+		<?php require ROOT."/app/views/aventures/reply/dashboard.php" ?>
 
 
 	</div>
@@ -134,7 +134,7 @@ $manager->addScript('app','aventures');
 	<!-- NEXTBOX -->
 
 	<?php
-	if ($aventure->writerID == '0') { ?>
+	if (false/*$aventure->writerID == '0'*/) { ?>
 		<div></div>
 		<div class="centering nextBox">
 			<div class="button requestNext">

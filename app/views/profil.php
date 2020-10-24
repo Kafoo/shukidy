@@ -2,6 +2,7 @@
 
 $manager = \app\Manager::getInstance();
 $manager->setTitle('Profil');
+$manager->addScript('app', 'profil');
 
 $user = $variables['user'];
 $characters = $variables['characters'];
@@ -10,24 +11,41 @@ $characters = $variables['characters'];
 
 <h1>Profil de <?=$user->username?></h1>
 
+<div class="ventreBox centering">
+	<h3>Informations</h3>
 
-<h2>Informations</h2>
+		<h4>
+			Messages
+		</h4>
+		<?=$user->msgCount?> 
+		<h4>
+			Grade
+		</h4>
+		<?=$user->grade?> 
 
-<ul>
-	<li>Messages : <?=$user->msgCount?> </li>
-	<li>Grade : <?=$user->grade?> </li>
-</ul>
+<br><br>
+</div>
 
-<h2>Personnages :</h2>
 
-<ul>
+<div class="ventreBox centering">
+	<h3>Personnages :</h3>
 
-<?php foreach($characters as $character):?>
+	<?php foreach($characters as $character):?>
+		<div>		
+			<a class="choice-gen button inline" href="/sheet/<?=$character->id?>">
+				<?=$character->name?>
+			</a>
+			<div class="choice-gen choice-delete button inline" charID='<?=$character->id?>'>
+				Supprimer
+			</div>	
+		</div>
 
-	<li><?=$character->name?></li>
+	<?php endforeach; ?>
 
-<?php endforeach; ?>
+	<a class="choice-gen choice-add button" href="/crea/char">
+		Créer un nouveau perso
+	</a>
 
-</ul>
+</div>
 
 

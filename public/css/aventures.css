@@ -173,6 +173,20 @@
 		text-align: center;
 	}
 
+	.msg.msg-start{
+		position: relative;
+		min-height: 10px;
+		margin: 15px 0;
+		padding: 10px 25px;
+	    background-color: #FFEB3B;
+		border: 1.5px solid black;
+		border-radius: 6px;
+		box-shadow: inset -2px -2px 17px 0px rgba(79, 81, 43, 0.52);
+		z-index: 20;
+		overflow: hidden;
+		text-align: center;
+	}
+
 	.msg img{
 		display: block;
 		width: auto;
@@ -527,24 +541,6 @@
 	.infoPerso{
 		box-shadow: 1px 1px 1px black;
 		padding: 5px 0 0 0;
-	}
-
-	.infoPersoXP-container{
-		display: inline-block;
-		position: relative;
-		top: -1.7px;
-		left: -5px;
-	}
-
-	.infoPersoXP{
-		display: inline-block;
-		border: 1px solid black;
-		font-size: 0.7em;
-		line-height: 16px;
-		border-radius: 3px;
-		height: 14px;
-		width: 88px;
-		z-index: -1;
 	}
 
 	.infoPersoNom{

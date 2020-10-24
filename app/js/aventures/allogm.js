@@ -8,6 +8,11 @@ Vue.directive('tooltipmsg', function(el, binding){
          })
 })
 
+//On scroll to bottom dès l'arrivée sur l'onglet
+$('.showingOW[ow="alloGM"]').click(function(){
+	$('.alloGM-content').animate({scrollTop: 99999});
+})
+
 
 new Vue({
 	el: '#alloGM',
@@ -18,7 +23,6 @@ new Vue({
 			this.update()
 		}
 		setInterval(()=>{this.update()}, 10000);
-
 	},
 
 	methods: {

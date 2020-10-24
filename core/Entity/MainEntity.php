@@ -1,7 +1,7 @@
 <?php
 
 namespace core\Entity;
-
+use app\Manager;
 /**
  * 
  */
