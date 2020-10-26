@@ -54,8 +54,8 @@ $univers = $variables;
 
 			foreach ($univers->caracs as $key => $carac) { $key++;?>
 				
-				<div class="caracContainer" 
-				carac="<?=$key?>" 
+				<div class="caracContainer"
+				carac="<?=$key?>"
 				caracID="<?=$carac->id?>"
 				<?php 
 				if ($carac->name == '' AND $carac->icon == '' AND $carac->color == '#858585'):?>

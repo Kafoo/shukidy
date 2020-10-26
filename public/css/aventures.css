@@ -114,15 +114,17 @@
 	}
 
 	.layer.desktop{
-		height: 130px;
-		background-color: rgba(0,0,0,0.8);
-		color: white;
-		padding: 10px;
-		border-radius: 10px 0 0 10px;
-		opacity: 0;
-		transition: 0.3s;
-		text-align: center;
-		font-size: 0.9em;
+	    display: inline-block;
+	    width: 83%;
+	    height: 131px;
+	    background-color: rgb(0 0 0 / 48%);
+	    color: white;
+	    padding: 10px;
+	    border-radius: 10px 0 0 10px;
+	    opacity: 0;
+	    transition: 0.3s;
+	    text-align: center;
+	    font-size: 0.9em;
 	}
 
 	@media (min-width: 720px){
