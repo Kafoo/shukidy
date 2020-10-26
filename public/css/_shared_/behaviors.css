@@ -1,4 +1,5 @@
 	.mobile{display: none;}
+	.desktop{display: initial;}
 
 	.inline{
 		display: inline-block;
@@ -176,7 +177,7 @@
 
 @media (max-width: 720px){
 
-	.desktop{display: none;}
+	.desktop{display: none!important;}
 	.mobile{display: initial;}
 
 	.container{

@@ -92,3 +92,15 @@ table label{
 		width: 80%;
 	}
 }
+
+/*----------- MEDIA 720PX -----------*/
+
+    @media (max-width: 720px){
+
+        .descriptionBox, .selectBox{
+            margin: 0;
+        }
+
+
+
+    }

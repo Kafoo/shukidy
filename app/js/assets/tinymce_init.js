@@ -22,8 +22,8 @@ export default function tinymceInit($format){
 		if ($format == 'mobile') {
 			tinymce.init({
 			    selector: '.mytextarea',
-			    content_css : "style/_shared_/tinymce.css",
-			    height: 184,
+			    content_css : "/public/css/_shared_/tinymce.css",
+			    height: 290,
 			    menubar: false,
 			    forced_root_block : "",
 			    statusbar : false,

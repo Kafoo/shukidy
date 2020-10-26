@@ -79,13 +79,14 @@ $manager->setStyle('sheet');
 		</div>
 		<br>
 
-		<h3>Tes discipline de <?=$character->race->name?> : </h3>
+		<h3>Tes capacités de <?=$character->race->name?> : </h3>
 
-		<?php foreach ($character->disciplines as $discipline): ?>
-			<h4><?=$discipline->name?></h4><br>
+		<?php foreach ($character->capacités as $capacité): ?>
+			<h4><?=$capacité->name?></h4><br>
 			<div>
-				<?=$discipline->description?>
+				<?=$capacité->description?>
 			</div>
+			<br>
 		<?php endforeach ?>
 		<br>
 	</div>
@@ -98,13 +99,14 @@ $manager->setStyle('sheet');
 		</div>
 		<br>
 
-		<h3>Tes capacité de <?=$character->classe->name?> : </h3>
+		<h3>Tes disciplines de <?=$character->classe->name?> : </h3>
 
-		<?php foreach ($character->capacités as $capacité): ?>
-			<h4><?=$capacité->name?></h4><br>
+		<?php foreach ($character->disciplines as $discipline): ?>
+			<h4><?=$discipline->name?></h4><br>
 			<div>
-				<?=$capacité->description?>
+				<?=$discipline->description?>
 			</div>
+			<br>
 		<?php endforeach ?>
 		<br>
 	</div>

@@ -40,6 +40,13 @@ class Database{
 
 		$req = $this->getPDO()->query($statement);
 
+		$statement =trim($statement);
+		if (strpos($statement, "INSERT") === 0 
+		|| strpos($statement, "DELETE") === 0
+		|| strpos($statement, "UPDATE") === 0) {
+			return $req;
+		}
+
 		if ($class === null) {
 			$req->setFetchMode(PDO::FETCH_OBJ);
 		}else{

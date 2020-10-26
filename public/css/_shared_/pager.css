@@ -47,7 +47,7 @@
 	right: 10%;
 }
 
-.submit.pagerSubmit{
+.pagerSubmit{
     position: absolute;
     background-color: #66d566;
     font-size: 1.2em;
@@ -99,3 +99,54 @@
     background-size: cover;
     cursor: pointer;
 }
+
+
+/*----------- MEDIA 720PX -----------*/
+
+    @media (max-width: 720px){
+
+        .pagerTitle{
+            width: 100%;
+            font-size: 20px;
+            border-radius: 0;
+            border-bottom: 3px solid black;
+        }
+
+        .pagerbutton{
+            height: 30px;
+            line-height: 30px;
+            background-color: #e2e7ff;
+            box-shadow: inset -2px -1px 8px 0px #00000082;
+            width: 40%;
+            top : 10px;
+        }
+
+        .pagerPrev{
+            left: 3%;
+        }
+
+        .pagerNext{
+            right: 3%;
+        }
+
+        .pagerSubmit{
+            background-color: #66d566;
+            font-size: 1.2em;
+            font-style: initial;
+            right: 3%;
+        }
+
+        .pagerErrorContainer{
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .pagerError{
+            border: none;
+            border-radius: 0;
+        }
+
+
+
+    }

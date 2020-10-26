@@ -17,7 +17,9 @@ $manager->addScript('app','aventures');
 <h1> <?= strtoupper($aventure->name) ?> </h1>
 <?= $HTML['paging'] ?>
 
-<?= $HTML['fixInfos'] ?>
+<div class="fixInfosSlider desktop">
+	<?= $HTML['fixInfos'] ?>
+</div>
 
 <div class="av-grid">
 
@@ -119,6 +121,8 @@ $manager->addScript('app','aventures');
 			<h3>INFOS PERSOS</h3>
 			<div class="OWContent">
 				
+				<?= $HTML['fixInfos'] ?>
+
 			</div>
 		</div>
 

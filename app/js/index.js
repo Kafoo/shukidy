@@ -21,7 +21,7 @@ Vue.component('loading', {
 })
 
 new Vue({
-	el: '#bigHeader',
+	el: '#header',
 	name:'header',
 	data: {
 	},
@@ -41,7 +41,7 @@ new Vue({
 
 		logout: function(){
 			let posting = $.post("/ajax/AjaxController/logout", function(data) {
-				location.reload();
+				window.location = '/';
 			});
 		}
 	}
@@ -49,7 +49,6 @@ new Vue({
 
 var sectionHeight = $('section').height();
 $('.fixInfosSlider').height(sectionHeight-200);
-
 
 
 /*NAVIGATION DEROULANTE MOBILE*/
@@ -70,7 +69,23 @@ $('#connectionLogo').click(function(){
 });
 
 
-
+//On cache le nav ou la co si on clique ailleurs
+$(document).mouseup(function(e) {
+	if (isMobile) {	
+	    var nav = $("#navDesktop");
+	    if (!nav.is(e.target) && nav.has(e.target).length === 0) {
+	        nav.slideUp(200);
+			$('#navLogo').show();
+			$('#croixNav').hide();
+	    }
+	    var connectionDesktop = $("#connectionDesktop");
+	    if (!connectionDesktop.is(e.target) && connectionDesktop.has(e.target).length === 0) {
+	        connectionDesktop.slideUp(200);
+			$('#connectionLogo').show();
+			$('#croixConnection').hide();
+	    }
+	}
+});
 
 
 
@@ -81,60 +96,18 @@ function redimensionnement(e) {
 	if("matchMedia" in window) {
 		if(window.matchMedia("(min-width:720px)").matches) {
 			if (lastFormat == 'mobile' || lastFormat == '') {
+				//On affiche la navigation et la co
+				$('#navDesktop').show()
+				$('#connectionDesktop').show()
 				//on redéfini les variables
 				isMobile = false;
 				lastFormat = 'desktop';
 			}
 		} else {
-			if (lastFormat == 'desktop' || lastFormat == '') {				
-				/*----HIDE&SHOW HEADER ON SCROLL----*/
-
-				function slideUpHeader(){
-					$('#navDesktop').hide(150);
-					$('#connectionDesktop').hide(150);
-					$('#headerMobile').slideUp(300,function(){
-						$('#navLogo').show();
-						$('#connectionLogo').show();
-						$('#croixNav').hide();
-						$('#croixConnection').hide();		
-					});
-
-				}
-
-				var position = $(window).scrollTop(); 
-				var iScrollPos = 0;
-				var lastSlide = 0;
-				var intervalSlide = 50;
-
-
-				$(window).scroll(function slideHeaderMobile() {
-					var currentSlide = Date.now();
-				    var iCurScrollPos = $(this).scrollTop();
-				    if (currentSlide > lastSlide + intervalSlide) {    	
-					    if (iCurScrollPos > iScrollPos) {
-					        slideUpHeader();
-					    } else {
-					       $('#headerMobile').slideDown(300);
-					    }
-				    }
-				    lastSlide = currentSlide;
-				    iScrollPos = iCurScrollPos;
-				});
-				//On cache le nav ou la co si on clique ailleurs
-				$(document).mouseup(function(e) {
-				    var navMobile = $("#navDesktop");
-				    if (!navMobile.is(e.target) && navMobile.has(e.target).length === 0) {
-				        navMobile.slideUp(200);
-						$('#navLogo').show();
-						$('#croixNav').hide();
-				    }
-				    var connectionDesktop = $("#connectionDesktop");
-				    if (!connectionDesktop.is(e.target) && connectionDesktop.has(e.target).length === 0) {
-				        connectionDesktop.slideUp(200);
-						$('#connectionLogo').show();
-						$('#croixConnection').hide();
-				    }
-				});
+			if (lastFormat == 'desktop' || lastFormat == '') {
+				//On cache la nav
+				$('#navDesktop').hide()
+				$('#connectionDesktop').hide()
 				//on redéfini les variables
 				isMobile = true;
 				lastFormat = 'mobile';

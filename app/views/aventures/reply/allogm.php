@@ -1,4 +1,7 @@
 <div class="OW" id="alloGM">
+	<div class="mobile">
+		<div class="closingArrow"></div>
+	</div>
  	<h3>ALLO GM</h3>
 
 	<?php if ($aventure->userIsGM): ?>

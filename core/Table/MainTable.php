@@ -23,10 +23,18 @@ class MainTable
 		}
 	}
 
+
+	public function encodeSQL($data){
+		return nl2br(htmlspecialchars($data, ENT_QUOTES));
+	}
+
 	public function query($statement, $values = false, $one = false){
 
 		$entity_name = str_replace('Table', 'Entity', get_class($this));
 		if ($values) {
+/*			foreach ($values as $key => $value) {
+				$values[$key] = $this->encodeSQL($value);
+			}*/
 			$data = $this->db->prepare($statement, 
 				$values , $entity_name, $one);
 		}else{
@@ -43,6 +51,14 @@ class MainTable
 		return $data;
 	}
 
+	protected function findByUniqID($uniqID){
+		$data = $this->query("
+			SELECT id
+			FROM {$this->table_name}
+			WHERE uniqID= ?",
+			[$uniqID], true);
+		return $data;
+	}
 
 	public function find($id){
     		$data = $this->query("

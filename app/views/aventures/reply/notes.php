@@ -1,5 +1,8 @@
 
 <div class="OW" id="notes">
+	<div class="mobile">
+		<div class="closingArrow"></div>
+	</div>
 	<h3>NOTES</h3>
 	<div class="OWContent">
 		<div class="notesPaper" @click="edit()">

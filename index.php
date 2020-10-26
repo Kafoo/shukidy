@@ -82,6 +82,12 @@ if (isset($_GET['url'])) {
 		$controller->showCrea();
 	});
 
+	//CHARACTER CREATION
+	$router->get('/crea/univ/:id', function($univID){
+		$controller = new UniversController;
+		$controller->showCrea($univID);
+	});
+
 	//AUTH
 	$router->post('/auth/:action', function($action){
 		$DBAuth = new DBAuth;

@@ -3,6 +3,7 @@
 /*import Pager from './pager.js'
 import CharacterCreaController from './characterCreaController.js'*/
 
+
 function Pager(){
 
 	let totalPages = $('.pageContainer').length
@@ -203,7 +204,7 @@ function refresh(what, natureID = 0){
 	//Loading
 	$('.select'+What).html('<option>...</option>');
 	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
-	$('.'+what+'Background').css('background-image','')	
+	$('.'+what+'Background').css('background-image','')
 	let posting = $.post('/ajax/UniversController/getInfos', {				 
 		univID : univID,
 		what : what,
@@ -212,6 +213,7 @@ function refresh(what, natureID = 0){
 
 	posting.done(data => { 
 		let parsedata = JSON.parse(data)
+
 		//On vide les choix et la description
 		$('.select'+What).html('');
 		$('.'+what+'Description').html('');
@@ -230,8 +232,9 @@ function refresh(what, natureID = 0){
 				//(on met la description du premier et son icon)
 				if (key == 0) {
 					$('.'+what+'Description').html(value['description'])
-					$('.'+what+'Background').css('background-image','url(../../public/img/gameicons/'+value['icon']+')')		
-				}
+					if (what === 'race' || what === 'classe') {
+						$('.'+what+'Background').css('background-image','url(../../public/img/gameicons/'+value['icon']+')')		
+					}				}
 				$('.select'+What).append("<option value='"+value['description']+"' id='"+value['id']+"' icon='"+value['icon']+"'>"+value['name']+"</option>")
 			})
 			//On affiche les boutons d'édition et suppression
