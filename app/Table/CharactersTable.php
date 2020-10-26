@@ -14,6 +14,8 @@ class CharactersTable extends AppTable{
 	protected $table_name = 'characters';
 
 
+
+
 	public function remove($charID){
 
 		$this->query("
@@ -72,6 +74,16 @@ class CharactersTable extends AppTable{
 		}
 
 
+	}
+
+	public function findByUniv($univID){
+
+		$data = $this->query("
+			SELECT *
+			FROM {$this->table_name}
+			WHERE univID = ?",
+			[$univID]);
+		return $data;
 	}
 
 	public function find($charID){

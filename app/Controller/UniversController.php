@@ -116,11 +116,29 @@ class UniversController extends AppController{
 
 	public function editCaracs(){
 
+		$msg = '';
+		$success = 0;
+		$univID = $_POST['univID'];
 		$caracs = $_POST['caracs'];
-		foreach ($caracs as $carac) {
-			$carac = json_decode($carac);
-			$this->carac->update($carac);
+
+		if (count($this->characters->findByUniv($univID)) == 0) {
+			foreach ($caracs as $carac) {
+				$carac = json_decode($carac);
+				$this->carac->update($carac);
+			}
+			$success = 1;
+		}else{
+			$msg = 'Au moins une personne a déjà créé un personnage dans ton univers. Tu ne peux donc pas modifier le nombre de caractéristiques.';
 		}
+
+
+
+		$response = [
+			'msg' => $msg,
+			'success' => $success
+		];
+
+		echo json_encode($response);
 
 	}
 

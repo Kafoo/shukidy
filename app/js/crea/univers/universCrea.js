@@ -137,7 +137,7 @@ $('.cancel_carac').click(function(){
 //--------- CONFIRM CARACS ---------
 
 $('.edit_carac').click(function(e){
-
+	var univID = $('.univID-stock').html()
 	let caracs = {}
 	//On récupère toutes les carac
 	var caracContainer = $('.caracContainer')
@@ -154,24 +154,29 @@ $('.edit_carac').click(function(e){
 		//On les ajoute dans un objet, qui sera lui même dans l'objet caracs
 		caracs[caracX] = JSON.stringify({'num':num, 'icon':icon, 'name':name, 'color':color, 'id':id})
 	}
-	console.log(caracs);
 
 	//Loading
 	$('.edit_carac').html('...')
 	$.post({
 		url: '/ajax/UniversController/editCaracs',
 		data: {
+			univID: univID,
 			caracs: caracs
 		},
-  		dataType: 'html',
+  		dataType: 'json',
 
   		success: function(data, statut){
-  			if (data == '') {			
+
+  			if (data['success'] === 0) {
+  				alert(data['msg'])
+  				window.location = '/crea/univ/'+univID+'?p=2'
+  			}else{
 	  			$('.edit_carac').html('C\'est validé !')
 	  			setTimeout(function(){
 	  				$('.edit_carac').html('Valider les caractéristiques')
 	  			}, 2000)
   			}
+
   		},
 	})	
 
