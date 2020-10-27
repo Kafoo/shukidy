@@ -77,7 +77,7 @@ class WorldsController extends AppController{
 			$this->powers->add($worldID, $natureID, $power);
 			$success = 1;
 		}else{
-			$msg = 'Ce nom de pouvoir est déjà pris dans cet worlds';
+			$msg = 'Ce nom de pouvoir est déjà pris dans cet univers';
 		}
 
 
@@ -102,7 +102,7 @@ class WorldsController extends AppController{
 			$this->natures->add($worldID, $nature);
 			$success = 1;
 		}else{
-			$msg = 'Ce nom de nature est déjà pris dans cet worlds';
+			$msg = 'Ce nom de nature est déjà pris dans cet univers';
 		}
 
 		$response = [
