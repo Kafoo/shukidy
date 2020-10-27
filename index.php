@@ -13,6 +13,7 @@ use app\Controller\HelpController;
 use app\Controller\WorldsController;
 use app\Controller\AppController;
 
+
 //Different ROOT if local or not
 
 if (substr(__DIR__, 0, 2) == 'D:') {
@@ -39,6 +40,9 @@ if (isset($_GET['url'])) {
 	$router->get('/', function(){
 		$controller = new HomeController;
 		$controller->index();
+
+
+
 	});
 
 	//HELP
