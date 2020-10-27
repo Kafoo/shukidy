@@ -24,6 +24,8 @@ class CharactersController extends AppController{
 
 		$this->characters->remove($charID);
 
+		$this->log($_SESSION['username'].' a supprimé un personnage');
+
 	}
 
 	public function create(){
@@ -39,6 +41,9 @@ class CharactersController extends AppController{
 		$this->characters->add($char);
 
 		$newChar = $this->characters->findByName($char->name);
+
+		$this->log($_SESSION['username'].' a créé un personnage');
+
 		echo $newChar->id;
 
 	}
@@ -49,6 +54,8 @@ class CharactersController extends AppController{
 		$avID = $_POST['avID'];
 
 		$data = $this->characters->addToAv($charID, $avID);
+
+		$this->log($_SESSION['username'].' a ajouté un personnage (id '.$charID.') à une aventure (id '.$avID.')');
 
 		echo $data;
 

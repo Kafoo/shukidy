@@ -17,6 +17,7 @@ class AppController extends Controller{
 
 		$this->viewpath = ROOT . '/app/views/';
 		$this->imgPath = '/public/img/';
+		$this->loadModel('log');
 
 	}
 
@@ -26,8 +27,13 @@ class AppController extends Controller{
 
 	}
 
+	public function log($msg){
+		$this->log->add($msg);
+	}
+
 	public function showLog(){
-		$this->render('log');
+		$logs = $this->log->getAll();
+		$this->render('log', $logs);
 	}
 
 	public function index(){

@@ -35,10 +35,6 @@ class Controller{
 		$this->render('404', $error);
 	}
 
-	public function log($msg){
-		file_put_contents($_SERVER['DOCUMENT_ROOT']. $this->viewpath . 'log.php', $msg.'<br>', FILE_APPEND);
-	}
-
 	public function getPV($partialView, $variables = null){
 		ob_start();
 		require ($this->viewpath . str_replace('.', '/', $partialView) . '.php');

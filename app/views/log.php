@@ -1,1 +1,12 @@
-Ploupun inconnu est venu sur la page d'aventures<br>un inconnu est venu sur la page d'aventures<br>
+<?php
+$logs = $variables;
+$manager = \app\Manager::getInstance();
+$manager->setTitle('LOG');
+
+foreach ($logs as $log) {
+	
+	echo $log->dat .' ____ '. $log->content .'<br>';
+
+}
+
+?>

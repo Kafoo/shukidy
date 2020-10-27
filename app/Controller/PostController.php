@@ -25,6 +25,8 @@ class PostController extends AppController
 
 		$this->entries->rollUpdate($entryID, $result);
 
+		$this->log($_SESSION['username'].' a lancé un dé demandé par le GM');
+
 	}
 
 	public function dicereply(){
@@ -73,6 +75,11 @@ class PostController extends AppController
 
 		$this->entries->add($entry);
 		
+		if ($entry->type == "drPlayer") {
+			$this->log($_SESSION['username'].' a lancé un dé dans l\'aventure '.$entry->avID);
+
+		}
+
 	}
 
 	public function post(){
@@ -108,5 +115,8 @@ class PostController extends AppController
 			$entry->postID = $last->postID+1;
 		}
 		$this->entries->add($entry);
+
+		$this->log($_SESSION['username'].' a posté dans l\'aventure '.$entry->avID);
+
 	}
 }

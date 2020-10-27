@@ -40,6 +40,9 @@ class WorldsController extends AppController{
 		];
 		echo json_encode($response);
 
+		$this->log($_SESSION['username'].' a supprimé un pouvoir');
+
+
 	}
 
 	public function deleteNature(){
@@ -61,6 +64,8 @@ class WorldsController extends AppController{
 		];
 
 		echo json_encode($response);
+
+		$this->log($_SESSION['username'].' a supprimé une nature');
 
 	}
 
@@ -88,6 +93,8 @@ class WorldsController extends AppController{
 
 		echo json_encode($response);
 
+		$this->log($_SESSION['username'].' a créé un pouvoir dans l\'univers '. $worldID);
+
 	}
 
 	public function createNature(){
@@ -112,6 +119,8 @@ class WorldsController extends AppController{
 
 		echo json_encode($response);
 
+		$this->log($_SESSION['username'].' a créé une nature dans l\'univers '. $worldID);
+
 	}
 
 	public function editCaracs(){
@@ -127,6 +136,9 @@ class WorldsController extends AppController{
 				$this->carac->update($carac);
 			}
 			$success = 1;
+
+			$this->log($_SESSION['username'].' a supprimé un pouvoir');
+
 		}else{
 			$msg = 'Au moins une personne a déjà créé un personnage dans ton worlds. Tu ne peux donc pas modifier le nombre de caractéristiques.';
 		}
@@ -139,6 +151,8 @@ class WorldsController extends AppController{
 		];
 
 		echo json_encode($response);
+
+		$this->log($_SESSION['username'].' a édité les caractéristiques de l\'univers '. $worldID);
 
 	}
 
@@ -153,6 +167,8 @@ class WorldsController extends AppController{
 			$this->powers->edit($attribute);
 		}
 
+		$this->log($_SESSION['username'].' a édité un attribut');
+
 	}
 
 	public function edit(){
@@ -162,6 +178,10 @@ class WorldsController extends AppController{
 		$value = $_POST['value'];
 
 		$this->worlds->edit($what, $worldID, $value);
+
+		$this->log($_SESSION['username'].' a édité la description ou la règle de l\'univers '. $worldID);
+
+
 	}
 
 	private function getNatures($type, $worldID)
