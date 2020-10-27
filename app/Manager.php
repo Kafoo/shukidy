@@ -137,7 +137,7 @@ class Manager{
 	}
 
 	public function setStyle($style){
-		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/'.$style.'.css">';
+		$this->style = '<link rel="stylesheet" type="text/css" href="'.$this->cssPath.'/'.$style.'?v=2.css">';
 	}
 
 	public function getDefaultScript(){

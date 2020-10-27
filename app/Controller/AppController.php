@@ -28,12 +28,17 @@ class AppController extends Controller{
 
 	}
 
+	public function mail($subject, $msg){
+
+		$mail = new MailController;
+		$mail->send($subject, $msg, ['ant.guillard@gmail.com']);
+	}
+
 	public function log($msg){
 		$this->log->add($msg);
 
 		$mail = new MailController;
 		$mail->send('nouveau log sur Shukidy!', $msg, ['ant.guillard@gmail.com']);
-
 
 	}
 

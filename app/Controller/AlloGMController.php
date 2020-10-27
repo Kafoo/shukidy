@@ -24,6 +24,10 @@ class AlloGMController extends AppController
 
 		$this->alloGM->add($avID, $fromID, $toID, $content);
 
+		if ($toID == '132') {
+			$this->mail('Nouveau message sur alloGM', 'Nouveau message de '. $_SESSION['username']);
+		}
+
 	}
 
 	public function show(){
