@@ -42,8 +42,8 @@ $characters = $variables['characters'];
 
 	<?php endforeach; ?>
 
-	<a class="choice-gen choice-add button" href="/crea/char">
-		Créer un nouveau perso
+	<a class="choice-gen choice-add button" href="/crea/char/2">
+		Créer un nouveau perso de "Fantasy"
 	</a>
 
 </div>
