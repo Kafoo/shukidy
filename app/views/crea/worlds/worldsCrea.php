@@ -3,11 +3,11 @@ $manager = \app\Manager::getInstance();
 $img = new app\Controller\ImgController;
 
 $manager->setTitle('Création d\'univers');
-$manager->setStyle('universCrea');
+$manager->setStyle('worldsCrea');
 
-$manager->addScript('app','crea.univers.universCrea');
+$manager->addScript('app','crea.worlds.worldsCrea');
 
-$univers = $variables;
+$world = $variables;
 ?>
 
 
@@ -18,9 +18,9 @@ $univers = $variables;
 
 <?php endif ?>
 
-<div class="univID-stock" hidden><?=$univers->id?></div>
+<div class="worldID-stock" hidden><?=$world->id?></div>
 
-<h1>EDITION<br>"<?= strtoupper($univers->name)?>"</h1>
+<h1>EDITION<br>"<?= strtoupper($world->name)?>"</h1>
 
 
 <div class="button selectBigContainer current" bigContainer="description">DESCRIPTION</div>	
@@ -37,7 +37,7 @@ $univers = $variables;
 	<div class="helper">Tu peux ici décrire ton univers, de son environnement naturel aux les êtres qui y évoluent, en passant par sa politique, ses conflits, son ambiance, ses couleurs et ses odeurs. Fais-toi plaisir, tu feras plaisir à tes joueurs !</div>
 
 
-	<div class="univDescription"><?=nl2br($univers->description)?></div>
+	<div class="univDescription"><?=nl2br($world->description)?></div>
 	<div class="button form_button edit_univ" edit="univ">éditer la description</div>
 </div>
 
@@ -52,7 +52,7 @@ $univers = $variables;
 			<?php 
 
 
-			foreach ($univers->caracs as $key => $carac) { $key++;?>
+			foreach ($world->caracs as $key => $carac) { $key++;?>
 				
 				<div class="caracContainer"
 				carac="<?=$key?>"
@@ -271,6 +271,6 @@ $univers = $variables;
 
 	<div class="helper">Tu peux définir des règles de jeu associé à cet univers. <br>Par exemple, tu peux vouloir que tout le monde écrive à la 3e personne, ou que les joueurs n'utilisent une caractéristique que dans un cas bien particulier.</div>
 
-	<div class="regles"><?=nl2br($univers->regles)?></div>
+	<div class="regles"><?=$world->regles?></div>
 	<div class="button form_button edit_regles" edit="regles">éditer les règles</div>
 </div>

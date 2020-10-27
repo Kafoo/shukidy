@@ -33,6 +33,7 @@
     flex-grow: 1;
     text-align: center;
     padding: 11px;
+    cursor: pointer;
 }
 
 
@@ -352,6 +353,7 @@ white-space: nowrap;
     padding: 8px 15px;
     text-align: center;
 }
+
 
 .selectBox{
     width: 80%;

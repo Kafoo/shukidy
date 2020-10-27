@@ -8,7 +8,7 @@
 		<?php 
 
 		$caracCount = 0;
-		foreach ($univers->caracs as $key => $carac) { $key++;
+		foreach ($world->caracs as $key => $carac) { $key++;
 		if ($carac->name !== ''){
 			$caracCount++;
 			?>

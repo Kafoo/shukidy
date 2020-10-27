@@ -10,7 +10,7 @@ use App\Controller\ProfilController;
 use App\Controller\AjaxController;
 use App\Controller\CharactersController;
 use App\Controller\HelpController;
-use App\Controller\UniversController;
+use App\Controller\WorldsController;
 
 //Different ROOT if local or not
 
@@ -47,8 +47,8 @@ if (isset($_GET['url'])) {
 	});
 
 	//UNIVERS
-	$router->get('/univers', function(){
-		$controller = new UniversController;
+	$router->get('/worlds', function(){
+		$controller = new WorldsController;
 		$controller->index();
 	});
 
@@ -77,15 +77,15 @@ if (isset($_GET['url'])) {
 	});
 
 	//CHARACTER CREATION
-	$router->get('/crea/char', function(){
+	$router->get('/crea/char/:id', function($worldID){
 		$controller = new CharactersController;
-		$controller->showCrea();
+		$controller->showCrea($worldID);
 	});
 
-	//CHARACTER CREATION
-	$router->get('/crea/univ/:id', function($univID){
-		$controller = new UniversController;
-		$controller->showCrea($univID);
+	//WORLD CREATION
+	$router->get('/crea/world/:id', function($worldID){
+		$controller = new WorldsController;
+		$controller->showCrea($worldID);
 	});
 
 	//AUTH

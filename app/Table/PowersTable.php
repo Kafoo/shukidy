@@ -29,7 +29,7 @@ class PowersTable extends AppTable{
 
 	}
 
-	public function add($univID, $natureID, $power){
+	public function add($worldID, $natureID, $power){
 
 		$power->uniqID = uniqid();
 

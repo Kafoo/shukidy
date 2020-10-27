@@ -24,7 +24,7 @@ class MainTable
 	}
 
 
-	public function encodeSQL($data){
+	protected function encodeSQL($data){
 		return nl2br(htmlspecialchars($data, ENT_QUOTES));
 	}
 
@@ -32,9 +32,6 @@ class MainTable
 
 		$entity_name = str_replace('Table', 'Entity', get_class($this));
 		if ($values) {
-/*			foreach ($values as $key => $value) {
-				$values[$key] = $this->encodeSQL($value);
-			}*/
 			$data = $this->db->prepare($statement, 
 				$values , $entity_name, $one);
 		}else{

@@ -7,7 +7,7 @@
 <!-- RACE -->
 <div class="ventreBox">
 	<div class="raceBox">
-		<h3>Races de <?=$univers->name?> :</h3>
+		<h3>Races de <?=$world->name?> :</h3>
 		<select class="selectBox selectAttribute selectNature selectRace" select="race"></select>
 		<div class="descriptionContainer">
 			<div class="natureBackground raceBackground"></div>				

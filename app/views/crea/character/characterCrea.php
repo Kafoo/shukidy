@@ -8,11 +8,11 @@ $manager->addScript('app','crea.character.pager');
 $manager->addScript('app','crea.character.characterCreaController');
 $manager->addScript('app','crea.character.characterCrea');
 
-$univers = $variables;
+$world = $variables;
 
 ?>
 
-<div class="univID-stock" hidden><?=$univers->id?></div>
+<div class="worldID-stock" hidden><?=$world->id?></div>
 
 <h1>CREATION DE PERSONNAGE</h1>
 
@@ -51,6 +51,15 @@ $univers = $variables;
 	</div>
 	
 </div>
+
+<br>
+<div class="centering">
+	<a style="text-decoration:underline; cursor:pointer" href="/crea/world/<?=$world->id?>">
+		Editer l'univers "<?=$world->name?>"
+	</a>
+</div>
+<br>
+
 
 <div class="pagerNav">
 	<div class="button pagerbutton pagerPrev"></div>

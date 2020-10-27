@@ -8,18 +8,20 @@ use app\Manager;
 /**
  * 
  */
-class UniversTable extends AppTable{
+class WorldsTable extends AppTable{
 	
-	protected $table_name = 'univers';
+	protected $table_name = 'worlds';
 
 
-	public function edit($what, $univID, $value){
+	public function edit($what, $worldID, $value){
+
+		$value = str_replace( "\n", '<br />', $value );
 
 		$res = $this->query("
 			UPDATE {$this->table_name}
 			SET {$what} = ?
 			WHERE id = ?",
-			[$value, $univID]);
+			[$value, $worldID]);
 	}
 
 

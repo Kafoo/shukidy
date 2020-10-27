@@ -53,13 +53,13 @@ class NaturesTable extends AppTable{
 
 		//On supprime la relation de la nature avec l'univers
 		$this->query("
-			DELETE FROM rel_univ2natures
+			DELETE FROM rel_world2natures
 			WHERE natureID = ?",
 			[$natureID]);
 
 	}
 
-	public function add($univID, $nature){
+	public function add($worldID, $nature){
 
 		$nature->uniqID = uniqid();
 
@@ -71,10 +71,10 @@ class NaturesTable extends AppTable{
 
 		//On lie la nature à l'univers
 		$nature->id = $this->findByUniqID($nature->uniqID)->id;
-		$this->query("INSERT INTO rel_univ2natures
-			(univID, natureID)
+		$this->query("INSERT INTO rel_world2natures
+			(worldID, natureID)
 			VALUES (?, ?)",
-			[$univID, $nature->id]);
+			[$worldID, $nature->id]);
 
 	}
 
@@ -88,25 +88,25 @@ class NaturesTable extends AppTable{
 			[$nature->name, $nature->description, $nature->icon, $nature->id]);
 	}
 
-	public function findByNameAndUniv($name, $univID){
+	public function findByNameAndUniv($name, $worldID){
 		$data = $this->query("
 			SELECT *
 			FROM {$this->table_name} as nat
-			JOIN rel_univ2natures as u2n 
+			JOIN rel_world2natures as u2n 
 			ON nat.id = u2n.natureID
-			WHERE u2n.univID = ? AND nat.name = ?",
-			[$univID, $name]);
+			WHERE u2n.worldID = ? AND nat.name = ?",
+			[$worldID, $name]);
 		return $data;
 	}
 
-	public function findByUniv($univID, $type){
+	public function findByUniv($worldID, $type){
 		$data = $this->query("
 			SELECT nat.id, name, description, icon
 			FROM {$this->table_name} as nat
-			JOIN rel_univ2natures as u2n 
+			JOIN rel_world2natures as u2n 
 			ON nat.id = u2n.natureID
-			WHERE u2n.univID = ? AND nat.type = ?",
-			[$univID, $type]);
+			WHERE u2n.worldID = ? AND nat.type = ?",
+			[$worldID, $type]);
 		return $data;
 	}
 

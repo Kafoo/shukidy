@@ -7,15 +7,15 @@ use app\Manager;
 /**
  * 
  */
-class UniversController extends AppController{
+class WorldsController extends AppController{
 
-	protected $mainName = 'univers';
+	protected $mainName = 'worlds';
 
 	public function __construct(){
 		parent::__construct();
 		$this->loadModel('natures');
 		$this->loadModel('powers');
-		$this->loadModel('univers');
+		$this->loadModel('worlds');
 		$this->loadModel('carac');
 		$this->loadModel('characters');
 	}
@@ -31,7 +31,7 @@ class UniversController extends AppController{
 			$this->powers->remove($powerID);
 			$success = 1;
 		}else{
-			$msg = 'Un personnage de cet univers a déjà ce pouvoir ! Tu ne peux pas le supprimer, désolé.';
+			$msg = 'Un personnage de cet worlds a déjà ce pouvoir ! Tu ne peux pas le supprimer, désolé.';
 		}
 
 		$response = [
@@ -52,7 +52,7 @@ class UniversController extends AppController{
 			$this->natures->remove($natureID);
 			$success = 1;
 		}else{
-			$msg = 'Un personnage de cet univers a déjà cette nature ! Tu ne peux pas la supprimer, désolé.';
+			$msg = 'Un personnage de cet worlds a déjà cette nature ! Tu ne peux pas la supprimer, désolé.';
 		}
 
 		$response = [
@@ -68,16 +68,16 @@ class UniversController extends AppController{
 
 		$msg = '';
 		$success = 0;
-		$univID = $_POST['univID'];
+		$worldID = $_POST['worldID'];
 		$natureID = $_POST['natureID'];
 		$power = json_decode($_POST['power']);
 
 		if (count($this->powers->findByNameAndNature($power->name, $natureID)) == 0) {
 
-			$this->powers->add($univID, $natureID, $power);
+			$this->powers->add($worldID, $natureID, $power);
 			$success = 1;
 		}else{
-			$msg = 'Ce nom de pouvoir est déjà pris dans cet univers';
+			$msg = 'Ce nom de pouvoir est déjà pris dans cet worlds';
 		}
 
 
@@ -94,15 +94,15 @@ class UniversController extends AppController{
 
 		$msg = '';
 		$success = 0;
-		$univID = $_POST['univID'];
+		$worldID = $_POST['worldID'];
 		$nature = json_decode($_POST['nature']);
 
-		if (count($this->natures->findByNameAndUniv($nature->name, $univID)) == 0) {
+		if (count($this->natures->findByNameAndUniv($nature->name, $worldID)) == 0) {
 
-			$this->natures->add($univID, $nature);
+			$this->natures->add($worldID, $nature);
 			$success = 1;
 		}else{
-			$msg = 'Ce nom de nature est déjà pris dans cet univers';
+			$msg = 'Ce nom de nature est déjà pris dans cet worlds';
 		}
 
 		$response = [
@@ -118,17 +118,17 @@ class UniversController extends AppController{
 
 		$msg = '';
 		$success = 0;
-		$univID = $_POST['univID'];
+		$worldID = $_POST['worldID'];
 		$caracs = $_POST['caracs'];
 
-		if (count($this->characters->findByUniv($univID)) == 0) {
+		if (count($this->characters->findByUniv($worldID)) == 0) {
 			foreach ($caracs as $carac) {
 				$carac = json_decode($carac);
 				$this->carac->update($carac);
 			}
 			$success = 1;
 		}else{
-			$msg = 'Au moins une personne a déjà créé un personnage dans ton univers. Tu ne peux donc pas modifier le nombre de caractéristiques.';
+			$msg = 'Au moins une personne a déjà créé un personnage dans ton worlds. Tu ne peux donc pas modifier le nombre de caractéristiques.';
 		}
 
 
@@ -157,16 +157,16 @@ class UniversController extends AppController{
 
 	public function edit(){
 
-		$univID = $_POST['univID'];
+		$worldID = $_POST['worldID'];
 		$what = $_POST['what'];
 		$value = $_POST['value'];
 
-		$this->univers->edit($what, $univID, $value);
+		$this->worlds->edit($what, $worldID, $value);
 	}
 
-	private function getNatures($type, $univID)
+	private function getNatures($type, $worldID)
 	{
-		$data = $this->natures->findByUniv($univID, $type);
+		$data = $this->natures->findByUniv($worldID, $type);
 		$data = json_encode($data);
 		return $data;
 	}
@@ -179,12 +179,12 @@ class UniversController extends AppController{
 	}
 
 	public function getInfos(){
-		$univID = $_POST['univID'];
+		$worldID = $_POST['worldID'];
 		$what = $_POST['what'];
 		$natureID = $_POST['natureID'];
 
 		if ($what === 'race' || $what === "classe") {
-			echo $this->getNatures($what, $univID);
+			echo $this->getNatures($what, $worldID);
 		}
 
 		if ($what === 'capa' || $what === "disc") {
@@ -194,14 +194,14 @@ class UniversController extends AppController{
 	}
 
 
-	public function showCrea()
+	public function showCrea($worldID)
 	{
 
 		if (Manager::getInstance()->loggedIn()) {
 
-			$univers = $this->univers->find(2);
-			$univers->caracs = $this->carac->findByUniv($univers->id);
-			$this->render('crea.univers.universCrea', $univers);
+			$world = $this->worlds->find($worldID);
+			$world->caracs = $this->carac->findByUniv($world->id);
+			$this->render('crea.worlds.worldsCrea', $world);
 
 		}else{
 			$this->mustLogIn();
@@ -211,7 +211,10 @@ class UniversController extends AppController{
 
 	public function index()
 	{
-		$this->render($this->mainName, null);
+
+		$worlds = $this->worlds->getAll();
+
+		$this->render($this->mainName, $worlds);
 	}
 
 

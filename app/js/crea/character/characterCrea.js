@@ -194,7 +194,7 @@ const controller = new Controller_creaperso()
 
 
 function refresh(what, natureID = 0){
-	var univID = $('.univID-stock').html()
+	var worldID = $('.worldID-stock').html()
 	var What = what[0].toUpperCase() + what.substring(1)
 	//On définit "type" comme un "what" qui aurait toutes ses lettres
 	var type;
@@ -205,8 +205,8 @@ function refresh(what, natureID = 0){
 	$('.select'+What).html('<option>...</option>');
 	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 	$('.'+what+'Background').css('background-image','')
-	let posting = $.post('/ajax/UniversController/getInfos', {				 
-		univID : univID,
+	let posting = $.post('/ajax/WorldsController/getInfos', {				 
+		worldID : worldID,
 		what : what,
 		natureID : natureID
 	} ); 
@@ -328,7 +328,7 @@ $('.pagerSubmit').click(function(){
 
 	let data = {
 		userID : userID,
-		univID : $('.univID-stock').html(),
+		worldID : $('.worldID-stock').html(),
 		raceID : $('.selectRace').find(":selected")[0].id,
 		capaID : $('.selectCapa').find(":selected")[0].id,
 		classeID : $('.selectClasse').find(":selected")[0].id,

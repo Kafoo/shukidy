@@ -6,7 +6,7 @@
 <!-- CLASSE -->
 <div class="ventreBox">
 	<div class="classeBox">
-		<h3>Classes de <?=$univers->name?> :</h3>
+		<h3>Classes de <?=$world->name?> :</h3>
 		<select class="selectBox selectAttribute selectNature selectClasse" select="classe"></select>
 		<div class="descriptionContainer">
 			<div class="natureBackground classeBackground"></div>				

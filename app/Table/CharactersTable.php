@@ -14,8 +14,6 @@ class CharactersTable extends AppTable{
 	protected $table_name = 'characters';
 
 
-
-
 	public function remove($charID){
 
 		$this->query("
@@ -39,10 +37,10 @@ class CharactersTable extends AppTable{
 
 		$this->query("
 			INSERT INTO {$this->table_name}
-			(userID, name, nature, attitude, concept, defaut, univID, raceID, classeID, lore)
+			(userID, name, nature, attitude, concept, defaut, worldID, raceID, classeID, lore)
 			VALUES 
 			(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-			[$char->userID, $char->name, $char->nature, $char->attitude, $char->concept, $char->defaut, $char->univID, $char->raceID, $char->classeID, $char->lore]);
+			[$char->userID, $char->name, $char->nature, $char->attitude, $char->concept, $char->defaut, $char->worldID, $char->raceID, $char->classeID, $char->lore]);
 
 		$userChars = $this->findByUser($char->userID);
 		$last = end($userChars);
@@ -72,17 +70,39 @@ class CharactersTable extends AppTable{
 				(?, ?, ?)",
 				[$char->id, $key, $value]);
 		}
+	}
 
+
+	public function addToAv($charID, $avID){
+
+		$res = $this->query("
+			INSERT INTO rel_char2av
+			(charID, avID)
+			VALUES 
+			(?, ?)",
+			[$charID, $avID]);
+
+		return $res;
 
 	}
 
-	public function findByUniv($univID){
+	public function findByUserAndWorld($userID, $worldID){
+		$res = $this->query("
+			SELECT *
+			FROM {$this->table_name}
+			WHERE userID = ?
+			AND worldID = ?", 
+			[$userID, $worldID]);
+		return $res;
+	}
+
+	public function findByUniv($worldID){
 
 		$data = $this->query("
 			SELECT *
 			FROM {$this->table_name}
-			WHERE univID = ?",
-			[$univID]);
+			WHERE worldID = ?",
+			[$worldID]);
 		return $data;
 	}
 

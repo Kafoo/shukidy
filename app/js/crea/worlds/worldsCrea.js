@@ -130,14 +130,14 @@ $('.caracContainer .delete').click(function(){
 //--------- CANCEL CARACS ---------
 
 $('.cancel_carac').click(function(){
-	var univID = $('.univID-stock').html()
-	window.location = '/crea/univ/'+univID+'?p=2'
+	var worldID = $('.worldID-stock').html()
+	window.location = '/crea/univ/'+worldID+'?p=2'
 })
 
 //--------- CONFIRM CARACS ---------
 
 $('.edit_carac').click(function(e){
-	var univID = $('.univID-stock').html()
+	var worldID = $('.worldID-stock').html()
 	let caracs = {}
 	//On récupère toutes les carac
 	var caracContainer = $('.caracContainer')
@@ -158,9 +158,9 @@ $('.edit_carac').click(function(e){
 	//Loading
 	$('.edit_carac').html('...')
 	$.post({
-		url: '/ajax/UniversController/editCaracs',
+		url: '/ajax/WorldsController/editCaracs',
 		data: {
-			univID: univID,
+			worldID: worldID,
 			caracs: caracs
 		},
   		dataType: 'json',
@@ -169,7 +169,7 @@ $('.edit_carac').click(function(e){
 
   			if (data['success'] === 0) {
   				alert(data['msg'])
-  				window.location = '/crea/univ/'+univID+'?p=2'
+  				window.location = '/crea/univ/'+worldID+'?p=2'
   			}else{
 	  			$('.edit_carac').html('C\'est validé !')
 	  			setTimeout(function(){
@@ -187,7 +187,7 @@ $('.edit_carac').click(function(e){
 //--------- REFRESH NATURE OR POWER ---------
 
 function refresh(what, natureID = 0){
-	var univID = $('.univID-stock').html()
+	var worldID = $('.worldID-stock').html()
 	var What = what[0].toUpperCase() + what.substring(1)
 	//On définit "type" comme un "what" qui aurait toutes ses lettres
 	var type;
@@ -201,8 +201,8 @@ function refresh(what, natureID = 0){
 	//On vide les descriptions en stock
 	$('.'+what+'Descriptions').empty()
 
-	let posting = $.post('/ajax/UniversController/getInfos', {				 
-		univID : univID,
+	let posting = $.post('/ajax/WorldsController/getInfos', {				 
+		worldID : worldID,
 		what : what,
 		natureID : natureID
 	} ); 
@@ -277,7 +277,7 @@ refresh('classe')
 function editUniv(){
 	let descriptionBox = $('.univDescription')
 	var description_old = descriptionBox.html()
-	var format_description = description_old.replace(/\<br>/g, '');
+	var format_description = description_old.replace(/<br\s*\/?>/mg,"\n")
 	descriptionBox.replaceWith('<textarea class="editArea univDescription">'+format_description+'</textarea>')
 	let descriptionBox_new = $('.univDescription')
 	descriptionBox_new.focus()
@@ -291,7 +291,7 @@ function editUniv(){
 
 function confirm_editUniv(){
 
-	var univID = $('.univID-stock').html();
+	var worldID = $('.worldID-stock').html();
 	var submit = $(this)
 	var descriptionBox = $('.univDescription');
 	var description_new = descriptionBox.val();
@@ -306,10 +306,10 @@ function confirm_editUniv(){
 	$('.univDescription').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 
 	$.post({
-		url: '/ajax/UniversController/edit',
+		url: '/ajax/WorldsController/edit',
 		data: {
 			what: 'description',
-			univID: univID,
+			worldID: worldID,
 			value: description_new
 		},
   		dataType: 'html',
@@ -331,7 +331,7 @@ $('.edit_univ').one("click", editUniv);
 function editRegles(){
 	let reglesBox = $('.regles')
 	var regles_old = reglesBox.html()
-	var format_regles = regles_old.replace(/\<br>/g, '');
+	var format_regles = regles_old.replace(/<br\s*\/?>/mg,"\n");
 	reglesBox.replaceWith('<textarea class="editArea regles">'+format_regles+'</textarea>')
 	let reglesBox_new = $('.regles')
 	reglesBox_new.focus()
@@ -345,7 +345,7 @@ function editRegles(){
 
 function confirm_editRegles(){
 
-	var univID = $('.univID-stock').html();
+	var worldID = $('.worldID-stock').html();
 	var submit = $(this)
 	var reglesBox = $('.regles');
 	var regles_new = reglesBox.val();
@@ -360,10 +360,10 @@ function confirm_editRegles(){
 	$('.regles').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 
 	$.post({
-		url: '/ajax/UniversController/edit',
+		url: '/ajax/WorldsController/edit',
 		data: {
 			what: 'regles',
-			univID: univID,
+			worldID: worldID,
 			value: regles_new
 		},
   		dataType: 'html',
@@ -395,7 +395,7 @@ function edit(){
 		Name_old = name_old.toUpperCase();
 	}
 	var description_old = descriptionBox.html();
-	var format_description = description_old.replace(/\<br>/g, '');
+	var format_description = description_old.replace(/<br\s*\/?>/mg,"\n")
 
 	selectBox.after('<input type="text" class="editArea selectBox select'+What+'" maxlength="20" value="'+Name_old+'">')
 	selectBox.hide();
@@ -465,7 +465,7 @@ function confirm_edit(){
 			$('.'+what+'Background').css('background-image','')
 			let attribute = {"id": id, "icon": icon, "name": name_new, "description": description_new}	
 			$.post({
-				url: '/ajax/UniversController/editAttribute',
+				url: '/ajax/WorldsController/editAttribute',
 				data: {
 					what: what,
 					attribute: JSON.stringify(attribute)
@@ -509,7 +509,7 @@ $('.addTitle').click(function(e){
 
 $('.nature_submit').click(function(){
 	var submit = $(this)
-	var univID = $('.univID-stock').html();
+	var worldID = $('.worldID-stock').html();
 	var what = submit.attr("nature_type");
 	var What = what[0].toUpperCase() + what.substring(1)
 	var nature_name = $('.'+what+'_name').val().trim();
@@ -528,9 +528,9 @@ $('.nature_submit').click(function(){
 				let nature = {"name": nature_name,"type": what, "description": nature_description, "icon": icon}
 
 				$.post({
-					url: '/ajax/UniversController/createNature',
+					url: '/ajax/WorldsController/createNature',
 					data: {
-						univID: univID,
+						worldID: worldID,
 						nature: JSON.stringify(nature)
 					},
 			  		dataType: 'json',
@@ -573,7 +573,7 @@ $('.delete_nature').click(function(e){
 		'Euh en fait non',
 		//yesCallBack
 		function(){
-			var univID = $('.univID-stock').html();
+			var worldID = $('.worldID-stock').html();
 			var What = what[0].toUpperCase() + what.substring(1);
 			var natureID = $('option:selected', '.select'+What).attr("id");
 			//Loading
@@ -582,7 +582,7 @@ $('.delete_nature').click(function(e){
 			$('.'+what+'Background').css('background-image','')	
 
 			$.post({
-				url: '/ajax/UniversController/deleteNature',
+				url: '/ajax/WorldsController/deleteNature',
 				data: {
 					natureID: natureID,
 				},
@@ -608,7 +608,7 @@ $('.delete_nature').click(function(e){
 
 $('.power_submit').click(function(e){
 	var submit = $(this)
-	var univID = $('.univID-stock').html();
+	var worldID = $('.worldID-stock').html();
 	var what = submit.attr("power_type");
 	var What = what[0].toUpperCase() + what.substring(1)
 	var NatureType;
@@ -627,9 +627,9 @@ $('.power_submit').click(function(e){
 			let power = {"name": name,"type": what, "description": description, "lvl":1}
 
 			$.post({
-				url: '/ajax/UniversController/createPower',
+				url: '/ajax/WorldsController/createPower',
 				data: {
-					univID: univID,
+					worldID: worldID,
 					natureID: natureID,
 					power: JSON.stringify(power)
 				},
@@ -666,7 +666,7 @@ $('.delete_power').click(function(e){
 		'Ah non, en fait non...',
 		function(){			
 		//yesCallBack
-			var univID = $('.univID-stock').html();
+			var worldID = $('.worldID-stock').html();
 			var what = $(e.currentTarget).attr("powerType");
 			var NatureType;
 			if (what == 'capa') {NatureType = 'Race'}
@@ -679,7 +679,7 @@ $('.delete_power').click(function(e){
 			$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 
 			$.post({
-				url: '/ajax/UniversController/deletePower',
+				url: '/ajax/WorldsController/deletePower',
 				data: {
 					powerID: powerID,
 				},

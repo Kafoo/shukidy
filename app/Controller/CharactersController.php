@@ -13,7 +13,7 @@ class CharactersController extends AppController{
 	public function __construct(){
 		parent::__construct();
 		$this->loadModel('users');
-		$this->loadModel('univers');
+		$this->loadModel('worlds');
 		$this->loadModel('carac');
 		$this->loadModel('characters');
 	}
@@ -43,15 +43,37 @@ class CharactersController extends AppController{
 
 	}
 
+	public function addToAv(){
 
-	public function showCrea()
+		$charID = $_POST['charID'];
+		$avID = $_POST['avID'];
+
+		$data = $this->characters->addToAv($charID, $avID);
+
+		echo $data;
+
+	}
+
+	public function listByAv(){
+
+		$userID = $_POST['userID'];
+		$worldID = $_POST['worldID'];
+
+		$characters = $this->characters->findByUserAndWorld($userID, $worldID);
+
+		echo json_encode($characters);
+
+	}
+
+
+	public function showCrea($worldID)
 	{
 
 		if (Manager::getInstance()->loggedIn()) {
 
-			$univers = $this->univers->find(2);
-			$univers->caracs = $this->carac->findByUniv($univers->id);
-			$this->render('crea.character.characterCrea', $univers);
+			$world = $this->worlds->find($worldID);
+			$world->caracs = $this->carac->findByUniv($worldID);
+			$this->render('crea.character.characterCrea', $world);
 
 		}else{
 			$this->mustLogIn();

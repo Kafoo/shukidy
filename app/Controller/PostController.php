@@ -64,6 +64,7 @@ class PostController extends AppController
 		//On défini le postID (incrémentation ou non)
 		if ($entry->charID == $last->charID 
 		AND ($last->type == 'rpPlayer' OR $last->type == 'drPlayer')
+                AND ($entry->type !== 'drGM')
 		OR ($last->type == 'drGM' AND $entry->type == 'drGM')) {
 			$entry->postID = $last->postID;
 		} else {

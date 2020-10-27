@@ -7,7 +7,7 @@ use core\Entity\MainEntity;
 /**
  * 
  */
-class UniversEntity extends MainEntity{
+class WorldsEntity extends MainEntity{
 
 
 }

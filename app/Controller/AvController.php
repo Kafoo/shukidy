@@ -41,7 +41,7 @@ class AvController extends AppController
 			$HTML = $this->getPV('aventures.posts.log', $entry);
 		}
 		elseif($entry->type == 'start'){
-			$HTML = 'Poste un premier message ;-)';
+			$HTML = 'Le GM n\'a encore posté aucun message, patience !';
 		}
 		else{
 			$HTML = '';

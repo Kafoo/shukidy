@@ -30,14 +30,14 @@ class CaracTable extends AppTable{
 
 	}
 
-	public function findByUniv($univID){
+	public function findByUniv($worldID){
 
 		$data = $this->query("
 			SELECT carac.*
 			FROM {$this->table_name} as carac
-			WHERE carac.univID = ?
+			WHERE carac.worldID = ?
 			ORDER BY num",
-			[$univID]);
+			[$worldID]);
 		return $data;
 	}
 
@@ -48,7 +48,7 @@ class CaracTable extends AppTable{
 			SELECT carac.*
 			FROM {$this->table_name} as carac
 			JOIN aventures as av
-			ON carac.univID = av.univID
+			ON carac.worldID = av.worldID
 			WHERE av.id = ?",
 			[$avID]);
 		return $data;
