@@ -26,6 +26,10 @@ class AppController extends Controller{
 
 	}
 
+	public function showLog(){
+		$this->render('log');
+	}
+
 	public function index(){
 		$this->render($this->mainName, null);
 	}

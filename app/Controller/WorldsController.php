@@ -211,11 +211,13 @@ class WorldsController extends AppController{
 
 	public function index()
 	{
+		if (Manager::getInstance()->loggedIn()) {
+			$worlds = $this->worlds->getAll();
 
-		$worlds = $this->worlds->getAll();
-
-		$this->render($this->mainName, $worlds);
+			$this->render($this->mainName, $worlds);
+		}else{
+			$this->mustLogIn();
+		}
 	}
-
 
 }

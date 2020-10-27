@@ -138,10 +138,14 @@ class AvController extends AppController
 
 	public function index(){
 
+
+
 		if (Manager::getInstance()->loggedIn()) {
+			$this->log('user '.$_SESSION['auth'].' est venu sur la page d\'aventures');
 			$aventures = $this->aventures->getAll();
 			$this->render('aventures.av_list', $aventures);
 		}else{
+			$this->log('un inconnu est venu sur la page d\'aventures');
 			$this->mustLogIn();
 		}
 	}

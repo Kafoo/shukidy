@@ -4,13 +4,14 @@ use app\Router\Router;
 use core\DBAuth;
 
 //Controllers
-use App\Controller\HomeController;
-use App\Controller\AvController;
-use App\Controller\ProfilController;
-use App\Controller\AjaxController;
-use App\Controller\CharactersController;
-use App\Controller\HelpController;
-use App\Controller\WorldsController;
+use app\Controller\HomeController;
+use app\Controller\AvController;
+use app\Controller\ProfilController;
+use app\Controller\AjaxController;
+use app\Controller\CharactersController;
+use app\Controller\HelpController;
+use app\Controller\WorldsController;
+use app\Controller\AppController;
 
 //Different ROOT if local or not
 
@@ -100,6 +101,12 @@ if (isset($_GET['url'])) {
 		$controller = 'app\Controller\\'.$controller;
 		$controller = new $controller;
 		$controller->$action();
+	});
+
+	//LOG
+	$router->get('/log', function(){
+		$controller = new AppController;
+		$controller->showLog();
 	});
 
 	$router->run();
