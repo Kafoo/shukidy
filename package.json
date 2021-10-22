@@ -19,7 +19,7 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.4",
     "jquery": "^3.5.1",
-    "tinymce": "^5.5.1",
+    "tinymce": "^5.9.0",
     "vue": "^2.6.12"
   },
   "devDependencies": {
