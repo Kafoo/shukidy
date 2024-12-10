@@ -1,6 +1,6 @@
 <?php
 
-if (substr(__DIR__, 0, 2) == 'D:') {
+if (substr(__DIR__, 1, 3) == 'mnt') {
 
 	return array(
 		'title' => 'Shukidy',

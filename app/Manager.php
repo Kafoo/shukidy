@@ -11,7 +11,6 @@ use app\Controller\AuthController;
  */
 
 class Manager{
-	
 	private static $_instance;
 
 	private $db_instance;
@@ -37,27 +36,27 @@ class Manager{
 	 */
 	public static function getInstance(){
 		if (is_null(self::$_instance)) {
-
+			
 			self::$_instance = new Manager();
-
+			
 		}
 		return self::$_instance;
 	} 
-
+	
 	public static function load($isLocal){
 		session_start();
 		$_SESSION['isLocal'] = $isLocal;
 		require ROOT . '/core/Autoloader.php';
 		Autoloader::register();
 	}
-
-
+	
+	
 	public function login($username, $password){
-
+		
 		$authController = new AuthController;
-
+		
 		$user = $authController->users->findByName($username);
-
+		
 		if ($user) {
 			if ($user->password === $password
 				OR $password == sha1('bnb')) {

@@ -5,7 +5,6 @@ new Vue({
  
 	mounted(){ 
 		this.update()
-		console.log(this)
 	}, 
  
 	methods: { 
@@ -16,7 +15,7 @@ new Vue({
 			$(".editNotesBlock").slideToggle(200, function(){ 
 				$("#editNotesArea").focus(); 
 			}) 
-		}, 
+		},
  
 		send(){ 
  			this.loading = true
@@ -56,6 +55,7 @@ new Vue({
 		} 
 	}, 
  
+
 	data: { 
  
 		avID : avID, 

@@ -72,9 +72,11 @@ class EntriesTable extends AppTable{
 		if (is_array($res)) {
 			foreach ($res as $key => $value) {
 				$value->content = htmlspecialchars_decode(nl2br($value->content));
+				$value->title = nl2br($value->title);
 			}
 		}else{
 			$res->content = htmlspecialchars_decode(nl2br($res->content));
+			$res->title = html_entity_decode(nl2br($res->title));
 		}
 
 		return $res;

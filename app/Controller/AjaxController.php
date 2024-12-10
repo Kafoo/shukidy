@@ -13,9 +13,9 @@ class AjaxController extends AppController{
 		parent::__construct();
 		$this->loadModel('users');
 	}
-
+	
 	public function trylogin(){
-
+		$lol = $_POST['username'];
 		$username = $_POST['username'];
 		$password = sha1($_POST['password']);
 		$login = Manager::getInstance()->login($username, $password);

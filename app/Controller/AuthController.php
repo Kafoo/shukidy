@@ -1,7 +1,6 @@
 <?php
 
 namespace app\Controller;
-
 /**
  * 
  */
@@ -14,7 +13,6 @@ class AuthController extends AppController
 	}
 
 	public function auth($user){
-
         setcookie('auth', $user->id.'---'.sha1($user->username), time()+3600*24*365, "/", null, false, true);
 		$_SESSION['connected'] = true;
 		$_SESSION['username'] = $user->username;

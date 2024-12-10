@@ -16,8 +16,8 @@ use app\Controller\AppController;
 
 //Different ROOT if local or not
 
-if (substr(__DIR__, 0, 2) == 'D:') {
-	define('ROOT', '');
+if (substr(__DIR__, 1, 3) == 'mnt') {
+	define('ROOT', __DIR__);
 	$isLocal = True;
 }else{
 	define('ROOT', __DIR__);
@@ -40,9 +40,6 @@ if (isset($_GET['url'])) {
 	$router->get('/', function(){
 		$controller = new HomeController;
 		$controller->index();
-
-
-
 	});
 
 	//HELP

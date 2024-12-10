@@ -9,7 +9,7 @@
 			<input type="text" name="charID" value="<?=$userChar->id?>" hidden>
 			<input type="text" name="avID" value="<?=$aventure->id?>" hidden>
 			<input type="submit" name="submit" value='Je réponds !'>
-			<?php if ($aventure->writerID !== '0' AND $aventure->writerID !== $_SESSION['auth']): ?>
+			<?php if ($aventure->writerID != '0' AND $aventure->writerID !== $_SESSION['auth']): ?>
 				<div class="nextWriter">
 					<b><i><?=$aventure->writerName?></i></b> aimerait être le prochain à écrire
 					<div class="removeDisclaimer">Je veux poster quand même</div>
